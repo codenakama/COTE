@@ -1,0 +1,32 @@
+{
+  "name": "cote",
+  "version": "1.0.0",
+  "description":
+    "Capital On Tap Experience is an end to end design language to create application's at Capital On Tap.",
+  "main": "index.js",
+  "repository": "https://github.com/CapitalOnTap/COTE",
+  "author": "Ricardo Abreu <ricardo.abreu@capitalontap.com>",
+  "license": "MIT",
+  "files": ["dist"],
+  "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "devDependencies": {
+    "@storybook/react": "^3.3.9",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "html-webpack-plugin": "^2.30.1",
+    "raw-loader": "^0.5.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.0"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "styled-components": "^2.4.0"
+  }
+}
