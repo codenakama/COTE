@@ -9,7 +9,10 @@
   "license": "MIT",
   "files": ["dist"],
   "scripts": {
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "build": "babel src -d dist",
+    "clean": "rm -rf dist",
+    "dist": "yarn run clean && yarn run build"
   },
   "devDependencies": {
     "@storybook/react": "^3.3.9",
