@@ -2,6 +2,7 @@ import { configure, addDecorator } from "@storybook/react";
 import globalStyles from "./globalStyles";
 import { ThemeProvider } from "styled-components";
 import React from "react";
+import "../src/styles/lato.css";
 
 globalStyles();
 

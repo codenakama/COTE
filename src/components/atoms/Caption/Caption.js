@@ -15,6 +15,12 @@ const Caption = ({ error, text, ...props }) => {
   );
 };
 
-Caption.propTypes = {};
+Caption.propTypes = {
+  text: PropTypes.string
+};
+
+Caption.defaultProps = {
+  text: "Caption text here"
+};
 
 export default Caption;

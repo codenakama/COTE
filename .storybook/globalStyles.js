@@ -47,7 +47,7 @@ table {
 	border-spacing: 0;
 }
 body {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Lato", sans-serif;
     font-size: 18px;
   }
 h1,

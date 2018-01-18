@@ -1,7 +1,12 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { H1, H2, H3, H4 } from "./Heading";
+import { Heading1, Heading2, Title, Subtitle } from "./Heading";
 
 storiesOf("Headings", module)
-  .add("H1", () => <H1>Heading 1</H1>)
-  .add("H2", () => <H2>Heading 2</H2>);
+  .add("Heading1", () => <Heading1>Heading 1</Heading1>)
+  .add("Heading1 highlighted", () => (
+    <Heading1 highlight>This text is important!</Heading1>
+  ))
+  .add("Heading 2", () => <Heading2>Heading 2</Heading2>)
+  .add("Title", () => <Title>Title</Title>)
+  .add("Subtitle", () => <Subtitle>Subtitle</Subtitle>);
