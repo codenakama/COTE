@@ -5,8 +5,9 @@ import styled from "styled-components";
 const StyledLabel = styled.label`
   color: ${props =>
     props.required ? props.theme.colorDanger : props.theme.colorLightBlue};
-  line-height: 1.618;
   font-size: 1rem;
+  display: block;
+  margin-bottom: 8px;
 `;
 
 const Label = ({ text, required, ...props }) => {

@@ -4,6 +4,12 @@ import { Heading1, Heading2, Title, Subtitle } from "./Heading";
 
 storiesOf("Headings", module)
   .add("Heading1", () => <Heading1>Heading 1</Heading1>)
+  .add("Heading1 with a lot of text", () => (
+    <Heading1>
+      Etiam porta tempus orci quis tristique. Fusce blandit quis risus in
+      suscipit
+    </Heading1>
+  ))
   .add("Heading1 highlighted", () => (
     <Heading1 highlight>This text is important!</Heading1>
   ))

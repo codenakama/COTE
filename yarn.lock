@@ -5428,6 +5428,12 @@ react-style-proptype@^3.0.0:
   dependencies:
     prop-types "^15.5.4"
 
+react-text-mask@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-text-mask/-/react-text-mask-5.1.0.tgz#490aa519aae73398d491edd675c821dc947b764b"
+  dependencies:
+    prop-types "^15.5.6"
+
 react-transition-group@^1.1.2:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.2.1.tgz#e11f72b257f921b213229a774df46612346c7ca6"

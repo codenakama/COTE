@@ -5,6 +5,7 @@ import styled from "styled-components";
 const StyledCaption = styled.span`
   font-size: 0.75rem;
   color: ${props => (props.error ? props.theme.colorDanger : "#A4AAB3")};
+  display: block;
 `;
 
 const Caption = ({ error, text, ...props }) => {

@@ -48,11 +48,11 @@ table {
 }
 body {
     font-family: "Lato", sans-serif;
-    font-size: 18px;
-  }
-h1,
-h2,
-h3 {
-  margin-bottom: 1rem;
+	font-size: 14px;
 }
+
+h1,h2,h3,h4,h5,h6,p,span{
+	line-height: 1.618;
+}
+
 `;
