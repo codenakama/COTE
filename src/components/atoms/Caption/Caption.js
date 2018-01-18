@@ -7,8 +7,12 @@ const StyledCaption = styled.span`
   color: ${props => (props.error ? props.theme.colorDanger : "#A4AAB3")};
 `;
 
-const Caption = ({ error, ...props }) => {
-  return <StyledCaption error={true} {...props} />;
+const Caption = ({ error, text, ...props }) => {
+  return (
+    <StyledCaption error={error} {...props}>
+      {text}
+    </StyledCaption>
+  );
 };
 
 Caption.propTypes = {};

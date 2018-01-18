@@ -3,13 +3,18 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const StyledLabel = styled.label`
-  color: rgba(6, 31, 51, 0.7);
+  color: ${props =>
+    props.required ? props.theme.colorDanger : props.theme.colorLightBlue};
   line-height: 1.618;
-  font-size: ;
+  font-size: 1rem;
 `;
 
-const Label = ({ text, ...props }) => {
-  return <StyledLabel {...props}>{text}</StyledLabel>;
+const Label = ({ text, required, ...props }) => {
+  return (
+    <StyledLabel required={required} {...props}>
+      {text}
+    </StyledLabel>
+  );
 };
 
 Label.propTypes = {
