@@ -5,7 +5,9 @@ import Caption from "./Caption";
 import Small from "./Small";
 import Label from "./Label";
 
-storiesOf("Headings", module)
+// storiesOf("Typography", module).add();
+
+storiesOf("Typography/Headings", module)
   .add("Heading1", () => <Heading1>Heading 1</Heading1>)
   .add("Heading1 with a lot of text", () => (
     <Heading1>
@@ -21,10 +23,10 @@ storiesOf("Headings", module)
   .add("Title", () => <Title>Title</Title>)
   .add("Subtitle", () => <Subtitle>Subtitle</Subtitle>);
 
-storiesOf("Label", module)
+storiesOf("Typography/Label", module)
   .add("Normal", () => <Label />)
   .add("Required", () => <Label required />);
 
-storiesOf("Caption", module)
+storiesOf("Typography/Caption", module)
   .add("Normal", () => <Caption text="Caption" />)
   .add("Error", () => <Caption text="Caption" error />);

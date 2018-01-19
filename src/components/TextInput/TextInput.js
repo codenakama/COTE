@@ -17,7 +17,7 @@ const Input = styled(MaskedInput)`
 
     if (props.required) return "solid 1px red";
 
-    return `solid 1px ${defaultColors.colorDarkBlue}`;
+    return `solid 1px ${defaultColors.black}`;
   }};
 
   border-radius: 4px;
@@ -37,7 +37,7 @@ const TextInput = ({ labelText, mask, guide, full, error, info, ...props }) => {
         type="text"
         {...props}
         required={error}
-        mask={mask}
+        mask={mask.length ? mask : false}
         guide={guide}
       />
       {error && <Caption error={error} />}

@@ -10,7 +10,8 @@ const StyledLabel = styled.label`
     if (props.theme) return props.theme.colorBlack;
 
     return colors.black;
-  }}
+  }};
+
   font-size: 1rem;
   display: block;
   margin-bottom: 8px;

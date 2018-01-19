@@ -1,6 +1,6 @@
 import { injectGlobal } from "styled-components";
 
-export default () => injectGlobal`
+export default (injectGlobalStyles = () => injectGlobal`
 /* reset css */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -46,13 +46,8 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-body {
-    font-family: "Lato", sans-serif;
+body{
+	font-family: "Lato" sans-serif;
 	font-size: 14px;
 }
-
-h1,h2,h3,h4,h5,h6,p,span{
-	line-height: 1.618;
-}
-
-`;
+`);

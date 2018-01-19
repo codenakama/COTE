@@ -2,11 +2,9 @@ import { configure, addDecorator } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withKnobs, text, boolean, number } from "@storybook/addon-knobs/react";
 import { setDefaults, withInfo } from "@storybook/addon-info";
-
-import globalStyles from "./globalStyles";
+import globalStyles from "./styles/globalStyles";
 import { ThemeProvider } from "styled-components";
 import React from "react";
-import "../src/styles/lato.css";
 
 globalStyles();
 

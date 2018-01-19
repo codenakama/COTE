@@ -28,7 +28,7 @@ Caption.propTypes = {
 };
 
 Caption.defaultProps = {
-  text: "Caption text here"
+  text: ""
 };
 
 export default Caption;
