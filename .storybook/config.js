@@ -21,13 +21,11 @@ const styles = {
 
 const theme = {
   colorPrimary: "#27B161",
-  colorLightGrey: "#F3F3F3",
-  colorDarkgrey: "#A4AAB3",
+  colorDisabled: "#A4AAB3",
   colorShadow: "#000000",
-  colorLightBlue: "rgba(6, 31, 51, 0.7)",
-  colorDarkBlue: "rgba(6, 31, 51, 1)",
-  colorHover: "#148443",
-  colorDisabled: "#27B161",
+  colorLightBlack: "rgba(6, 31, 51, 0.7)",
+  colorBlack: "rgba(6, 31, 51, 1)",
+  colorPrimaryEmphasis: "#148443",
   colorDanger: "#FF7183"
 };
 

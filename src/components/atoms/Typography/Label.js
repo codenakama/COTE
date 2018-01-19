@@ -1,10 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { colors } from "../../../styles/defaults";
 
 const StyledLabel = styled.label`
-  color: ${props =>
-    props.required ? props.theme.colorDanger : props.theme.colorLightBlue};
+  color: ${props => {
+    if (props.required) return props.theme.colorDanger;
+
+    if (props.theme) return props.theme.colorBlack;
+
+    return colors.black;
+  }}
   font-size: 1rem;
   display: block;
   margin-bottom: 8px;

@@ -1,10 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { colors } from "../../../styles/defaults";
 
 const StyledCaption = styled.span`
-  font-size: 0.75rem;
-  color: ${props => (props.error ? props.theme.colorDanger : "#A4AAB3")};
+  font-size: 12px;
+  color: ${props => {
+    if (props.required) return props.theme.colorDanger;
+
+    if (props.theme) return props.theme.colorBlack;
+
+    return colors.black;
+  }};
   display: block;
 `;
 

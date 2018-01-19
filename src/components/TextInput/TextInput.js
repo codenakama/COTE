@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import MaskedInput from "react-text-mask";
-import Label from "../atoms/Label/Label";
-import Caption from "../atoms/Caption/Caption";
+import { Caption, Label } from "../atoms/Typography";
 import { colors as defaultColors } from "../../styles/defaults";
 
 const Input = styled(MaskedInput)`
@@ -53,12 +52,14 @@ TextInput.propTypes = {
   error: PropTypes.string,
   /** Information related to this input field */
   info: PropTypes.string,
-  /** Mask to be applied to the input. E.g. Phone format, address, post code, sort code */
+  /** Regex pattern mask to be applied to the input. E.g. Phone format, address, post code, sort code */
   mask: PropTypes.array,
   /** If text input should stretch to fill its parent container */
   full: PropTypes.bool,
   /** Show guides for user to know how many characters left */
-  guide: PropTypes.bool
+  guide: PropTypes.bool,
+  /** Label for input */
+  labelText: PropTypes.string
 };
 
 TextInput.defaultProps = {
@@ -67,7 +68,9 @@ TextInput.defaultProps = {
   info: "",
   mask: [],
   full: false,
-  guide: false
+  guide: false,
+  labelText: "Input label",
+  full: false
 };
 
 TextInput.displayName = "TextInput";
