@@ -7,6 +7,7 @@ storiesOf("Headings", module)
   .add("Heading1 with a lot of text", () => (
     <Heading1>
       Etiam porta tempus orci quis tristique. Fusce blandit quis risus in
+      suscipit. Etiam porta tempus orci quis tristique. Fusce blandit quis risus in
       suscipit
     </Heading1>
   ))

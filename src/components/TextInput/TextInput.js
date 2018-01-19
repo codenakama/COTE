@@ -49,13 +49,18 @@ const TextInput = ({ labelText, mask, guide, full, error, info, ...props }) => {
 
 TextInput.propTypes = {
   placeholder: PropTypes.string,
+  /** Error message to show if input is not valid */
   error: PropTypes.string,
+  /** Information related to this input field */
   info: PropTypes.string,
-  /**Mask to be applied to the input. E.g. Phone format, address, post code, sort code */
+  /** Mask to be applied to the input. E.g. Phone format, address, post code, sort code */
   mask: PropTypes.array,
-  /**If text input should stretch to fill its parent container*/
-  full: PropTypes.bool
+  /** If text input should stretch to fill its parent container */
+  full: PropTypes.bool,
+  /** Show guides for user to know how many characters left */
+  guide: PropTypes.bool
 };
+
 TextInput.defaultProps = {
   placeholder: "Type something",
   error: "",
@@ -64,5 +69,7 @@ TextInput.defaultProps = {
   full: false,
   guide: false
 };
+
+TextInput.displayName = "TextInput";
 
 export default TextInput;
