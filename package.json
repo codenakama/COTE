@@ -16,6 +16,9 @@
     "dist": "yarn run clean && yarn run build"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.3.9",
+    "@storybook/addon-info": "^3.3.9",
+    "@storybook/addon-knobs": "^3.3.9",
     "@storybook/react": "^3.3.9",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
