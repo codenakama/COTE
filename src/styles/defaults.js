@@ -3,7 +3,7 @@ export const colors = {
   primaryEmphasis: "#148443",
   black: "rgba(6, 31, 51, 1)",
   lightBlack: "rgba(6, 31, 51, 0.7)",
-  disabled: "#A4AAB3",
+  darkGrey: "#A4AAB3",
   danger: "#FF7183",
   shadow: "#000000"
 };

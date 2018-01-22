@@ -19,7 +19,7 @@ const styles = {
 
 const theme = {
   colorPrimary: "#27B161",
-  colorDisabled: "#A4AAB3",
+  colorDarkGrey: "#A4AAB3",
   colorShadow: "#000000",
   colorLightBlack: "rgba(6, 31, 51, 0.7)",
   colorBlack: "rgba(6, 31, 51, 1)",
