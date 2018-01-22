@@ -67,9 +67,10 @@ class Dropdown extends Component {
     };
   }
 
-  handleOptionChange = value => {
-    this.setState({ selectedOption: value });
+  handleOptionChange = option => {
+    this.setState({ selectedOption: option });
   };
+
   handleClick = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
@@ -79,14 +80,14 @@ class Dropdown extends Component {
   };
 
   render() {
-    const { isOpen } = this.state;
+    const { isOpen, selectedOption } = this.state;
     const { options, title, error } = this.props;
     return (
       <OutsideAlerter
         handleClickOutsideElement={this.handleClickOutsideDropdown}
       >
         <Wrapper onClick={this.handleClick} error={error}>
-          {title}
+          {selectedOption ? selectedOption.title : title}
           {!isOpen && (
             <ArrowIcon name="keyboard_arrow_down" onClick={this.handleClick} />
           )}
@@ -98,7 +99,7 @@ class Dropdown extends Component {
                     <OptionWrapper key={`o-${i}`}>
                       <Option
                         value={op.value}
-                        onClick={() => this.handleOptionChange(op.value)}
+                        onClick={() => this.handleOptionChange(op)}
                       >
                         {op.title}
                       </Option>
