@@ -24,10 +24,10 @@ const StyledIcon = styled.i`
   }};
 `;
 
-const Icon = ({ name, primary, circle, solid, ...props }) => {
+const Icon = ({ name, primary, circle, solid, className, ...props }) => {
   return (
     <StyledIcon
-      className="material-icons"
+      className={`material-icons ${className}`}
       primary={primary}
       circle={circle}
       solid={solid}

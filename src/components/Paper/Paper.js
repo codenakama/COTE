@@ -13,7 +13,7 @@ const PaperWrapper = styled.div`
 
 const Paper = props => {
   const { children } = props;
-  return <PaperWrapper>{children}</PaperWrapper>;
+  return <PaperWrapper {...props}>{children}</PaperWrapper>;
 };
 
 Paper.propTypes = {};
