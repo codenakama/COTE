@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { colors as defaultColors, colors } from "../../styles/defaults";
 import Icon from "../atoms/Icon/Icon";
 import Paper from "../Paper/Paper";
-import OutsideAlerter from "./OutsideAlerter";
+import OutsideAlerter from "../OutsideAlerter/OutsideAlerter";
 
 const ArrowIcon = styled(Icon)`
   position: absolute;

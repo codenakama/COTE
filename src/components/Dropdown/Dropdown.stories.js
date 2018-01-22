@@ -1,7 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import Dropdown from "./Dropdown";
-import OutsideAlerter from "./OutsideAlerter";
 
 storiesOf("Dropdown", module).add("Normal", () => (
   <Dropdown
