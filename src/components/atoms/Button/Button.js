@@ -9,6 +9,7 @@ transition: all 0.3s cubic-bezier(.25,.8,.25,1);`;
 export const StyledButton = styled.button`
   font-family: inherit;
   background-color: ${props => {
+    if (props.disabled) return colors.darkGrey;
     if (props.danger && props.theme) return props.theme.colorDanger;
 
     if (props.danger) return colors.danger;
@@ -19,7 +20,7 @@ export const StyledButton = styled.button`
   }};
 
   color: ${props => {
-    if (props.solid) return "#fff";
+    if (props.solid || props.disabled) return "#fff";
 
     return colors.black;
   }};
@@ -38,9 +39,11 @@ export const StyledButton = styled.button`
   border-radius: 4px;
   cursor: pointer;
   transition: opacity 0.25s ease-in;
-  font-weight: normal;
+  font-weight: bold;
   &:hover {
     background-color: ${props => {
+      if (props.disabled) return colors.darkGrey;
+
       if (props.danger && props.theme && props.solid)
         return props.theme.colorDanger;
 
@@ -52,11 +55,13 @@ export const StyledButton = styled.button`
     }};
 
     opacity: ${props => {
+      if (props.disabled) return;
       if (!props.solid) return "1";
     }};
   }
 
-  border: ${props => (props.solid ? "none" : `1px solid ${colors.black}`)};
+  border: ${props =>
+    props.solid || props.disabled ? "none" : `1px solid ${colors.black}`};
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: inline-block;
   text-align: center;
@@ -71,9 +76,9 @@ const Icon = styled.i`
 
 class Button extends Component {
   render() {
-    const { onClick, children, icon } = this.props;
+    const { onClick, children, icon, disabled } = this.props;
     return (
-      <StyledButton {...this.props}>
+      <StyledButton {...this.props} disabled={disabled}>
         {children}
         {icon && <Icon className={`fa fa-${icon}`} />}
       </StyledButton>
@@ -88,7 +93,8 @@ Button.propTypes = {
   solid: PropTypes.bool,
   full: PropTypes.bool,
   large: PropTypes.bool,
-  small: PropTypes.bool
+  small: PropTypes.bool,
+  disabled: PropTypes.bool
 };
 
 Button.defaultProps = {};
