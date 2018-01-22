@@ -2,7 +2,8 @@
 
 Capital On Tap Experience is an end to end design language to create application's at Capital On Tap.
 
-##Icons
+## Icons
+
 For icons to work add the google fonts reference
 
 `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
