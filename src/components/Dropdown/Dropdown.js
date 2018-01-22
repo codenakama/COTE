@@ -19,7 +19,7 @@ const ArrowIcon = styled(Icon)`
 const Wrapper = styled.div`
   position: relative;
   min-width: 66px;
-  width: 232px;
+  width: ${props => (props.full ? "100%" : "232px")};
   height: 40px;
   border: ${props => {
     if (props.error && props.theme)
@@ -81,12 +81,12 @@ class Dropdown extends Component {
 
   render() {
     const { isOpen, selectedOption } = this.state;
-    const { options, title, error } = this.props;
+    const { options, title, error, full } = this.props;
     return (
       <OutsideAlerter
         handleClickOutsideElement={this.handleClickOutsideDropdown}
       >
-        <Wrapper onClick={this.handleClick} error={error}>
+        <Wrapper onClick={this.handleClick} error={error} full={full}>
           {selectedOption ? selectedOption.title : title}
           {!isOpen && (
             <ArrowIcon name="keyboard_arrow_down" onClick={this.handleClick} />
@@ -124,13 +124,16 @@ Dropdown.propTypes = {
   /** Possible options and their values */
   options: PropTypes.arrayOf(PropTypes.object),
   /** Callback to retrieve value of option selected */
-  handleValueChange: PropTypes.func
+  handleValueChange: PropTypes.func,
+  /** If true dropdown takes full width of parent */
+  full: PropTypes.bool
 };
 
 Dropdown.defaultProps = {
   title: "Select an option",
   options: [{ title: "Option 1", value: 1 }, { title: "Option 2", value: 2 }],
-  handleValueChange: value => console.log(value)
+  handleValueChange: value => console.log(value),
+  full: false
 };
 
 export default Dropdown;
