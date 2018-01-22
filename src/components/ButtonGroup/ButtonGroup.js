@@ -98,7 +98,12 @@ class ButtonGroup extends Component {
 }
 
 ButtonGroup.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.object),
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      value: PropTypes.oneOf([PropTypes.string, PropTypes.number])
+    })
+  ),
   handleOptionSelected: PropTypes.func,
   selectedIndex: PropTypes.number
 };
