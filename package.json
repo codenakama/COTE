@@ -1,14 +1,13 @@
 {
   "name": "cote",
   "version": "1.0.0",
-  "description": "Capital On Tap Experience is an end to end design language to create application's at Capital On Tap.",
+  "description":
+    "Capital On Tap Experience is an end to end design language to create application's at Capital On Tap.",
   "main": "index.js",
   "repository": "https://github.com/CapitalOnTap/COTE",
   "author": "Ricardo Abreu <ricardo.abreu@capitalontap.com>",
   "license": "MIT",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build": "babel src -d dist",
