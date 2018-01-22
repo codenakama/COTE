@@ -6,6 +6,7 @@ import Icon from "../atoms/Icon/Icon";
 import Paper from "../Paper/Paper";
 import OutsideAlerter from "../OutsideAlerter/OutsideAlerter";
 import { Caption } from "../atoms/Typography";
+import { Label } from "../atoms/Typography";
 
 const ArrowIcon = styled(Icon)`
   position: absolute;
@@ -81,11 +82,13 @@ class Dropdown extends Component {
 
   render() {
     const { isOpen, selectedOption } = this.state;
-    const { options, title, error, full } = this.props;
+    const { options, title, error, full, label } = this.props;
     return (
       <OutsideAlerter
         handleClickOutsideElement={this.handleClickOutsideDropdown}
       >
+        {label && <Label required={error} text={label} />}
+
         <Wrapper onClick={this.handleClick} error={error} full={full}>
           {selectedOption ? selectedOption.title : title}
           {!isOpen && (
@@ -126,14 +129,17 @@ Dropdown.propTypes = {
   /** Callback to retrieve value of option selected */
   handleValueChange: PropTypes.func,
   /** If true dropdown takes full width of parent */
-  full: PropTypes.bool
+  full: PropTypes.bool,
+  /** Text label */
+  label: PropTypes.string
 };
 
 Dropdown.defaultProps = {
   title: "Select an option",
   options: [{ title: "Option 1", value: 1 }, { title: "Option 2", value: 2 }],
   handleValueChange: value => console.log(value),
-  full: false
+  full: false,
+  label: ""
 };
 
 export default Dropdown;
