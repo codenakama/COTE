@@ -5,6 +5,7 @@ import { colors as defaultColors, colors } from "../../styles/defaults";
 import Icon from "../atoms/Icon/Icon";
 import Paper from "../Paper/Paper";
 import OutsideAlerter from "../OutsideAlerter/OutsideAlerter";
+import { Caption } from "../atoms/Typography";
 
 const ArrowIcon = styled(Icon)`
   position: absolute;
@@ -21,9 +22,9 @@ const Wrapper = styled.div`
   width: 232px;
   height: 40px;
   border: ${props => {
-    if (props.required && props.theme)
+    if (props.error && props.theme)
       return `1px solid ${props.theme.colorDanger}`;
-    if (props.required) return `1px solid ${defaultColors.danger}`;
+    if (props.error) return `1px solid ${defaultColors.danger}`;
 
     return `1px solid ${defaultColors.black}`;
   }};
@@ -79,12 +80,12 @@ class Dropdown extends Component {
 
   render() {
     const { isOpen } = this.state;
-    const { options, title } = this.props;
+    const { options, title, error } = this.props;
     return (
       <OutsideAlerter
         handleClickOutsideElement={this.handleClickOutsideDropdown}
       >
-        <Wrapper onClick={this.handleClick}>
+        <Wrapper onClick={this.handleClick} error={error}>
           {title}
           {!isOpen && (
             <ArrowIcon name="keyboard_arrow_down" onClick={this.handleClick} />
@@ -110,6 +111,7 @@ class Dropdown extends Component {
             </div>
           ) : null}
         </Wrapper>
+        {error && <Caption error text={error} />}
       </OutsideAlerter>
     );
   }

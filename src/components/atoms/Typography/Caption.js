@@ -6,7 +6,7 @@ import { colors } from "../../../styles/defaults";
 const StyledCaption = styled.span`
   font-size: 12px;
   color: ${props => {
-    if (props.required) return props.theme.colorDanger;
+    if (props.error) return props.theme.colorDanger;
 
     if (props.theme) return props.theme.colorBlack;
 
