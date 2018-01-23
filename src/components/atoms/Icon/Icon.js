@@ -13,8 +13,17 @@ const StyledIcon = styled.i`
     return colors.darkGrey;
   }};
   padding: ${props => (props.circle ? "8px" : null)};
-  border: ${props =>
-    props.circle && !props.solid ? `1px solid ${colors.darkGrey}` : null};
+  border: ${props => {
+    if (props.primary && props.theme && props.circle && !props.solid)
+      return `1px solid ${props.theme.colorPrimary}`;
+
+    if (props.primary && props.circle && !props.solid)
+      return `1px solid ${colors.primary}`;
+
+    if (props.circle && !props.solid) return `1px solid ${colors.darkGrey}`;
+
+    return null;
+  }};
   border-radius: ${props => (props.circle ? "50%" : null)};
   background-color: ${props => {
     if (props.circle && props.solid && props.theme)
