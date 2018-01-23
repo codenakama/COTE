@@ -197,7 +197,8 @@ table {
 }
 body{
 	font-family: 'Lato', sans-serif;
-	font-size: 14px;
+  font-size: 14px;
+  color: rgba(6, 31, 51, 1);
 }
 
 h1,h2,h3,h4,h5,h6,p,span{

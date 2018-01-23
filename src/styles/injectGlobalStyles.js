@@ -49,5 +49,6 @@ table {
 body{
 	font-family: "Lato" sans-serif;
 	font-size: 14px;
+	color: rgba(6, 31, 51, 1);
 }
 `);
