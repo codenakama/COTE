@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { colors as defaultColors, colors } from "../../styles/defaults";
+import { colors as defaultColors } from "../../styles/defaults";
 import Icon from "../atoms/Icon/Icon";
 import Paper from "../Paper/Paper";
 import OutsideAlerter from "../OutsideAlerter/OutsideAlerter";
 import { Caption } from "../atoms/Typography";
 import { Label } from "../atoms/Typography";
+import ResultsList from "../ResultsList/ResultsList";
 
 const ArrowIcon = styled(Icon)`
   position: absolute;
@@ -45,7 +46,7 @@ const OptionsWrapper = styled(Paper)`
 const OptionWrapper = styled.div`
   cursor: pointer;
   &:hover {
-    background-color: ${colors.primary};
+    background-color: ${defaultColors.primary};
   }
 `;
 
@@ -96,21 +97,10 @@ class Dropdown extends Component {
           )}
           {isOpen ? (
             <div>
-              <OptionsWrapper>
-                {options.map((op, i) => {
-                  return (
-                    <OptionWrapper key={`o-${i}`}>
-                      <Option
-                        value={op.value}
-                        onClick={() => this.handleOptionChange(op)}
-                      >
-                        {op.title}
-                      </Option>
-                    </OptionWrapper>
-                  );
-                })}
-              </OptionsWrapper>
-
+              <ResultsList
+                handleResultSelected={this.handleOptionChange}
+                results={options}
+              />
               <ArrowIcon name="keyboard_arrow_up" onClick={this.handleClick} />
             </div>
           ) : null}

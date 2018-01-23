@@ -26,15 +26,27 @@ const Input = styled(MaskedInput)`
 `;
 
 const InputWrapper = styled.div`
-  width: ${props => (props.full ? "10%%" : null)};
+  width: ${props => (props.full ? "100%" : null)};
 `;
 
-const TextInput = ({ labelText, mask, guide, full, error, info, ...props }) => {
+const TextInput = ({
+  labelText,
+  placeholder,
+  mask,
+  guide,
+  full,
+  error,
+  info,
+  className,
+  ...props
+}) => {
   return (
     <InputWrapper full={full}>
       {labelText && <Label required={error} text={labelText} />}
       <Input
         type="text"
+        className={className}
+        placeholder={placeholder}
         {...props}
         required={error}
         mask={mask.length ? mask : false}
@@ -69,7 +81,7 @@ TextInput.defaultProps = {
   mask: [],
   full: false,
   guide: false,
-  labelText: "Input label",
+  labelText: "",
   full: false
 };
 
