@@ -1,6 +1,6 @@
 {
-  "name": "cote",
-  "version": "1.0.0",
+  "name": "cot-experience",
+  "version": "0.1.1",
   "description": "Capital On Tap Experience is an end to end design language to create application's at Capital On Tap.",
   "main": "index.js",
   "repository": "https://github.com/CapitalOnTap/COTE",
@@ -10,9 +10,11 @@
     "dist"
   ],
   "scripts": {
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "start": "webpack-dev-server",
+    "docs": "NODE_ENV=production webpack -p",
+    "storybook": "start-storybook -s ./static -p 9001 -c .storybook",
     "build": "babel src -d dist",
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "dist": "yarn run clean && yarn run build"
   },
   "devDependencies": {
@@ -29,6 +31,7 @@
     "css-loader": "^0.28.9",
     "html-webpack-plugin": "^2.30.1",
     "raw-loader": "^0.5.1",
+    "rimraf": "^2.6.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.0"
   },
