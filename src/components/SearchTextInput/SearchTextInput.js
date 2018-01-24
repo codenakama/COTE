@@ -6,7 +6,7 @@ import ResultsList from "../ResultsList/ResultsList";
 
 const Wrapper = styledComponents.div`
   position: relative;
-  width: fit-content;
+  width: ${props => (props.full ? null : "fit-content")};
 `;
 
 const SearchTextInput = ({
@@ -14,11 +14,12 @@ const SearchTextInput = ({
   handleInputChange,
   results,
   handleResultSelected,
+  full,
   ...props
 }) => {
   return (
-    <Wrapper>
-      <TextInput placeholder={placeholder} full />
+    <Wrapper full={full}>
+      <TextInput placeholder={placeholder} full={full} />
       {results && (
         <ResultsList
           results={results}

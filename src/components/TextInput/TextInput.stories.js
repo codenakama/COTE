@@ -58,4 +58,7 @@ storiesOf("Text Input", module)
       placeholder="e.g. Text up to 8 characters"
       mask={[/^[a-zA-Z ]+$/]}
     />
+  ))
+  .add("Full-width", () => (
+    <TextInput placeholder="e.g. Text up to 8 characters" full />
   ));

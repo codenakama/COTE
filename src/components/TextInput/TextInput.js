@@ -51,6 +51,7 @@ const TextInput = ({
         required={error}
         mask={mask.length ? mask : false}
         guide={guide}
+        full={full}
       />
       {error && <Caption error={error} />}
       {info && <Caption style={{ marginTop: "8px" }} text={info} />}
