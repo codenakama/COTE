@@ -43,7 +43,7 @@ SearchTextInput.propTypes = {
 SearchTextInput.defaultProps = {
   placeholder: "Type something to search",
   handleInputChange: () => console.log("input changed"),
-  results: [{ title: "1" }, { title: "2" }, { title: "3" }],
+  results: [],
   handleResultSelected: val => console.log(`Result ${val} selected`)
 };
 
