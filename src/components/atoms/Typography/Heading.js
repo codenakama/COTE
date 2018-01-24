@@ -35,7 +35,13 @@ Heading3.displayName = "Subheading";
 
 export const Title = Heading.withComponent("h5").extend`
   font-size: 16px;
-  font-weight:${props => (props.light ? fontWeights.light : fontWeights.normal)}
+  font-weight:${props => {
+    if (props.light) return fontWeights.light;
+
+    if (props.bold) return fontWeights.bold;
+
+    return fontWeights.normal;
+  }};
 `;
 Title.displayName = "Title";
 
