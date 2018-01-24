@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Icon from "../atoms/Icon/Icon";
 import Button from "../atoms/Button/Button";
 import { Title } from "../atoms/Typography";
+import { colors as defaultColors } from "../../styles/defaults";
 
 const StyledDropZone = styled(Dropzone)`
   display: flex;
@@ -12,7 +13,8 @@ const StyledDropZone = styled(Dropzone)`
   flex-direction: column;
   justify-content: space-around;
   height: 224px;
-  border: 1px dashed;
+  border: dashed 2px ${defaultColors.darkGrey};
+  border-radius: 4px;
   padding: 1.5em;
   width: 232px;
 `;
