@@ -3,14 +3,14 @@ const webpack = require("webpack");
 
 module.exports = {
   devtool: "cheap-eval-source-map",
-  entry: "./docs/entry.js",
+  entry: "./docs/index.js",
   output: {
     path: path.join(__dirname, "dist"),
     filename: "bundle.js"
   },
   resolve: {
     alias: {
-      styledbyme: path.join(__dirname, "src")
+      cote: path.join(__dirname, "src")
     }
   },
   module: {
@@ -23,6 +23,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: "file-loader?name=public/fonts/[name].[ext]"
       }
     ]
   },
