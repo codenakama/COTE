@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styledComponents from "styled-components";
 import { Label } from "../atoms/Typography";
+import { colors as defaultColors } from "../../styles/defaults";
 
 const Wrapper = styledComponents.div`
     display: block;
@@ -17,15 +18,27 @@ const Wrapper = styledComponents.div`
 `;
 
 const Box = styledComponents.span`
+    color: ${props => {
+      if (props.primary) return "#fff";
+      return `1px solid ${defaultColors.black}`;
+    }};
     position: relative;
     display: inline-block;
-    border: 1px solid #a9a9a9;
+    border: ${props => {
+      if (props.primary) return null;
+      return `1px solid ${defaultColors.darkGrey}`;
+    }};
     border-radius: .25em;
     width: 24px;
     height: 24px;
     float: left;
     margin-right: .5em;
-`;
+    background-color: ${props => {
+      if (props.theme && props.primary) return props.theme.colorPrimary;
+      if (props.primary) return defaultColors.primary;
+      return "#fff";
+    }};
+  `;
 
 const CheckMark = styledComponents.i`
     opacity: 0;
@@ -65,7 +78,7 @@ class Checkbox extends Component {
   };
 
   render() {
-    const { label, name, handleClicked } = this.props;
+    const { label, name, handleClicked, primary } = this.props;
     const { checked } = this.state;
     return (
       <Wrapper>
@@ -76,7 +89,7 @@ class Checkbox extends Component {
             onChange={() => this.handleValueChange(checked)}
             value={checked}
           />
-          <Box>
+          <Box primary={primary}>
             <CheckMark className="material-icons">check</CheckMark>
           </Box>
           <label>{label}</label>
@@ -86,10 +99,15 @@ class Checkbox extends Component {
   }
 }
 
-Checkbox.propTypes = { label: PropTypes.string, handleClicked: PropTypes.func };
+Checkbox.propTypes = {
+  label: PropTypes.string,
+  handleClicked: PropTypes.func,
+  primary: PropTypes.bool
+};
 Checkbox.defaultProps = {
   label: "",
-  handleClicked: val => console.log(val)
+  handleClicked: val => console.log(val),
+  primary: false
 };
 
 export default Checkbox;
