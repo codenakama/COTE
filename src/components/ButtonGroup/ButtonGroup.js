@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Button from "../atoms/Button/Button";
+import { Label } from "../atoms/Typography";
+
 import { colors as defaultColors } from "../../styles/defaults";
 
 const StyledButton = styled(Button)`
@@ -25,7 +27,7 @@ const StyledButton = styled(Button)`
     }};
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 640px) {
     width: 50%;
   }
 `;
@@ -54,10 +56,34 @@ const ButtonGroupWrapper = styled.div`
     border-bottom-left-radius: 0;
   }
 
-  @media (max-width: 420px) {
+  @media (max-width: 640px) {
     & button:first-child {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    & button:nth-child(2) {
       border-top-left-radius: 0;
       border-top-right-radius: 4px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    & button:nth-child(3) {
+      border-top: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 4px;
+    }
+
+    & button:nth-child(4) {
+      border-top: 0;
+      border-left: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
       border-bottom-right-radius: 4px;
       border-bottom-left-radius: 0;
     }
@@ -73,31 +99,45 @@ class ButtonGroup extends Component {
   }
 
   render() {
-    const { options, handleOptionSelected, onBlur } = this.props;
+    const {
+      options,
+      handleOptionSelected,
+      onBlur,
+      label,
+      error,
+      primary
+    } = this.props;
     const { selectedIndex } = this.state;
 
     return (
-      <ButtonGroupWrapper>
-        {options.map((option, i) => (
-          <StyledButton
-            key={i}
-            buttonWidth={100 / options.length}
-            solid={selectedIndex === i}
-            onClick={e => {
-              e.preventDefault();
-              this.setState({ selectedIndex: i });
-              handleOptionSelected(options[i].value);
-            }}
-          >
-            {option.title}
-          </StyledButton>
-        ))}
-      </ButtonGroupWrapper>
+      <div>
+        {label && <Label required={error} text={label} />}
+        <ButtonGroupWrapper>
+          {options.map((option, i) => (
+            <StyledButton
+              key={i}
+              primary={primary}
+              buttonWidth={100 / options.length}
+              solid={selectedIndex === i}
+              onClick={e => {
+                e.preventDefault();
+                this.setState({ selectedIndex: i });
+                handleOptionSelected(options[i].value);
+              }}
+            >
+              {option.title}
+            </StyledButton>
+          ))}
+        </ButtonGroupWrapper>
+      </div>
     );
   }
 }
 
 ButtonGroup.propTypes = {
+  /** Use primary theme color */
+  primary: PropTypes.bool,
+  label: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
@@ -109,6 +149,7 @@ ButtonGroup.propTypes = {
 };
 
 ButtonGroup.defaultProps = {
+  label: "",
   options: [
     { title: "LLP", value: "LLP" },
     { title: "Limited", value: "Limited" },
