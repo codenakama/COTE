@@ -142,9 +142,7 @@ const CotCard = ({ cardHolderName, ...props }) => {
   return (
     <div>
       <svg
-        width="320px"
-        height="204px"
-        viewBox="0 0 320 204"
+        viewBox="0 0 w h"
         version="1.1"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       >
