@@ -4,15 +4,15 @@ import styled from "styled-components";
 import { StyledLinkButton } from "../atoms/Button/Button";
 
 const NavButton = StyledLinkButton.extend`
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 640px) {
     border: none !important;
     padding: 0;
   }
 `;
 
 const Logo = styled.img`
-  @media screen and (max-width: 480px) {
-    width: 80px;
+  @media screen and (max-width: 640px) {
+    width: 140px;
   }
 `;
 
@@ -23,6 +23,10 @@ const Nav = styled.nav`
   height: 72px;
   padding: 0 3.43em;
   background-color: #fff;
+
+  @media screen and (max-width: 640px) {
+    height: 56px;
+  }
 `;
 const NavLeft = styled.div``;
 
