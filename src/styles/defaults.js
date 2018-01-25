@@ -5,7 +5,8 @@ export const colors = {
   lightBlack: "rgba(6, 31, 51, 0.7)",
   darkGrey: "#A4AAB3",
   danger: "#FF7183",
-  shadow: "#000000"
+  shadow: "#000000",
+  lightGrey: "#f3f3f3"
 };
 
 export const fontWeights = {

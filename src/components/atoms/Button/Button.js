@@ -2,12 +2,14 @@ import styled from "styled-components";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { colors } from "../../../styles/defaults";
+import styledComponents from "styled-components";
 
 const boxShadow = `box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 transition: all 0.3s cubic-bezier(.25,.8,.25,1);`;
 
 export const StyledButton = styled.button`
   font-family: inherit;
+  text-decoration: none;
   background-color: ${props => {
     if (props.disabled) return colors.darkGrey;
     if (props.danger && props.theme) return props.theme.colorDanger;
@@ -68,7 +70,7 @@ export const StyledButton = styled.button`
   ${props => (props.shadow ? boxShadow : null)};
 `;
 
-const StyledLinkButton = styled.a``;
+export const StyledLinkButton = StyledButton.withComponent("a");
 
 const Icon = styled.i`
   margin-left: 12px;
@@ -76,11 +78,20 @@ const Icon = styled.i`
 
 class Button extends Component {
   render() {
-    const { onClick, children, icon, disabled } = this.props;
+    const { onClick, children, icon, className, disabled, href } = this.props;
+    if (href) {
+      return (
+        <StyledLinkButton {...this.props} disabled={disabled} href={href}>
+          {children}
+          {icon && <Icon className={`fa fa-${icon} ${className}`} />}
+        </StyledLinkButton>
+      );
+    }
+
     return (
       <StyledButton {...this.props} disabled={disabled}>
         {children}
-        {icon && <Icon className={`fa fa-${icon}`} />}
+        {icon && <Icon className={`fa fa-${icon} ${className}`} />}
       </StyledButton>
     );
   }
