@@ -5,7 +5,9 @@ export {
   Heading2,
   Heading3,
   Title,
-  Subtitle
+  Subtitle,
+  Label,
+  Caption
 } from "./components/atoms/Typography";
 export { default as Button } from "./components/atoms/Button/Button";
 export { default as Icon } from "./components/atoms/Icon/Icon";
@@ -21,7 +23,7 @@ export { default as Paper } from "./components/Paper/Paper";
 export { default as ProgressBar } from "./components/ProgressBar/ProgressBar";
 export { default as ResultsList } from "./components/ResultsList/ResultsList";
 export {
-  default as SearcTextInput
+  default as SearchTextInput
 } from "./components/SearchTextInput/SearchTextInput";
 export { default as TextInput } from "./components/TextInput/TextInput";
 export { default as Uploader } from "./components/Uploader/Uploader";

@@ -21,9 +21,9 @@ const TitleWrapper = styled.div`
   border-bottom: 1px solid #f3f3f3;
 `;
 
-const ContentBox = ({ children, title, props }) => {
+const ContentBox = ({ children, title, className, ...props }) => {
   return (
-    <Wrapper>
+    <Wrapper className={className} {...props}>
       <TitleWrapper>
         <Title bold>{title}</Title>
       </TitleWrapper>

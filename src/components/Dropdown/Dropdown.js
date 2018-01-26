@@ -31,7 +31,7 @@ const Wrapper = styled.div`
     return `1px solid ${defaultColors.black}`;
   }};
   border-radius: 4px;
-  padding: 1em;
+  padding: 9px 16px;
 `;
 
 const OptionsWrapper = styled(Paper)`
