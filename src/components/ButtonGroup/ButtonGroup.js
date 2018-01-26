@@ -90,6 +90,10 @@ const ButtonGroupWrapper = styled.div`
   }
 `;
 
+const Wrapper = styled.div`
+  width: 100%;
+`;
+
 class ButtonGroup extends Component {
   constructor(props) {
     super(props);
@@ -110,7 +114,7 @@ class ButtonGroup extends Component {
     const { selectedIndex } = this.state;
 
     return (
-      <div>
+      <Wrapper>
         {label && <Label required={error} text={label} />}
         <ButtonGroupWrapper>
           {options.map((option, i) => (
@@ -129,7 +133,7 @@ class ButtonGroup extends Component {
             </StyledButton>
           ))}
         </ButtonGroupWrapper>
-      </div>
+      </Wrapper>
     );
   }
 }
