@@ -27,3 +27,4 @@ export { default as TextInput } from "./components/TextInput/TextInput";
 export { default as Uploader } from "./components/Uploader/Uploader";
 export { default as Widget } from "./components/Widget/Widget";
 export { default as Navigation } from "./components/Navigation/Navigation";
+export { default as ContentBox } from "./components/ContentBox/ContentBox";
