@@ -1,15 +1,14 @@
 // import lato from "./styles/lato.css";
 export { default as initGlobalStyles } from "./styles/injectGlobalStyles";
-
+export {
+  Heading1,
+  Heading2,
+  Heading3,
+  Title,
+  Subtitle
+} from "./components/atoms/Typography";
 export { default as Button } from "./components/atoms/Button/Button";
 export { default as Icon } from "./components/atoms/Icon/Icon";
-export { default as Heading1 } from "./components/atoms/Typography/Heading.js";
-export { default as Heading2 } from "./components/atoms/Typography/Heading.js";
-export { default as Heading3 } from "./components/atoms/Typography/Heading.js";
-export { default as Title } from "./components/atoms/Typography/Heading.js";
-export { default as Subtitle } from "./components/atoms/Typography/Heading.js";
-export { default as Caption } from "./components/atoms/Typography/Caption";
-export { default as Label } from "./components/atoms/Typography/Label";
 export { default as ButtonGroup } from "./components/ButtonGroup/ButtonGroup";
 export { default as Checkbox } from "./components/Checkbox/Checkbox";
 export { default as CotCard } from "./components/CotCard/CotCard";
