@@ -38,6 +38,7 @@ const TextInput = ({
   error,
   info,
   className,
+  onChange
   ...props
 }) => {
   return (
@@ -52,6 +53,7 @@ const TextInput = ({
         mask={mask.length ? mask : false}
         guide={guide}
         full={full}
+        onChange={(e) => onChange(e.target.value)}
       />
       {error && <Caption error={error} />}
       {info && <Caption style={{ marginTop: "8px" }} text={info} />}
