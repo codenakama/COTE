@@ -27,7 +27,7 @@ export const StyledButton = styled.button`
     return colors.black;
   }};
 
-  font-size: 1rem;
+  font-size: 1em;
   padding: 0.68em 2em;
   width: ${props => {
     if (props.small) return "16px";
