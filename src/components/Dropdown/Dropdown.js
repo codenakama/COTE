@@ -90,7 +90,13 @@ class Dropdown extends Component {
       >
         {label && <Label required={error} text={label} />}
 
-        <Wrapper onClick={this.handleClick} error={error} full={full}>
+        <Wrapper
+          onClick={this.handleClick}
+          error={error}
+          full={full}
+          contentEditable
+          {...this.props}
+        >
           {selectedOption ? selectedOption.title : title}
           {!isOpen && (
             <ArrowIcon name="keyboard_arrow_down" onClick={this.handleClick} />

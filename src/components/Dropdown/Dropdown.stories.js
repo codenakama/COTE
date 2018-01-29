@@ -10,7 +10,11 @@ const options = [
 storiesOf("Dropdown", module)
   .add("Normal", () => <Dropdown options={options} />)
   .add("Error", () => (
-    <Dropdown error="Show this error message" options={options} />
+    <Dropdown
+      error="Show this error message"
+      options={options}
+      onBlur={e => console.log(e)}
+    />
   ))
   .add("Full width", () => <Dropdown options={options} full />)
   .add("With label", () => <Dropdown label="My dropdown" options={options} />);
