@@ -8,6 +8,5 @@ storiesOf("Search Text Input", module)
   .add("Without results", () => <SearchTextInput />)
   .add("With results", () => <SearchTextInput results={results} />)
   .add("Full width - no results", () => <SearchTextInput full />)
-  .add("Full width - results", () => (
-    <SearchTextInput results={results} full />
-  ));
+  .add("Full width - results", () => <SearchTextInput results={results} full />)
+  .add("With error", () => <SearchTextInput required />);

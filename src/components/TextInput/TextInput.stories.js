@@ -5,12 +5,17 @@ import TextInput from "./TextInput";
 storiesOf("Text Input", module)
   .add("Normal", () => <TextInput placeholder="Placeholder value" />)
   .add("Required", () => <TextInput required error="There was an error" />)
+  .add("Required - no error message", () => <TextInput required />)
   .add("With Label", () => (
     <TextInput placeholder="Placeholder value" labelText="Label" />
   ))
   .add("With info", () => <TextInput info="This is an info to help user." />)
   .add("With info and error", () => (
-    <TextInput info="This is an info to help user." error="Field is required" />
+    <TextInput
+      info="This is an info to help user."
+      error="Field is required"
+      required
+    />
   ))
   .add("With mask - Number", () => (
     <TextInput

@@ -36,6 +36,7 @@ const TextInput = ({
   guide,
   full,
   error,
+  required,
   info,
   className,
   onChange,
@@ -43,19 +44,19 @@ const TextInput = ({
 }) => {
   return (
     <InputWrapper full={full}>
-      {labelText && <Label required={error} text={labelText} />}
+      {labelText && <Label required={required} text={labelText} />}
       <Input
         type="text"
         className={className}
         placeholder={placeholder}
         {...props}
-        required={error}
+        required={required}
         mask={mask.length ? mask : false}
         guide={guide}
         full={full}
         onChange={e => onChange(e.target.value)}
       />
-      {error && <Caption error={error} />}
+      {error && <Caption required={required} text={error} />}
       {info && <Caption style={{ marginTop: "8px" }} text={info} />}
     </InputWrapper>
   );

@@ -14,12 +14,21 @@ const SearchTextInput = ({
   handleInputChange,
   results,
   handleResultSelected,
+  error,
+  required,
   full,
   ...props
 }) => {
   return (
     <Wrapper full={full}>
-      <TextInput placeholder={placeholder} full={full} />
+      <TextInput
+        placeholder={placeholder}
+        full={full}
+        onChange={handleInputChange}
+        error={error}
+        required={required}
+        {...props}
+      />
       {results && (
         <ResultsList
           results={results}

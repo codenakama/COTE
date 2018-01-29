@@ -29,4 +29,4 @@ storiesOf("Typography/Label", module)
 
 storiesOf("Typography/Caption", module)
   .add("Normal", () => <Caption text="Caption" />)
-  .add("Error", () => <Caption text="Caption" error />);
+  .add("Error", () => <Caption text="Caption" required />);
