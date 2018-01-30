@@ -17,53 +17,6 @@ storiesOf("Text Input", module)
       required
     />
   ))
-  .add("With mask - Number", () => (
-    <TextInput
-      placeholder="e.g. 07858585858855"
-      mask={[
-        /[0-9]/,
-        /[0-9]/,
-        /[0-9]/,
-        /[0-9]/,
-        " ",
-        /[0-9]/,
-        /[0-9]/,
-        /[0-9]/,
-        " ",
-        /[0-9]/,
-        /[0-9]/,
-        /[0-9]/,
-        /[0-9]/
-      ]}
-    />
-  ))
-  .add("With mask and guide - Number", () => (
-    <TextInput
-      placeholder="e.g. 07858585858855"
-      guide={true}
-      mask={[
-        /[0-9]/,
-        /[0-9]/,
-        /[0-9]/,
-        /[0-9]/,
-        " ",
-        /[0-9]/,
-        /[0-9]/,
-        /[0-9]/,
-        " ",
-        /[0-9]/,
-        /[0-9]/,
-        /[0-9]/,
-        /[0-9]/
-      ]}
-    />
-  ))
-  .add("With mask - Text", () => (
-    <TextInput
-      placeholder="e.g. Text up to 8 characters"
-      mask={[/^[a-zA-Z ]+$/]}
-    />
-  ))
   .add("Full-width", () => (
     <TextInput placeholder="e.g. Text up to 8 characters" full />
   ));

@@ -22,7 +22,6 @@ const Wrapper = styled.div`
   position: relative;
   min-width: 66px;
   width: ${props => (props.full ? "100%" : "232px")};
-  height: 40px;
   border: ${props => {
     if (props.error && props.theme)
       return `1px solid ${props.theme.colorDanger}`;

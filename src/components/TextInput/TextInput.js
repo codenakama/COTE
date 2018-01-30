@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import MaskedInput from "react-text-mask";
 import { Caption, Label } from "../atoms/Typography";
 import { colors as defaultColors } from "../../styles/defaults";
 
-const Input = styled(MaskedInput)`
+const Input = styled.input`
   &::placeholder {
     color: lightgrey;
   }
@@ -51,9 +50,8 @@ const TextInput = ({
         placeholder={placeholder}
         {...props}
         required={required}
-        mask={mask.length ? mask : false}
-        guide={guide}
         full={full}
+        onChange={onChange}
       />
       {error && <Caption required={required} text={error} />}
       {info && <Caption style={{ marginTop: "8px" }} text={info} />}
@@ -67,12 +65,10 @@ TextInput.propTypes = {
   error: PropTypes.string,
   /** Information related to this input field */
   info: PropTypes.string,
-  /** Regex pattern mask to be applied to the input. E.g. Phone format, address, post code, sort code */
-  mask: PropTypes.array,
+
   /** If text input should stretch to fill its parent container */
   full: PropTypes.bool,
-  /** Show guides for user to know how many characters left */
-  guide: PropTypes.bool,
+
   /** Label for input */
   labelText: PropTypes.string
 };
@@ -81,11 +77,8 @@ TextInput.defaultProps = {
   placeholder: "Type something",
   error: "",
   info: "",
-  mask: [],
   full: false,
-  guide: false,
-  labelText: "",
-  full: false
+  labelText: ""
 };
 
 TextInput.displayName = "TextInput";
