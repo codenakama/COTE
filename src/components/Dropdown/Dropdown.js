@@ -41,6 +41,7 @@ const OptionsWrapper = styled(Paper)`
   left: 0;
   padding: 0;
   min-height auto;
+  z-index: 10;
 `;
 
 const OptionWrapper = styled.div`
@@ -70,7 +71,10 @@ class Dropdown extends Component {
   }
 
   handleOptionChange = option => {
-    this.setState({ selectedOption: option });
+    this.setState(
+      { selectedOption: option },
+      this.props.handleValueChange(option.value)
+    );
   };
 
   handleClick = () => {
@@ -94,6 +98,7 @@ class Dropdown extends Component {
           onClick={this.handleClick}
           error={error}
           full={full}
+          suppressContentEditableWarning={true}
           contentEditable
           {...this.props}
         >
@@ -111,7 +116,7 @@ class Dropdown extends Component {
             </div>
           ) : null}
         </Wrapper>
-        {error && <Caption error text={error} />}
+        {error && <Caption required text={error} />}
       </OutsideAlerter>
     );
   }
