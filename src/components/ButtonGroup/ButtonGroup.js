@@ -36,8 +36,11 @@ const ButtonGroupWrapper = styled.div`
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  & button:nth-child(2n) {
+  & button:nth-child(2) {
     border-right: none;
+    border-left: none;
+  }
+  & button:nth-child(4) {
     border-left: none;
   }
   & button:first-child {
@@ -69,6 +72,10 @@ const ButtonGroupWrapper = styled.div`
       border-top-right-radius: 4px;
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
+      border-right: ${props =>
+        props.solid || props.disabled
+          ? "none"
+          : `1px solid ${defaultColors.black}`};
     }
 
     & button:nth-child(3) {
