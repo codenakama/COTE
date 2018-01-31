@@ -6490,6 +6490,10 @@ tar@^2.2.1:
     fstream "^1.0.2"
     inherits "2"
 
+text-mask-addons@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/text-mask-addons/-/text-mask-addons-3.7.1.tgz#8304f5c952533ab76533053e4f90cb4fdaa3995b"
+
 through2@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"

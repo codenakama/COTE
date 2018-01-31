@@ -32,7 +32,7 @@ const Result = styled.span`
 
 const ResultsList = ({ results, handleResultSelected, ...props }) => {
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       {results.map((result, i) => {
         return (
           <ResultWrapper key={`r-${i}`}>
