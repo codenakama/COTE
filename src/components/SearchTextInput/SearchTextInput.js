@@ -46,7 +46,8 @@ SearchTextInput.propTypes = {
   /** Array of possible results */
   results: PropTypes.array,
   /** Callback to retrieve the selected result */
-  handleResultSelected: PropTypes.func
+  handleResultSelected: PropTypes.func,
+  full : PropTypes.bool
 };
 
 SearchTextInput.defaultProps = {
