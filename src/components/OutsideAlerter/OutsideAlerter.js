@@ -4,6 +4,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
 class OutsideAlerter extends Component {
   constructor(props) {
@@ -38,7 +39,11 @@ class OutsideAlerter extends Component {
   }
 
   render() {
-    return <div ref={this.setWrapperRef}>{this.props.children}</div>;
+    return (
+      <div style={{ width: "100%" }} ref={this.setWrapperRef}>
+        {this.props.children}
+      </div>
+    );
   }
 }
 

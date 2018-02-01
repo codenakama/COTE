@@ -13,7 +13,8 @@ const ArrowIcon = styled(Icon)`
   position: absolute;
   z-index: 2;
   right: 8px;
-  top: 25%;
+  top: 50%;
+  transform: translateY(-50%);
   color: ${defaultColors.black};
   cursor: pointer;
 `;
@@ -31,11 +32,12 @@ const Wrapper = styled.div`
   }};
   border-radius: 4px;
   padding: 9px 16px;
+  cursor: pointer;
 `;
 
 const OptionsWrapper = styled(Paper)`
   position: absolute;
-  top: 48px;
+  top: 40px;
   width: 100%;
   left: 0;
   padding: 0;

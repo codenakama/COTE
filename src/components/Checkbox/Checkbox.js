@@ -1,67 +1,67 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import styledComponents from "styled-components";
+import styled from "styled-components";
 import { Label } from "../atoms/Typography";
 import { colors as defaultColors } from "../../styles/defaults";
 
-const Wrapper = styledComponents.div`
-    display: block;
-    position:relative;
-    height: 24px;
-    & input[type="checkbox"]{
-        display: none;
-    }
+const Wrapper = styled.div`
+  display: block;
+  position: relative;
+  height: 24px;
+  & input[type="checkbox"] {
+    display: none;
+  }
 
-    & input[type="checkbox"]:checked + span > i{
-        opacity: 1;
-    }
+  & input[type="checkbox"]:checked + span > i {
+    opacity: 1;
+  }
 `;
 
-const Box = styledComponents.span`
-    color: ${props => {
-      if (props.primary) return "#fff";
-      return `1px solid ${defaultColors.black}`;
-    }};
-    position: relative;
-    display: inline-block;
-    border: ${props => {
-      if (props.primary) return null;
-      return `1px solid ${defaultColors.darkGrey}`;
-    }};
-    border-radius: .25em;
-    width: 24px;
-    height: 24px;
-    float: left;
-    margin-right: .5em;
-    background-color: ${props => {
-      if (props.theme && props.primary) return props.theme.colorPrimary;
-      if (props.primary) return defaultColors.primary;
-      return "#fff";
-    }};
-  `;
-
-const CheckMark = styledComponents.i`
-    opacity: 0;
-    transition: all .3s ease-in;
-    position: absolute;
-    font-size: 22px;
-    line-height: 0;
-    top: 50%;
-    left: 0;
+const Box = styled.span`
+  color: ${props => {
+    if (props.primary) return "#fff";
+    return `1px solid ${defaultColors.black}`;
+  }};
+  position: relative;
+  display: inline-block;
+  border: ${props => {
+    if (props.primary) return null;
+    return `1px solid ${defaultColors.darkGrey}`;
+  }};
+  border-radius: 0.25em;
+  width: 24px;
+  height: 24px;
+  float: left;
+  margin-right: 0.5em;
+  background-color: ${props => {
+    if (props.theme && props.primary) return props.theme.colorPrimary;
+    if (props.primary) return defaultColors.primary;
+    return "#fff";
+  }};
 `;
 
-const HiddenInput = styledComponents.input`
-    position: absolute;
-    left: 0;
-    width: 24px;
-    height: 24px;
+const CheckMark = styled.i`
+  opacity: 0;
+  transition: all 0.3s ease-in;
+  position: absolute;
+  font-size: 22px;
+  line-height: 0;
+  top: 50%;
+  left: 0;
 `;
 
-const WrappingLabel = styledComponents.label`
-    min-height: 24px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+const HiddenInput = styled.input`
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 24px;
+`;
+
+const WrappingLabel = styled.label`
+  min-height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 `;
 
 class Checkbox extends Component {
@@ -81,7 +81,7 @@ class Checkbox extends Component {
     const { label, name, handleClicked, primary } = this.props;
     const { checked } = this.state;
     return (
-      <Wrapper>
+      <Wrapper {...this.props}>
         <WrappingLabel>
           <HiddenInput
             name={name}

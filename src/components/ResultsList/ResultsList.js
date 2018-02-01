@@ -12,12 +12,14 @@ const Wrapper = styled(Paper)`
   padding: 0;
   min-height auto;
   z-index: 10;
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14);
 `;
 
 const ResultWrapper = styled.div`
   cursor: pointer;
   &:hover {
-    background-color: ${defaultColors.primary};
+    /*60 added at the end is alpha channel of color - 60 percent translucent*/
+    background-color: ${defaultColors.primary}60;
   }
 `;
 

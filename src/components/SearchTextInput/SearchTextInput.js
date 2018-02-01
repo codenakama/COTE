@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "../TextInput/TextInput";
-import styledComponents from "styled-components";
+import styled from "styled-components";
 import ResultsList from "../ResultsList/ResultsList";
 
-const Wrapper = styledComponents.div`
+const Wrapper = styled.div`
   position: relative;
   width: ${props => (props.full ? null : "fit-content")};
 `;
@@ -47,7 +47,7 @@ SearchTextInput.propTypes = {
   results: PropTypes.array,
   /** Callback to retrieve the selected result */
   handleResultSelected: PropTypes.func,
-  full : PropTypes.bool
+  full: PropTypes.bool
 };
 
 SearchTextInput.defaultProps = {
