@@ -11,7 +11,7 @@ import ResultsList from "../ResultsList/ResultsList";
 
 const ArrowIcon = styled(Icon)`
   position: absolute;
-  z-index: 0;
+  z-index: 2;
   right: 8px;
   top: 25%;
   color: ${defaultColors.black};

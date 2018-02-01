@@ -11,6 +11,7 @@ const Wrapper = styled(Paper)`
   left: 0;
   padding: 0;
   min-height auto;
+  z-index: 10;
 `;
 
 const ResultWrapper = styled.div`
