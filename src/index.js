@@ -1,4 +1,3 @@
-// import lato from "./styles/lato.css";
 export { default as initGlobalStyles } from "./styles/injectGlobalStyles";
 export {
   Heading1,

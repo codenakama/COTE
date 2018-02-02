@@ -46,7 +46,7 @@ const Navigation = ({ logo, items, props }) => {
   return (
     <Nav>
       <NavLeft>
-        <Logo src={logo} />
+        <Logo src={logo} alt="logo" />
       </NavLeft>
       <NavRight>
         {items.map((item, i) => {

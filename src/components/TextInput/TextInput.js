@@ -44,7 +44,9 @@ const TextInput = ({
 }) => {
   return (
     <InputWrapper full={full}>
-      {labelText && <Label required={required} text={labelText} />}
+      {labelText && (
+        <Label required={required} text={labelText} htmlFor={name} />
+      )}
       <Input
         className={className}
         placeholder={placeholder}
