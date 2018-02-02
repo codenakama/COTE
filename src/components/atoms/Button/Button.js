@@ -59,6 +59,14 @@ export const StyledButton = styled.button`
       if (props.disabled) return;
       if (!props.solid) return "1";
     }};
+
+    @media and screen(max-width: 448px ) {
+      width: ${props => {
+        if (props.small) return "16px";
+        if (props.large) return "224px";
+        if (props.full) return "100%";
+      }};
+    }
   }
 
   border: ${props =>
