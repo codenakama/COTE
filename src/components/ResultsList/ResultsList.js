@@ -33,7 +33,7 @@ const Result = styled.span`
   }
 `;
 
-const ResultsList = ({ results, handleResultSelected, ...props }) => {
+const ResultsList = ({ results, handleResultSelected, lastItem, ...props }) => {
   return (
     <Wrapper {...props}>
       {results.map((result, i) => {
@@ -45,15 +45,31 @@ const ResultsList = ({ results, handleResultSelected, ...props }) => {
           </ResultWrapper>
         );
       })}
+      {lastItem && (
+        <ResultWrapper key={`r-${lastItem.value}`}>
+          <Result onClick={() => handleResultSelected(lastItem)}>
+            {lastItem.title}
+          </Result>
+        </ResultWrapper>
+      )}
     </Wrapper>
   );
 };
 
-ResultsList.propTypes = {};
+ResultsList.propTypes = {
+  results: PropTypes.arrayOf(
+    PropTypes.shape({ title: PropTypes.string, value: PropTypes.any })
+  ),
+  /** Function that is called when a result/option is clicked - the clicked result is passed as a param */
+  handleResultSelected: PropTypes.func,
+  /** An item added at the end of the results list - can be used tor "can't find my option" scenarios */
+  lastItem: PropTypes.shape({ title: PropTypes.string, value: PropTypes.any })
+};
 
 ResultsList.defaultProps = {
   results: [],
-  handleResultSelected: val => console.log(`Result ${val} clicked`)
+  handleResultSelected: result => console.log(`Result ${result.title} clicked`),
+  lastItem: null
 };
 
 export default ResultsList;

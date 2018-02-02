@@ -88,7 +88,7 @@ class Dropdown extends Component {
 
   render() {
     const { isOpen, selectedOption } = this.state;
-    const { options, title, error, full, label } = this.props;
+    const { options, title, error, full, label, lastOption } = this.props;
     return (
       <OutsideAlerter
         handleClickOutsideElement={this.handleClickOutsideDropdown}
@@ -103,7 +103,11 @@ class Dropdown extends Component {
           contentEditable
           {...this.props}
         >
-          {selectedOption ? selectedOption.title : title}
+          {selectedOption ? (
+            <span>{selectedOption.title}</span>
+          ) : (
+            <span>{title}</span>
+          )}
           {!isOpen && (
             <ArrowIcon name="keyboard_arrow_down" onClick={this.handleClick} />
           )}
@@ -112,6 +116,7 @@ class Dropdown extends Component {
               <ResultsList
                 handleResultSelected={this.handleOptionChange}
                 results={options}
+                lastItem={lastOption}
               />
               <ArrowIcon name="keyboard_arrow_up" onClick={this.handleClick} />
             </div>
@@ -133,7 +138,9 @@ Dropdown.propTypes = {
   /** If true dropdown takes full width of parent */
   full: PropTypes.bool,
   /** Text label */
-  label: PropTypes.string
+  label: PropTypes.string,
+  /** An item added at the end of the results list - can be used tor "can't find my option" scenarios */
+  lastOption: PropTypes.shape({ title: PropTypes.string, value: PropTypes.any })
 };
 
 Dropdown.defaultProps = {
@@ -141,7 +148,8 @@ Dropdown.defaultProps = {
   options: [{ title: "Option 1", value: 1 }, { title: "Option 2", value: 2 }],
   handleValueChange: value => console.log(value),
   full: false,
-  label: ""
+  label: "",
+  lastOption: null
 };
 
 export default Dropdown;

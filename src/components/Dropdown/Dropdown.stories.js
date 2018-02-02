@@ -17,4 +17,11 @@ storiesOf("Dropdown", module)
     />
   ))
   .add("Full width", () => <Dropdown options={options} full />)
-  .add("With label", () => <Dropdown label="My dropdown" options={options} />);
+  .add("With label", () => <Dropdown label="My dropdown" options={options} />)
+  .add("With can't find my option", () => (
+    <Dropdown
+      label="My dropdown"
+      options={options}
+      lastOption={{ title: "Can't find my option", value: 0 }}
+    />
+  ));
