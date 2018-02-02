@@ -1,6 +1,6 @@
 {
   "name": "cot-experience",
-  "version": "0.4.7-1",
+  "version": "0.4.7-2",
   "description": "Capital On Tap Experience is an end to end design language to create application's at Capital On Tap.",
   "main": "index.js",
   "repository": "https://github.com/CapitalOnTap/COTE",
@@ -36,6 +36,7 @@
     "raw-loader": "^0.5.1",
     "rimraf": "^2.6.2",
     "text-mask-addons": "^3.7.1",
+    "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
   },
