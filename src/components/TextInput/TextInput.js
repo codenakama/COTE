@@ -70,7 +70,7 @@ TextInput.propTypes = {
   /** Information related to this input field */
   info: PropTypes.string,
   /** Regex pattern mask array to be applied to the input. E.g. Phone format, address, post code, sort code.*/
-  mask: PropTypes.array,
+  mask: PropTypes.any,
   /** If text input should stretch to fill its parent container */
   full: PropTypes.bool,
   /** Show guides for user to know how many characters left */

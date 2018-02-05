@@ -48,7 +48,7 @@ class OutsideAlerter extends Component {
 }
 
 OutsideAlerter.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
   handleClickOutsideElement: PropTypes.func
 };
 

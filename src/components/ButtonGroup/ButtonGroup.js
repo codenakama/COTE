@@ -152,7 +152,7 @@ ButtonGroup.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
-      value: PropTypes.oneOf([PropTypes.string, PropTypes.number])
+      value: PropTypes.any
     })
   ),
   handleOptionSelected: PropTypes.func,
