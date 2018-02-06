@@ -54,7 +54,8 @@ SearchTextInput.defaultProps = {
   placeholder: "Type something to search",
   handleInputChange: () => console.log("input changed"),
   results: [],
-  handleResultSelected: val => console.log(`Result ${val} selected`)
+  handleResultSelected: val => console.log(`Result ${val} selected`),
+  full: false
 };
 
 export default SearchTextInput;

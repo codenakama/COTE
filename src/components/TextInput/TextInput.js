@@ -39,6 +39,7 @@ const TextInput = ({
   required,
   info,
   className,
+  name,
   onChange,
   ...props
 }) => {
