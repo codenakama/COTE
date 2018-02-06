@@ -29,7 +29,7 @@ const SearchTextInput = ({
         required={required}
         {...props}
       />
-      {results && (
+      {results.length > 0 && (
         <ResultsList
           results={results}
           handleResultSelected={handleResultSelected}

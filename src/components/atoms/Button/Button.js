@@ -41,6 +41,11 @@ export const StyledButton = styled.button`
   cursor: pointer;
   transition: opacity 0.25s ease-in;
   font-weight: bold;
+
+  :disabled {
+    cursor: not-allowed;
+  }
+
   &:hover {
     background-color: ${props => {
       if (props.disabled) return colors.darkGrey;
