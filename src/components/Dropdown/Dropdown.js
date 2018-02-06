@@ -38,8 +38,8 @@ const Wrapper = styled.div`
 const OptionsWrapper = styled(Paper)`
   position: absolute;
   top: 40px;
-  width: 100%;
-  left: 0;
+  width: 102%;
+  left: -2px;
   padding: 0;
   min-height auto;
   z-index: 10;
@@ -99,8 +99,6 @@ class Dropdown extends Component {
           onClick={this.handleClick}
           error={error}
           full={full}
-          suppressContentEditableWarning={true}
-          contentEditable
           {...this.props}
         >
           {selectedOption ? (

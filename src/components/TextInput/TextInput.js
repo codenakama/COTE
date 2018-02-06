@@ -51,6 +51,7 @@ const TextInput = ({
       <Input
         className={className}
         placeholder={placeholder}
+        name={name}
         {...props}
         required={required}
         mask={mask ? mask : false}
@@ -77,7 +78,9 @@ TextInput.propTypes = {
   /** Show guides for user to know how many characters left */
   guide: PropTypes.bool,
   /** Label for input */
-  labelText: PropTypes.string
+  labelText: PropTypes.string,
+  /** Input name */
+  name: PropTypes.string
 };
 
 TextInput.defaultProps = {
@@ -88,7 +91,8 @@ TextInput.defaultProps = {
   guide: false,
   labelText: "",
   full: false,
-  mask: false
+  mask: false,
+  name: ""
 };
 
 TextInput.displayName = "TextInput";

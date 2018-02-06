@@ -7,6 +7,8 @@ import { colors as defaultColors } from "../../styles/defaults";
 const Wrapper = styled(Paper)`
   position: absolute;
   top: 48px;
+  height: 17em;
+  overflow: auto;
   width: 100%;
   left: 0;
   padding: 0;
