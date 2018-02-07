@@ -7,7 +7,7 @@ import { colors as defaultColors } from "../../styles/defaults";
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  padding: 1em 0;
+  padding: 1em;
   height: 64px;
   background-color: ${props =>
     props.theme ? props.theme.colorPrimary : defaultColors.primary};
@@ -17,7 +17,6 @@ const Wrapper = styled.div`
 const Item = styled.div`
   display: flex;
   width: ${props => props.width}%;
-  justify-content: center;
   align-items: center;
   @media screen and (max-width: 32em) {
     flex-direction: column;

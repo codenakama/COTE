@@ -16,6 +16,7 @@ const WidgetTopWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 1em;
+  text-align: center;
 `;
 
 const StyledIcon = styled(Icon)`
