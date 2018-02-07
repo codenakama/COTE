@@ -73,14 +73,14 @@ class HighlightsBarSlider extends Component {
   };
 
   render() {
-    const { options } = this.props;
+    const { items } = this.props;
 
     return (
       <Wrapper>
-        <StyledTitle primary>{options[this.state.currentOption]}</StyledTitle>
+        <StyledTitle primary>{items[this.state.currentOption]}</StyledTitle>
 
         <RelativeContainer>
-          {options.map((op, i) => {
+          {items.map((op, i) => {
             return <Circle selected={i === this.state.currentOption} />;
           })}
 
@@ -91,7 +91,7 @@ class HighlightsBarSlider extends Component {
             />
           )}
 
-          {this.state.currentOption + 1 < options.length && (
+          {this.state.currentOption + 1 < items.length && (
             <ArrowRight name="keyboard_arrow_right" onClick={this.handleNext} />
           )}
         </RelativeContainer>
@@ -100,10 +100,12 @@ class HighlightsBarSlider extends Component {
   }
 }
 
-HighlightsBarSlider.propTypes = {};
+HighlightsBarSlider.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.string)
+};
 
 HighlightsBarSlider.defaultProps = {
-  options: ["Some title 1", "Some title 2", "Some title 3"]
+  items: ["Some title 1", "Some title 2", "Some title 3"]
 };
 
 export default HighlightsBarSlider;
