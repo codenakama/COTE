@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 
 const MessageCard = props => {
   const { title, subtitle, isLoading, icon } = props;
-  console.log(subtitle);
+
   return (
     <Paper>
       <Wrapper>

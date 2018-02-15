@@ -4,6 +4,28 @@ import styled from "styled-components";
 import MaskedInput from "react-text-mask";
 import { Caption, Label } from "../atoms/Typography";
 import { colors as defaultColors } from "../../styles/defaults";
+import Tooltip from "../Tooltip/Tooltip";
+import Icon from "../atoms/Icon/Icon";
+
+export const StyledInput = styled.input`
+  &::placeholder {
+    color: lightgrey;
+  }
+  margin-bottom: ${props => (props.required ? "8px" : null)};
+  color: ${defaultColors.colorDarkBlue};
+  border: ${props => {
+    if (props.required && props.theme.colorDanger)
+      return `1px solid ${props.theme.colorDanger}`;
+
+    if (props.required) return "solid 1px red";
+
+    return `solid 1px ${defaultColors.black}`;
+  }};
+
+  border-radius: 4px;
+  padding: 9px 16px;
+  width: ${props => (props.full ? "100%" : null)};
+`;
 
 const Input = styled(MaskedInput)`
   &::placeholder {
@@ -29,6 +51,26 @@ const InputWrapper = styled.div`
   width: ${props => (props.full ? "100%" : null)};
 `;
 
+const StyledToolTip = styled(Tooltip)`
+  width: auto;
+  z-index: 10;
+  position: absolute;
+  display: none;
+  right: -14px;
+  bottom: 3em;
+`;
+
+const ToolTipWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+  :hover {
+    cursor: pointer;
+    > ${StyledToolTip} {
+      display: block;
+    }
+  }
+`;
+
 const TextInput = ({
   labelText,
   placeholder,
@@ -41,13 +83,28 @@ const TextInput = ({
   className,
   name,
   onChange,
+  tooltip,
   ...props
 }) => {
   return (
     <InputWrapper full={full}>
-      {labelText && (
-        <Label required={required} text={labelText} htmlFor={name} />
-      )}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between"
+        }}
+      >
+        {labelText && (
+          <Label required={required} text={labelText} htmlFor={name} />
+        )}
+        {tooltip && (
+          <ToolTipWrapper>
+            <StyledToolTip title={tooltip.title} description={tooltip.description} />
+            <Icon name="info" />
+          </ToolTipWrapper>
+        )}
+      </div>
       <Input
         className={className}
         placeholder={placeholder}
@@ -59,6 +116,7 @@ const TextInput = ({
         full={full}
         onChange={onChange}
       />
+
       {error && <Caption required={required} text={error} />}
       {info && <Caption style={{ marginTop: "8px" }} text={info} />}
     </InputWrapper>
@@ -80,7 +138,11 @@ TextInput.propTypes = {
   /** Label for input */
   labelText: PropTypes.string,
   /** Input name */
-  name: PropTypes.string
+  name: PropTypes.string,
+  tooltip: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+  })
 };
 
 TextInput.defaultProps = {
@@ -92,7 +154,11 @@ TextInput.defaultProps = {
   labelText: "",
   full: false,
   mask: false,
-  name: ""
+  name: "",
+  tooltip: {
+    title: "Input tooltip",
+    description: "A short description of this input field",
+  }
 };
 
 TextInput.displayName = "TextInput";

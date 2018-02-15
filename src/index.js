@@ -29,3 +29,6 @@ export { default as Uploader } from "./components/Uploader/Uploader";
 export { default as Widget } from "./components/Widget/Widget";
 export { default as Navigation } from "./components/Navigation/Navigation";
 export { default as ContentBox } from "./components/ContentBox/ContentBox";
+export {
+  default as HighlightsBarSlider
+} from "./components/HighlightsBarSlider/HighlightsBarSlider";

@@ -1,12 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { colors } from "../../../styles/defaults";
+import Icon from "../Icon/Icon";
 
 const boxShadow = `box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 transition: all 0.3s cubic-bezier(.25,.8,.25,1);`;
 
 export const StyledButton = styled.button`
+  transition: all 1s ease-in;
   font-family: inherit;
   text-decoration: none;
   background-color: ${props => {
@@ -78,22 +80,49 @@ export const StyledButton = styled.button`
     props.solid || props.disabled ? "none" : `1px solid ${colors.black}`};
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: inline-block;
+  position: relative;
   text-align: center;
   ${props => (props.shadow ? boxShadow : null)};
 `;
 
 export const StyledLinkButton = StyledButton.withComponent("a");
 
-const Icon = styled.i`
-  margin-left: 12px;
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 `;
 
+const LoadingIcon = styled(Icon)`
+  color: inherit;
+  margin-right: ${props => (props.withText ? "8px" : null)};
+  animation: ${rotate360} 2s linear infinite;
+`;
+
+const LoadingWrapper = styled.span`
+  display: flex;
+  align-items: center;
+`;
 class Button extends Component {
   render() {
-    const { onClick, children, icon, className, disabled, href } = this.props;
+    const {
+      onClick,
+      children,
+      icon,
+      className,
+      disabled,
+      href,
+      loading,
+      loadingText
+    } = this.props;
     if (href) {
       return (
         <StyledLinkButton {...this.props} disabled={disabled} href={href}>
+          {loading && <LoadingIcon name={"refresh"} />}
           {children}
           {icon && <Icon className={`fa fa-${icon} ${className}`} />}
         </StyledLinkButton>
@@ -101,9 +130,15 @@ class Button extends Component {
     }
 
     return (
-      <StyledButton {...this.props} disabled={disabled}>
-        {children}
-        {icon && <Icon className={`fa fa-${icon} ${className}`} />}
+      <StyledButton {...this.props} disabled={disabled || loading}>
+        {loading && (
+          <LoadingWrapper>
+            <LoadingIcon name="refresh" withText={!!loadingText} />{" "}
+            {loadingText}
+          </LoadingWrapper>
+        )}
+        {!loading && children}
+        {icon && <Icon name={icon} />}
       </StyledButton>
     );
   }
@@ -117,7 +152,11 @@ Button.propTypes = {
   full: PropTypes.bool,
   large: PropTypes.bool,
   small: PropTypes.bool,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  /** Shows a loding animated icon */
+  loading: PropTypes.bool,
+  /** Text visible when loading animation is set */
+  loadingText: PropTypes.string
 };
 
 Button.defaultProps = {};

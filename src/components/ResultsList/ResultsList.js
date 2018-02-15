@@ -20,8 +20,7 @@ const Wrapper = styled(Paper)`
 const ResultWrapper = styled.div`
   cursor: pointer;
   &:hover {
-    /*60 added at the end is alpha channel of color - 60 percent translucent*/
-    background-color: ${defaultColors.primary}60;
+    background-color: rgba(39, 177, 97, 0.6);
   }
 `;
 

@@ -12,7 +12,7 @@ const StyledLabel = styled.label`
     return colors.black;
   }};
 
-  font-size: 1rem;
+  font-size: 1em;
   display: block;
   margin-bottom: 8px;
 `;

@@ -15,4 +15,11 @@ storiesOf("Button", module)
     <Button solid full>
       Click me
     </Button>
+  ))
+  .add("Loading", () => (
+    <div>
+      <Button solid loading>
+        Click me
+      </Button>
+    </div>
   ));

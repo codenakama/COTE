@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import styled, { keyframes } from "styled-components";
 import Icon from "../atoms/Icon/Icon";
 import { Title } from "../atoms/Typography";
 
 const Wrapper = styled.div`
   text-align: center;
+  width: 100%;
 `;
 
 const RelativeContainer = styled.div`
@@ -43,6 +43,7 @@ const StyledTitle = styled(Title)`
   margin-bottom: 8px;
   color: ${props =>
     props.theme && props.primary ? props.theme.colorPrimary : "#27b161"};
+  transition: opacity 1s ease-in;
 `;
 
 const Circle = styled.div`
@@ -76,7 +77,7 @@ class HighlightsBarSlider extends Component {
     const { items } = this.props;
 
     return (
-      <Wrapper>
+      <Wrapper {...this.props}>
         <StyledTitle primary>{items[this.state.currentOption]}</StyledTitle>
 
         <RelativeContainer>

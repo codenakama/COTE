@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import TextInput from "../TextInput/TextInput";
+import { StyledInput } from "../TextInput/TextInput";
 import styled from "styled-components";
 import ResultsList from "../ResultsList/ResultsList";
 
@@ -21,7 +21,7 @@ const SearchTextInput = ({
 }) => {
   return (
     <Wrapper full={full}>
-      <TextInput
+      <StyledInput
         placeholder={placeholder}
         full={full}
         onChange={handleInputChange}
