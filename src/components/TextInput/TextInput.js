@@ -155,10 +155,7 @@ TextInput.defaultProps = {
   full: false,
   mask: false,
   name: "",
-  tooltip: {
-    title: "Input tooltip",
-    description: "A short description of this input field",
-  }
+  tooltip: null
 };
 
 TextInput.displayName = "TextInput";
