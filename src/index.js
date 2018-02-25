@@ -25,6 +25,7 @@ export {
   default as SearchTextInput
 } from "./components/SearchTextInput/SearchTextInput";
 export { default as TextInput } from "./components/TextInput/TextInput";
+export { default as StyledInput } from "./components/TextInput/TextInput";
 export { default as Uploader } from "./components/Uploader/Uploader";
 export { default as Widget } from "./components/Widget/Widget";
 export { default as Navigation } from "./components/Navigation/Navigation";

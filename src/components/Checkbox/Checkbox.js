@@ -78,7 +78,7 @@ class Checkbox extends Component {
   };
 
   render() {
-    const { label, name, handleClicked, primary } = this.props;
+    const { label, name, handleClicked, primary, onChange } = this.props;
     const { checked } = this.state;
     return (
       <Wrapper {...this.props}>
@@ -86,7 +86,10 @@ class Checkbox extends Component {
           <HiddenInput
             name={name}
             type="checkbox"
-            onChange={() => this.handleValueChange(checked)}
+            onChange={e => {
+              this.handleValueChange(checked);
+              onChange(e);
+            }}
             value={checked}
           />
           <Box primary={primary}>
