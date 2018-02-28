@@ -117,12 +117,13 @@ class ButtonGroup extends Component {
       onBlur,
       label,
       error,
-      primary
+      primary,
+      id
     } = this.props;
     const { selectedIndex } = this.state;
 
     return (
-      <Wrapper>
+      <Wrapper id={id}>
         {label && <Label required={error} text={label} />}
         <ButtonGroupWrapper>
           {options.map((option, i) => (

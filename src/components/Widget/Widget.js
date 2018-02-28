@@ -46,7 +46,7 @@ const ItemTitle = styled.span`
 
 const Widget = ({ items, title, icon, ...props }) => {
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <WidgetTopWrapper>
         <StyledIcon name={icon} primary />
         <Heading3 center>{title}</Heading3>

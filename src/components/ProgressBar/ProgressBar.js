@@ -40,7 +40,7 @@ const Progress = styled.div`
 const ProgressBar = props => {
   const { steps, progress, currentStep } = props;
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       {steps.map((step, index) => {
         let iconName =
           currentStep === index + 1 || index + 1 > currentStep

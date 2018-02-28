@@ -15,7 +15,7 @@ const MessageCard = props => {
   const { title, subtitle, isLoading, icon } = props;
 
   return (
-    <Paper>
+    <Paper {...this.props}>
       <Wrapper>
         <Heading2>{title}</Heading2>
       </Wrapper>

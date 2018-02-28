@@ -117,11 +117,17 @@ class Button extends Component {
       disabled,
       href,
       loading,
-      loadingText
+      loadingText,
+      id
     } = this.props;
     if (href) {
       return (
-        <StyledLinkButton {...this.props} disabled={disabled} href={href}>
+        <StyledLinkButton
+          {...this.props}
+          disabled={disabled}
+          href={href}
+          id={id}
+        >
           {loading && <LoadingIcon name={"refresh"} />}
           {children}
           {icon && <Icon className={`fa fa-${icon} ${className}`} />}
@@ -130,7 +136,7 @@ class Button extends Component {
     }
 
     return (
-      <StyledButton {...this.props} disabled={disabled || loading}>
+      <StyledButton {...this.props} disabled={disabled || loading} id={id}>
         {loading && (
           <LoadingWrapper>
             <LoadingIcon name="refresh" withText={!!loadingText} />{" "}

@@ -40,9 +40,9 @@ const Name = styled.span`
 
 class HighlightsBar extends Component {
   render() {
-    const { items } = this.props;
+    const { items, id } = this.props;
     return (
-      <Wrapper>
+      <Wrapper id={id}>
         {items.map((item, i) => (
           <Item width={100 / items.length} key={i}>
             <StyledIcon name={item.icon} size={2} reverse />

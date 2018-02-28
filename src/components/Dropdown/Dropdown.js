@@ -88,7 +88,7 @@ class Dropdown extends Component {
 
   render() {
     const { isOpen, selectedOption } = this.state;
-    const { options, title, error, full, label, lastOption } = this.props;
+    const { options, title, error, full, label, lastOption, id } = this.props;
     return (
       <OutsideAlerter
         handleClickOutsideElement={this.handleClickOutsideDropdown}
@@ -99,6 +99,7 @@ class Dropdown extends Component {
           onClick={this.handleClick}
           error={error}
           full={full}
+          id={id}
           {...this.props}
         >
           {selectedOption ? (

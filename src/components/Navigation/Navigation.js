@@ -42,9 +42,9 @@ const NavRight = styled.div`
   }
 `;
 
-const Navigation = ({ logo, items, props }) => {
+const Navigation = ({ logo, items, ...props }) => {
   return (
-    <Nav>
+    <Nav {...props}>
       <NavLeft>
         <Logo src={logo} alt="logo" />
       </NavLeft>

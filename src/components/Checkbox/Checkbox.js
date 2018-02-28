@@ -78,10 +78,10 @@ class Checkbox extends Component {
   };
 
   render() {
-    const { label, name, handleClicked, primary, onChange } = this.props;
+    const { label, name, handleClicked, primary, onChange, id } = this.props;
     const { checked } = this.state;
     return (
-      <Wrapper {...this.props}>
+      <Wrapper {...this.props} id={id}>
         <WrappingLabel>
           <HiddenInput
             name={name}
@@ -91,6 +91,7 @@ class Checkbox extends Component {
               onChange(e);
             }}
             value={checked}
+            {...this.props}
           />
           <Box primary={primary}>
             <CheckMark className="material-icons">check</CheckMark>
