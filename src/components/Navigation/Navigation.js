@@ -23,6 +23,7 @@ const Nav = styled.nav`
   height: 72px;
   padding: 0 3.43em;
   background-color: #fff;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14);
 
   @media screen and (max-width: 640px) {
     height: 56px;
