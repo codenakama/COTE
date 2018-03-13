@@ -10,6 +10,8 @@ const StyledIcon = styled.i`
 
     if (props.primary && props.theme) return props.theme.colorPrimary;
 
+    if (props.error && props.theme) return props.theme.colorDanger;
+
     return colors.darkGrey;
   }};
   padding: ${props => (props.circle ? "8px" : null)};
@@ -33,13 +35,14 @@ const StyledIcon = styled.i`
   }};
 `;
 
-const Icon = ({ name, primary, circle, solid, className, ...props }) => {
+const Icon = ({ name, primary, error, circle, solid, className, ...props }) => {
   return (
     <StyledIcon
       className={`material-icons ${className}`}
       primary={primary}
       circle={circle}
       solid={solid}
+      error={error}
       {...props}
     >
       {name}

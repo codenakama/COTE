@@ -204,4 +204,8 @@ body{
 h1,h2,h3,h4,h5,h6,p,span{
 	line-height: 1.618;
 }
+
+b {
+  font-weight: 700;
+}
 `;
