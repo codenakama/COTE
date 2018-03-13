@@ -1,0 +1,19 @@
+.toastAnimEnter, .toastAnimAppear {
+    opacity: 0.01;
+    transition: opacity .5s cubic-bezier(.03, .83, .76, .98);
+  }
+  
+  .toastAnimEnter.toastAnimEnterActive, .toastAnimAppear.toastAnimAppearActive {
+    opacity: 1;
+  }
+  
+  .toastAnimLeave {
+    opacity: 1;
+    transform: translateX(0px);
+    transition: opacity .5s cubic-bezier(.03, .83, .76, .98), transform .5s cubic-bezier(.03, .83, .76, .98);
+  }
+  
+  .toastAnimLeave.toastAnimLeaveActive {
+    opacity: 0;
+    transform: translateX(400px);
+  }

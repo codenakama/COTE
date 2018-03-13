@@ -33,3 +33,6 @@ export { default as ContentBox } from "./components/ContentBox/ContentBox";
 export {
   default as HighlightsBarSlider
 } from "./components/HighlightsBarSlider/HighlightsBarSlider";
+
+export { default as Toast } from "./components/Toast/Toast";
+export { default as ToastContainer } from "./components/Toast/ToastContainer";
