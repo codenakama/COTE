@@ -44,7 +44,7 @@ const Toast = ({
       <Header>
         <StyledIcon name={icon} error={error} primary={!error} />{" "}
         <StyledTitle error={error}>
-          <b>Hello</b>
+          <b>{title}</b>
         </StyledTitle>
       </Header>
       <Message>{message}</Message>
@@ -59,13 +59,17 @@ Toast.propTypes = {
   icon: PropTypes.string,
   buttonText: PropTypes.string,
   error: PropTypes.bool,
-  onButtonClick: PropTypes.func
+  onButtonClick: PropTypes.func,
+  title: PropTypes.string,
+  message: PropTypes.string
 };
 
 Toast.defaultProps = {
-  icon: "circle_check",
+  icon: "check_circle",
   buttonText: "Dismiss",
   error: false,
+  title: "Toast title",
+  message: "Toast message",
   onButtonClick: () => alert("Button clicked")
 };
 
