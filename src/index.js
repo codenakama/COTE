@@ -35,4 +35,3 @@ export {
 } from "./components/HighlightsBarSlider/HighlightsBarSlider";
 
 export { default as Toast } from "./components/Toast/Toast";
-export { default as ToastContainer } from "./components/Toast/ToastContainer";
