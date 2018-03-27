@@ -38,16 +38,17 @@ const Box = styled.span`
     if (props.primary) return defaultColors.primary;
     return "#fff";
   }};
+  transition: background-color 0.3s ease-in;
 `;
 
 const CheckMark = styled.i`
   opacity: 0;
-  transition: all 0.3s ease-in;
   position: absolute;
   font-size: 22px;
   line-height: 0;
   top: 50%;
   left: 0;
+  transition: background-color 0.3s ease-in;
 `;
 
 const HiddenInput = styled.input`
@@ -78,7 +79,7 @@ class Checkbox extends Component {
   };
 
   render() {
-    const { label, name, handleClicked, primary, onChange, id } = this.props;
+    const { label, name, handleClicked, primary, id } = this.props;
     const { checked } = this.state;
     return (
       <Wrapper {...this.props} id={id}>
@@ -88,7 +89,6 @@ class Checkbox extends Component {
             type="checkbox"
             onChange={e => {
               this.handleValueChange(checked);
-              onChange(e);
             }}
             value={checked}
             {...this.props}

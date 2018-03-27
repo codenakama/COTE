@@ -5,7 +5,11 @@ import Toast from "./Toast";
 storiesOf("Toast", module)
   .add("Normal", () => (
     <div style={{ backgroundColor: "#f3f3f3", height: "200px" }}>
-      <Toast icon="check_circle" message="A success message here." />
+      <Toast
+        icon="check_circle"
+        message="A success message here."
+        title="My title"
+      />
     </div>
   ))
   .add("With error", () => (
