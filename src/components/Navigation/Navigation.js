@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { StyledLinkButton } from "../atoms/Button/Button";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { StyledLinkButton } from '../atoms/Button/Button';
 
 const NavButton = StyledLinkButton.extend`
   @media screen and (max-width: 640px) {
@@ -52,7 +52,7 @@ const Navigation = ({ logo, items, ...props }) => {
       <NavRight>
         {items.map((item, i) => {
           return (
-            <NavButton key={`n-${i}`} href={item.url}>
+            <NavButton key={`n-${i}`} href={item.url} onClick={item.onClick}>
               {item.title}
             </NavButton>
           );
@@ -70,15 +70,15 @@ Navigation.propTypes = {
 };
 
 Navigation.defaultProps = {
-  logo: "http://via.placeholder.com/222x40",
+  logo: 'http://via.placeholder.com/222x40',
   items: [
     {
-      url: "http://google.com",
-      title: "Nav item 1"
+      url: 'http://google.com',
+      title: 'Nav item 1'
     },
     {
-      url: "http://google.com",
-      title: "Nav item 2"
+      url: 'http://google.com',
+      title: 'Nav item 2'
     }
   ]
 };
