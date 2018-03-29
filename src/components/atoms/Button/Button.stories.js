@@ -1,6 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import Button from "./Button";
+import TextInput from "../../TextInput/TextInput";
 
 storiesOf("Button", module)
   .add("Normal", () => <Button>Click me</Button>)
@@ -21,5 +22,23 @@ storiesOf("Button", module)
       <Button solid loading>
         Click me
       </Button>
+    </div>
+  ))
+  .add("Button and textinput side by side", () => (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center"
+      }}
+    >
+      <Button
+        solid
+        loading
+        loadingText="wait for it..."
+        style={{ marginRight: "1em" }}
+      >
+        Click me
+      </Button>
+      <TextInput />
     </div>
   ));
