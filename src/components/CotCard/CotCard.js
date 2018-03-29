@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const CotCard = ({ cardHolderName, id, ...props }) => {
   return (
-    <div id={id}>
+    <div id={id} {...props}>
       <svg
         viewBox="0 0 320 204"
         version="1.1"
