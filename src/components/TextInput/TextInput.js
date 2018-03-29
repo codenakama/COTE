@@ -25,6 +25,7 @@ export const StyledInput = styled.input`
   border-radius: 4px;
   padding: 9px 16px;
   width: ${props => (props.full ? "100%" : null)};
+  height: 38px;
 `;
 
 const Input = styled(MaskedInput)`
@@ -45,6 +46,7 @@ const Input = styled(MaskedInput)`
   border-radius: 4px;
   padding: 9px 16px;
   width: ${props => (props.full ? "100%" : null)};
+  height: 38px;
 `;
 
 const InputWrapper = styled.div`
@@ -100,7 +102,10 @@ const TextInput = ({
         )}
         {tooltip && (
           <ToolTipWrapper>
-            <StyledToolTip title={tooltip.title} description={tooltip.description} />
+            <StyledToolTip
+              title={tooltip.title}
+              description={tooltip.description}
+            />
             <Icon name="info" />
           </ToolTipWrapper>
         )}
@@ -141,7 +146,7 @@ TextInput.propTypes = {
   name: PropTypes.string,
   tooltip: PropTypes.shape({
     title: PropTypes.string,
-    description: PropTypes.string,
+    description: PropTypes.string
   })
 };
 

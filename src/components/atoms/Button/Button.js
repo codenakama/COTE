@@ -9,6 +9,7 @@ transition: all 0.3s cubic-bezier(.25,.8,.25,1);`;
 
 export const StyledButton = styled.button`
   transition: all 1s ease-in;
+  height: 38px;
   font-family: inherit;
   text-decoration: none;
   background-color: ${props => {
@@ -29,7 +30,7 @@ export const StyledButton = styled.button`
   }};
 
   font-size: 1em;
-  padding: 0.68em 2em;
+  padding: 9px 16px;
   width: ${props => {
     if (props.small) return "16px";
 
@@ -101,11 +102,13 @@ const LoadingIcon = styled(Icon)`
   color: inherit;
   margin-right: ${props => (props.withText ? "8px" : null)};
   animation: ${rotate360} 2s linear infinite;
+  /* font-size: inherit; */
 `;
 
 const LoadingWrapper = styled.span`
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 class Button extends Component {
   render() {
