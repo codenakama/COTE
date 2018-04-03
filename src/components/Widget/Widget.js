@@ -44,12 +44,13 @@ const ItemTitle = styled.span`
   font-weight: bold;
 `;
 
-const Widget = ({ items, title, icon, ...props }) => {
+const Widget = ({ items, title, icon, description, ...props }) => {
   return (
     <Wrapper {...props}>
       <WidgetTopWrapper>
         <StyledIcon name={icon} primary />
         <Heading3 center>{title}</Heading3>
+        {description && <p style={{ marginTop: "16px" }}>{description}</p>}
       </WidgetTopWrapper>
       {items.length ? (
         <WidgetBottomWrapper>
@@ -72,11 +73,15 @@ const Widget = ({ items, title, icon, ...props }) => {
 };
 
 Widget.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object)
+  items: PropTypes.arrayOf(PropTypes.object),
+  description: PropTypes.string,
+  title: PropTypes.string,
+  icon: PropTypes.string
 };
 
 Widget.defaultProps = {
   title: "Title",
+  description: "",
   icon: "card_giftcard",
   items: []
 };
