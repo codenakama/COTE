@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Icon from "../atoms/Icon/Icon";
 import Button from "../atoms/Button/Button";
 import { Title } from "../atoms/Typography";
-import { colors as defaultColors } from "../../styles/defaults";
+import { colors as defaultColors, colors } from "../../styles/defaults";
 
 const StyledDropZone = styled(Dropzone)`
   display: flex;
@@ -19,9 +19,19 @@ const StyledDropZone = styled(Dropzone)`
   width: 232px;
 `;
 
-const Uploader = ({ icon, ...props }) => {
+const Uploader = ({ icon, theme, ...props }) => {
   return (
-    <StyledDropZone {...props}>
+    <StyledDropZone
+      {...props}
+      activeStyle={{
+        border: `dashed 2px ${
+          theme ? theme.colorPrimary : defaultColors.success
+        }`
+      }}
+      rejectStyle={{
+        border: `dashed 2px ${theme ? theme.colorDanger : defaultColors.danger}`
+      }}
+    >
       <Icon name={icon} primary />
       <Title bold>Drag and drop files here</Title>
       <p>or</p>
