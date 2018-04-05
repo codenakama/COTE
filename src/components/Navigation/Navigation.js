@@ -73,7 +73,9 @@ Navigation.propTypes = {
   /** Url path to the logo/brand image */
   logo: PropTypes.string,
   /** Array with the navigation items */
-  items: PropTypes.array
+  items: PropTypes.array,
+  /** Max width that the nav can extend to */
+  maxWidth: PropTypes.number
 };
 
 Navigation.defaultProps = {
