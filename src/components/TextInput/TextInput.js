@@ -11,13 +11,13 @@ export const StyledInput = styled.input`
   &::placeholder {
     color: lightgrey;
   }
-  margin-bottom: ${props => (props.required ? "8px" : null)};
+  margin-bottom: ${props => (props.invalid ? "8px" : null)};
   color: ${defaultColors.colorDarkBlue};
   border: ${props => {
-    if (props.required && props.theme.colorDanger)
+    if (props.invalid && props.theme.colorDanger)
       return `1px solid ${props.theme.colorDanger}`;
 
-    if (props.required) return "solid 1px red";
+    if (props.invalid) return "solid 1px red";
 
     return `solid 1px ${defaultColors.black}`;
   }};
@@ -32,13 +32,13 @@ const Input = styled(MaskedInput)`
   &::placeholder {
     color: lightgrey;
   }
-  margin-bottom: ${props => (props.required ? "8px" : null)};
+  margin-bottom: ${props => (props.invalid ? "8px" : null)};
   color: ${defaultColors.colorDarkBlue};
   border: ${props => {
-    if (props.required && props.theme.colorDanger)
+    if (props.invalid && props.theme.colorDanger)
       return `1px solid ${props.theme.colorDanger}`;
 
-    if (props.required) return "solid 1px red";
+    if (props.invalid) return "solid 1px red";
 
     return `solid 1px ${defaultColors.black}`;
   }};
@@ -115,7 +115,7 @@ const TextInput = ({
         placeholder={placeholder}
         name={name}
         {...props}
-        required={required}
+        invalid={required}
         mask={mask ? mask : false}
         guide={guide}
         full={full}

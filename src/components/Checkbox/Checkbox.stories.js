@@ -15,4 +15,7 @@ storiesOf("Checkbox", module)
   ))
   .add("With overriden margin-top", () => (
     <CheckboxWithMargin label="This is a label." primary />
+  ))
+  .add("Is required", () => (
+    <CheckboxWithMargin label="This is a label." invalid />
   ));

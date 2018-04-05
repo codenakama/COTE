@@ -25,7 +25,16 @@ const Box = styled.span`
   position: relative;
   display: inline-block;
   border: ${props => {
-    if (props.primary) return null;
+    if (props.primary && !props.invalid) return null;
+
+    if (props.invalid && props.theme) {
+      return `1px solid ${props.theme.colorDanger}`;
+    }
+
+    if (props.invalid) {
+      return `1px solid ${defaultColors.danger}`;
+    }
+
     return `1px solid ${defaultColors.darkGrey}`;
   }};
   border-radius: 0.25em;
@@ -79,7 +88,7 @@ class Checkbox extends Component {
   };
 
   render() {
-    const { label, name, handleClicked, primary, id } = this.props;
+    const { label, name, handleClicked, primary, id, invalid } = this.props;
     const { checked } = this.state;
     return (
       <Wrapper {...this.props} id={id}>
@@ -93,7 +102,7 @@ class Checkbox extends Component {
             value={checked}
             {...this.props}
           />
-          <Box primary={primary}>
+          <Box primary={primary} invalid={invalid}>
             <CheckMark className="material-icons">check</CheckMark>
           </Box>
           <label>{label}</label>
@@ -106,12 +115,14 @@ class Checkbox extends Component {
 Checkbox.propTypes = {
   label: PropTypes.string,
   handleClicked: PropTypes.func,
-  primary: PropTypes.bool
+  primary: PropTypes.bool,
+  invalid: PropTypes.bool
 };
 Checkbox.defaultProps = {
   label: "",
   handleClicked: val => console.log(val),
-  primary: false
+  primary: false,
+  invalid: false
 };
 
 export default Checkbox;

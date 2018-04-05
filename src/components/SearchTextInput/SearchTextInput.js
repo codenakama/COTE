@@ -26,7 +26,7 @@ const SearchTextInput = ({
         full={full}
         onChange={handleInputChange}
         error={error}
-        required={required}
+        invalid={required}
         {...props}
       />
       {results.length > 0 && (
