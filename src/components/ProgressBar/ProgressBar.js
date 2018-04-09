@@ -12,10 +12,13 @@ const Wrapper = styled.div`
 
 const Step = styled.div`
   display: flex;
-  width: ${props => props.width}%;
+  width: ${props => props.width + "%"};
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @media only screen and (max-width: 400px) {
+    font-size: 10px;
+  }
 `;
 
 const StyledIcon = styled(Icon)``;
