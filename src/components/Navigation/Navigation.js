@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { StyledLinkButton } from "../atoms/Button/Button";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { StyledLinkButton } from '../atoms/Button/Button';
 
 const NavButton = StyledLinkButton.extend`
   @media screen and (max-width: 640px) {
@@ -23,7 +23,7 @@ const Nav = styled.nav`
   height: 72px;
   padding: 0 3.43em;
   background-color: #fff;
-  max-width: ${props => (props.maxWidth ? props.maxWidth : "928px")};
+  max-width: ${props => (props.maxWidth ? props.maxWidth : '928px')};
   margin: 0 auto;
   @media only screen and (max-width: 960px) {
     margin: 0 40px;
@@ -50,22 +50,29 @@ const NavRight = styled.div`
   }
 `;
 
+const Container = styled.div`
+  width: 100%;
+  background-color: #fff;
+`;
+
 const Navigation = ({ logo, items, ...props }) => {
   return (
-    <Nav {...props}>
-      <NavLeft>
-        <Logo src={logo} alt="logo" />
-      </NavLeft>
-      <NavRight>
-        {items.map((item, i) => {
-          return (
-            <NavButton key={`n-${i}`} href={item.url} onClick={item.onClick}>
-              {item.title}
-            </NavButton>
-          );
-        })}
-      </NavRight>
-    </Nav>
+    <Container>
+      <Nav {...props}>
+        <NavLeft>
+          <Logo src={logo} alt="logo" />
+        </NavLeft>
+        <NavRight>
+          {items.map((item, i) => {
+            return (
+              <NavButton key={`n-${i}`} href={item.url} onClick={item.onClick}>
+                {item.title}
+              </NavButton>
+            );
+          })}
+        </NavRight>
+      </Nav>
+    </Container>
   );
 };
 
@@ -79,15 +86,15 @@ Navigation.propTypes = {
 };
 
 Navigation.defaultProps = {
-  logo: "http://via.placeholder.com/222x40",
+  logo: 'http://via.placeholder.com/222x40',
   items: [
     {
-      url: "http://google.com",
-      title: "Nav item 1"
+      url: 'http://google.com',
+      title: 'Nav item 1'
     },
     {
-      url: "http://google.com",
-      title: "Nav item 2"
+      url: 'http://google.com',
+      title: 'Nav item 2'
     }
   ]
 };
