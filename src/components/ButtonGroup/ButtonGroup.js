@@ -75,10 +75,11 @@ const ButtonGroupWrapper = styled.div`
       border-top-right-radius: 4px;
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
-      border-right: ${props =>
+      border-right: ${
         props.solid || props.disabled
           ? "none"
-          : `1px solid ${defaultColors.black}`};`
+          : `1px solid ${defaultColors.black}`
+      };`
           : null};
     }
 
