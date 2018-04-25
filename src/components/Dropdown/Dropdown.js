@@ -11,7 +11,7 @@ import ResultsList from "../ResultsList/ResultsList";
 
 const ArrowIcon = styled(Icon)`
   position: absolute;
-  z-index: 2;
+  z-index: 9999;
   right: 8px;
   top: 50%;
   transform: translateY(-50%);

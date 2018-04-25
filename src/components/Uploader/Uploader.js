@@ -17,9 +17,21 @@ const StyledDropZone = styled(Dropzone)`
   border-radius: 4px;
   padding: 1.5em;
   width: 232px;
+  @media screen and (max-width: 640px) {
+    border: none;
+    height: auto;
+    width: fit-content;
+  }
 `;
 
-const Uploader = ({ icon, theme, ...props }) => {
+const ContentWrapper = styled.div`
+  text-align: center;
+  @media screen and (max-width: 640px) {
+    display: none;
+  }
+`;
+
+const Uploader = ({ icon, theme, buttonText, title, ...props }) => {
   return (
     <StyledDropZone
       {...props}
@@ -32,11 +44,13 @@ const Uploader = ({ icon, theme, ...props }) => {
         border: `dashed 2px ${theme ? theme.colorDanger : defaultColors.danger}`
       }}
     >
-      <Icon name={icon} primary />
-      <Title bold>Drag and drop files here</Title>
-      <p>or</p>
+      <ContentWrapper>
+        <Icon name={icon} primary />
+        <Title bold>{title}</Title>
+        <p>or</p>
+      </ContentWrapper>
       <Button primary solid>
-        Choose files
+        {buttonText}
       </Button>
     </StyledDropZone>
   );
@@ -44,6 +58,10 @@ const Uploader = ({ icon, theme, ...props }) => {
 
 Uploader.propTypes = {};
 
-Uploader.defaultProps = { icon: "add_circle_outline" };
+Uploader.defaultProps = {
+  icon: "add_circle_outline",
+  buttonText: "Choose files",
+  title: "Drag and drop files here"
+};
 
 export default Uploader;
