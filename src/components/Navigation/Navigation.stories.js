@@ -35,3 +35,17 @@ storiesOf('Navigation', module).add('Href for Item', () => (
     />
   </div>
 ));
+
+storiesOf('Navigation', module).add('Full Width', () => (
+  <div style={{ backgroundColor: '#f3f3f3', height: '200px' }}>
+    <Navigation
+      maxWidth="600px"
+      items={[
+        {
+          title: 'To Google',
+          url: 'http://google.com/'
+        }
+      ]}
+    />
+  </div>
+));

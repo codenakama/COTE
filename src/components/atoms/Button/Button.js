@@ -12,6 +12,7 @@ export const StyledButton = styled.button`
   height: 38px;
   font-family: inherit;
   text-decoration: none;
+  white-space: nowrap;
   background-color: ${props => {
     if (props.disabled) return colors.darkGrey;
     if (props.danger && props.theme) return props.theme.colorDanger;
@@ -29,7 +30,11 @@ export const StyledButton = styled.button`
     return colors.black;
   }};
 
-  font-size: 1em;
+  @media only screen and (min-width: 640px) {
+    font-size: 14px;
+  }
+  font-size: 12px;
+
   padding: 9px 16px;
   width: ${props => {
     if (props.small) return "16px";

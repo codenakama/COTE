@@ -7,13 +7,13 @@ import { colors as defaultColors } from "../../styles/defaults";
 const Wrapper = styled(Paper)`
   position: absolute;
   top: 48px;
-  height: 17em;
+  min-height: auto;
+  max-height: 17em;
   overflow: auto;
   width: 100%;
   left: 0;
   padding: 0;
-  min-height auto;
-  z-index: 10;
+  z-index: 999;
   box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14);
 `;
 

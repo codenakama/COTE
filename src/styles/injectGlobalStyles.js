@@ -1,4 +1,4 @@
-import { injectGlobal } from "styled-components";
+import { injectGlobal } from 'styled-components';
 
 export default () => injectGlobal`
 
@@ -48,7 +48,10 @@ table {
 }
 body{
 	font-family: 'Lato', sans-serif;
-  font-size: 14px;
+	@media only screen and (min-width: 640px) {
+		font-size: 14px;
+	}
+	font-size: 12px;
   color: rgba(6, 31, 51, 1);
 }
 
