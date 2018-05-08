@@ -58,4 +58,11 @@ body{
 h1,h2,h3,h4,h5,h6,p,span{
 	line-height: 1.618;
 }
+
+@supports (-webkit-overflow-scrolling: touch) {
+  /* CSS specific to iOS devices */
+  body {
+    cursor: pointer;
+  }
+}
 `;
