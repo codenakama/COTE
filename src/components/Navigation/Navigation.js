@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { StyledLinkButton } from '../atoms/Button/Button';
 
+const Wrapper = styled.div`
+  background: #fff;
+`;
+
 const NavButton = StyledLinkButton.extend`
   @media screen and (max-width: 640px) {
     border: none !important;
@@ -21,7 +25,6 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   height: 72px;
-  padding: 0 3.43em;
   background-color: #fff;
   max-width: ${props => (props.maxWidth ? props.maxWidth : '928px')};
   margin: 0 auto;

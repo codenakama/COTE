@@ -55,17 +55,22 @@ const InputWrapper = styled.div`
 
 const StyledToolTip = styled(Tooltip)`
   width: auto;
-  z-index: 10;
+  z-index: 999;
   position: absolute;
   display: none;
   right: -14px;
   bottom: 3em;
 `;
 
-const ToolTipWrapper = styled.div`
+const ToolTipWrapper = styled.a`
   position: relative;
   display: inline-block;
-  :hover {
+  border: none;
+  background: transparent;
+  z-index: 100;
+  :hover,
+  :active,
+  :focus {
     cursor: pointer;
     > ${StyledToolTip} {
       display: block;
@@ -101,7 +106,7 @@ const TextInput = ({
           <Label required={required} text={labelText} htmlFor={name} />
         )}
         {tooltip && (
-          <ToolTipWrapper>
+          <ToolTipWrapper tabIndex="0" onClick={e => e.preventDefault()}>
             <StyledToolTip
               title={tooltip.title}
               description={tooltip.description}
@@ -157,7 +162,6 @@ TextInput.defaultProps = {
   full: false,
   guide: false,
   labelText: "",
-  full: false,
   mask: false,
   name: "",
   tooltip: null

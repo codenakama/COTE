@@ -117,4 +117,11 @@ storiesOf("Dropdown", module)
       options={options}
       lastOption={{ title: "Can't find my option", value: 0 }}
     />
+  ))
+  .add("No results/options", () => (
+    <Dropdown
+      label="My dropdown"
+      options={[]}
+      lastOption={{ title: "Can't find my option", value: 0 }}
+    />
   ));

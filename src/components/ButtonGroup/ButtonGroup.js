@@ -28,7 +28,7 @@ const StyledButton = styled(Button)`
   }
 
   @media (max-width: 640px) {
-    width: 50%;
+    width: ${props => (props.wrap ? "50%" : null)};
   }
 `;
 
@@ -69,22 +69,29 @@ const ButtonGroupWrapper = styled.div`
     }
 
     & button:nth-child(2) {
-      border-top-left-radius: 0;
+      ${props =>
+        props.wrap
+          ? `border-top-left-radius: 0;
       border-top-right-radius: 4px;
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
-      border-right: ${props =>
+      border-right: ${
         props.solid || props.disabled
           ? "none"
-          : `1px solid ${defaultColors.black}`};
+          : `1px solid ${defaultColors.black}`
+      };`
+          : null};
     }
 
     & button:nth-child(3) {
-      border-top: 0;
+      ${props =>
+        props.wrap
+          ? `border-top: 0;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
-      border-bottom-left-radius: 4px;
+      border-bottom-left-radius: 4px;`
+          : null};
     }
 
     & button:nth-child(4) {
@@ -118,14 +125,15 @@ class ButtonGroup extends Component {
       label,
       error,
       primary,
-      id
+      id,
+      wrap
     } = this.props;
     const { selectedIndex } = this.state;
 
     return (
       <Wrapper id={id}>
         {label && <Label required={error} text={label} />}
-        <ButtonGroupWrapper>
+        <ButtonGroupWrapper wrap={wrap}>
           {options.map((option, i) => (
             <StyledButton
               key={i}
@@ -137,6 +145,7 @@ class ButtonGroup extends Component {
                 this.setState({ selectedIndex: i });
                 handleOptionSelected(options[i].value);
               }}
+              wrap={wrap}
             >
               {option.title}
             </StyledButton>
@@ -158,7 +167,8 @@ ButtonGroup.propTypes = {
     })
   ),
   handleOptionSelected: PropTypes.func,
-  selectedIndex: PropTypes.number
+  selectedIndex: PropTypes.number,
+  wrap: PropTypes.bool
 };
 
 ButtonGroup.defaultProps = {
@@ -170,7 +180,8 @@ ButtonGroup.defaultProps = {
     { title: "Sole Trader", value: "Sole Trader" }
   ],
   handleOptionSelected: i => console.log(i),
-  selectedIndex: 0
+  selectedIndex: 0,
+  wrap: false
 };
 
 export default ButtonGroup;
