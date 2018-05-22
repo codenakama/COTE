@@ -65,7 +65,7 @@ const ButtonGroupWrapper = styled.div`
       border-top-left-radius: 4px;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
+      border-bottom-left-radius: ${props => (props.wrap ? 0 : "4px")};
     }
 
     & button:nth-child(2) {
