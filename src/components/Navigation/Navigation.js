@@ -85,7 +85,7 @@ Navigation.propTypes = {
   /** Array with the navigation items */
   items: PropTypes.array,
   /** Max width that the nav can extend to */
-  maxWidth: PropTypes.number
+  maxWidth: PropTypes.string
 };
 
 Navigation.defaultProps = {

@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import Icon from "../atoms/Icon/Icon";
-import { colors, fontWeights } from "../../styles/defaults";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Icon from '../atoms/Icon/Icon';
+import { colors, fontWeights } from '../../styles/defaults';
 
 const Wrapper = styled.div`
   display: flex;
@@ -48,7 +48,7 @@ const ProgressBar = props => {
         let iconName =
           currentStep === index + 1 || index + 1 > currentStep
             ? step.icon
-            : "check";
+            : 'check';
 
         /**if brackground of icon should be solid/selected */
         let isSolid = currentStep === index + 1;
@@ -56,14 +56,14 @@ const ProgressBar = props => {
         let isCompleted = currentStep > index + 1 ? true : false;
 
         return (
-          <Step width={100 / steps.length}>
+          <Step key={index} width={100 / steps.length}>
             <StyledIcon
               name={iconName}
               solid={isSolid}
               primary={isCompleted}
               circle
             />
-            <span style={{ fontWeight: "bold" }}>{step.name}</span>
+            <span style={{ fontWeight: 'bold' }}>{step.name}</span>
           </Step>
         );
       })}
@@ -83,10 +83,10 @@ ProgressBar.propTypes = {
 ProgressBar.defaultProps = {
   currentStep: 1,
   steps: [
-    { icon: "hourglass_empty", name: "Step 1" },
-    { icon: "person_outline", name: "Step 2" },
-    { icon: "person_outline", name: "Step 3" },
-    { icon: "credit_card", name: "Step 4" }
+    { icon: 'hourglass_empty', name: 'Step 1' },
+    { icon: 'person_outline', name: 'Step 2' },
+    { icon: 'person_outline', name: 'Step 3' },
+    { icon: 'credit_card', name: 'Step 4' }
   ],
   progress: 75
 };
