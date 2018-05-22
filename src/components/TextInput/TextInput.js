@@ -115,10 +115,10 @@ const TextInput = ({
         placeholder={placeholder}
         name={name}
         {...props}
-        invalid={required}
+        invalid={required ? 1 : 0}
         mask={mask ? mask : false}
         guide={guide}
-        full={full}
+        full={full ? 1 : 0}
         onChange={onChange}
       />
 

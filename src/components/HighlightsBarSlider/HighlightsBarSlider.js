@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import styled, { keyframes } from "styled-components";
-import Icon from "../atoms/Icon/Icon";
-import { Title } from "../atoms/Typography";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styled, { keyframes } from 'styled-components';
+import Icon from '../atoms/Icon/Icon';
+import { Title } from '../atoms/Typography';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -42,7 +42,7 @@ const StyledTitle = styled(Title)`
   font-weight: bold;
   margin-bottom: 8px;
   color: ${props =>
-    props.theme && props.primary ? props.theme.colorPrimary : "#27b161"};
+    props.theme && props.primary ? props.theme.colorPrimary : '#27b161'};
   transition: opacity 1s ease-in;
 `;
 
@@ -53,7 +53,7 @@ const Circle = styled.div`
   background-color: ${props =>
     props.theme && props.selected ? props.theme.colorPrimary : null};
   border: 1px solid
-    ${props => (props.theme ? props.theme.colorPrimary : "#27b161")};
+    ${props => (props.theme ? props.theme.colorPrimary : '#27b161')};
   margin-right: 16px;
 `;
 
@@ -82,7 +82,7 @@ class HighlightsBarSlider extends Component {
 
         <RelativeContainer>
           {items.map((op, i) => {
-            return <Circle selected={i === this.state.currentOption} />;
+            return <Circle key={i} selected={i === this.state.currentOption} />;
           })}
 
           {this.state.currentOption > 0 && (
@@ -106,7 +106,7 @@ HighlightsBarSlider.propTypes = {
 };
 
 HighlightsBarSlider.defaultProps = {
-  items: ["Some title 1", "Some title 2", "Some title 3"]
+  items: ['Some title 1', 'Some title 2', 'Some title 3']
 };
 
 export default HighlightsBarSlider;

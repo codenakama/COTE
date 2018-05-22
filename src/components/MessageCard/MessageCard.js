@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import Paper from "../Paper/Paper";
-import { Heading2, Title } from "../atoms/Typography";
-import Icon from "../atoms/Icon/Icon";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Paper from '../Paper/Paper';
+import { Heading2, Title } from '../atoms/Typography';
+import Icon from '../atoms/Icon/Icon';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -15,7 +15,7 @@ const MessageCard = props => {
   const { title, subtitle, isLoading, icon } = props;
 
   return (
-    <Paper {...this.props}>
+    <Paper {...props}>
       <Wrapper>
         <Heading2>{title}</Heading2>
       </Wrapper>
