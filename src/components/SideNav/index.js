@@ -36,6 +36,11 @@ const ListItem = styled.li`
   background-color: ${props => (props.selected ? colors.lightGrey : null)};
   border-left: ${props =>
     props.selected ? `4px solid ${colors.primary}` : null};
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 const Logo = styled.img`
@@ -58,34 +63,33 @@ class SideNav extends Component {
       openingDirection,
       logoUrl,
       sideNavRef,
-      className
+      className,
+      navItems,
+      isOpen
     } = this.props;
 
     return (
-      <Wrapper width={width} isOpen={this.state.isOpen} className={className}>
-        <Paper padding={"0px"}>
-          <Content>
-            <Logo src={logoUrl} />
-            <List>
-              <ListItem>
-                <a>Dashboard</a>
-              </ListItem>
-              <ListItem selected>
-                <a>Activities</a>
-              </ListItem>
-              <ListItem>
-                <a>Cards</a>
-              </ListItem>
-              <ListItem>
-                <a>Premium</a>
-              </ListItem>
-              <ListItem>
-                <a>Your Details</a>
-              </ListItem>
-            </List>
-          </Content>
-        </Paper>
-      </Wrapper>
+      <nav>
+        <Wrapper
+          width={width}
+          // use props to control if isOpen is different from undefined
+          isOpen={isOpen !== undefined ? isOpen : this.state.isOpen}
+          className={className}
+        >
+          <Paper padding={"0px"}>
+            <Content>
+              <Logo src={logoUrl} />
+              <List>
+                {navItems.map((item, i) => (
+                  <ListItem selected={item.isSelected}>
+                    <a href={item.pathname}>{item.title}</a>
+                  </ListItem>
+                ))}
+              </List>
+            </Content>
+          </Paper>
+        </Wrapper>
+      </nav>
     );
   }
 }
@@ -110,7 +114,7 @@ SideNav.defaultProps = {
     {
       title: "Dashboard",
       pathname: "/dashboard",
-      isSelected: false
+      isSelected: true
     },
     {
       title: "Dashboard",
