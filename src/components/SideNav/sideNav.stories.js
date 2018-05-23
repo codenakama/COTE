@@ -13,6 +13,11 @@ storiesOf("SideNav", module)
       <SideNav isOpen />
     </Container>
   ))
+  .add("Icons only", () => (
+    <Container>
+      <SideNav isOpen iconsOnly width={72} />
+    </Container>
+  ))
   .add("With menu button", () => {
     class PageContainer extends Component {
       handleOpenSideNav = () => {
