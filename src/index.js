@@ -35,4 +35,4 @@ export {
 } from "./components/HighlightsBarSlider/HighlightsBarSlider";
 
 export { default as Toast } from "./components/Toast/Toast";
-export { default as CaptionedImageBox } from "./components/CaptionedImageBox";
+export { default as SideNav } from "./components/SideNav/";

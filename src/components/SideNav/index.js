@@ -5,21 +5,6 @@ import { colors } from "../../styles/defaults";
 import Paper from "../Paper/Paper";
 import Icon from "../atoms/Icon/Icon";
 
-const Wrapper = styled.div`
-  width: ${props => `${props.width}px`};
-
-  transition-duration: 235ms;
-  position: fixed;
-
-  ${props => {
-    if (props.isOpen) {
-      return `transform: translateX(0)`;
-    }
-
-    return `transform: translateX(-1000%)`;
-  }};
-`;
-
 const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -65,6 +50,23 @@ const Link = styled.a`
   }
 `;
 
+const Nav = styled.nav`
+  position: fixed;
+  z-index: 10;
+  width: ${props => `${props.width}px`};
+
+  transition-duration: 235ms;
+  position: fixed;
+
+  ${props => {
+    if (props.isOpen) {
+      return `transform: translateX(0)`;
+    }
+
+    return `transform: translateX(-1000%)`;
+  }};
+`;
+
 class SideNav extends Component {
   state = {
     isOpen: false
@@ -87,30 +89,28 @@ class SideNav extends Component {
     } = this.props;
 
     return (
-      <nav>
-        <Wrapper
-          width={width}
-          // use props to control if isOpen is different from undefined
-          isOpen={isOpen !== undefined ? isOpen : this.state.isOpen}
-          className={className}
-        >
-          <Paper padding={"0px"}>
-            <Content>
-              <Logo src={logoUrl} />
-              <List>
-                {navItems.map((item, i) => (
-                  <ListItem selected={item.isSelected}>
-                    <Link href={item.pathname}>
-                      {item.icon && <Icon name={item.icon} />}
-                      {!iconsOnly && <span>{item.title}</span>}
-                    </Link>
-                  </ListItem>
-                ))}
-              </List>
-            </Content>
-          </Paper>
-        </Wrapper>
-      </nav>
+      <Nav
+        width={width}
+        // use props to control if isOpen is different from undefined
+        isOpen={isOpen !== undefined ? isOpen : this.state.isOpen}
+        className={className}
+      >
+        <Paper padding={"0px"}>
+          <Content>
+            <Logo src={logoUrl} />
+            <List>
+              {navItems.map((item, i) => (
+                <ListItem selected={item.isSelected}>
+                  <Link href={item.pathname}>
+                    {item.icon && <Icon name={item.icon} />}
+                    {!iconsOnly && <span>{item.title}</span>}
+                  </Link>
+                </ListItem>
+              ))}
+            </List>
+          </Content>
+        </Paper>
+      </Nav>
     );
   }
 }
