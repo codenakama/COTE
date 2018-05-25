@@ -1,6 +1,6 @@
-import styled, { keyframes } from "styled-components";
-import React, { Component } from "react";
 import PropTypes from "prop-types";
+import React, { Component } from "react";
+import styled, { keyframes } from "styled-components";
 import { colors } from "../../../styles/defaults";
 import Icon from "../Icon/Icon";
 
@@ -89,6 +89,10 @@ export const StyledButton = styled.button`
   position: relative;
   text-align: center;
   ${props => (props.shadow ? boxShadow : null)};
+
+  i {
+    color: inherit;
+  }
 `;
 
 export const StyledLinkButton = StyledButton.withComponent("a");
