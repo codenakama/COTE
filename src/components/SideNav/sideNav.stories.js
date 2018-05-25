@@ -21,15 +21,15 @@ storiesOf("SideNav", module)
   .add("With menu button", () => {
     class PageContainer extends Component {
       handleOpenSideNav = () => {
-        this.sideNavRef.togle();
+        this.sideNavRef.toggle();
       };
 
       render() {
         return (
           <Container>
-            <div style={{ textAlign: "right" }}>
+            <div>
               <button type="button" onClick={this.handleOpenSideNav}>
-                Togle Menu
+                toggle Menu
               </button>
             </div>
             <SideNav ref={el => (this.sideNavRef = el)} />
@@ -43,7 +43,7 @@ storiesOf("SideNav", module)
   .add("With content", () => {
     class PageContainer extends Component {
       handleOpenSideNav = () => {
-        this.sideNavRef.togle();
+        this.sideNavRef.toggle();
       };
 
       render() {
@@ -102,7 +102,7 @@ storiesOf("SideNav", module)
             </div>
             <div style={{ textAlign: "right" }}>
               <button type="button" onClick={this.handleOpenSideNav}>
-                Togle Menu
+                toggle Menu
               </button>
             </div>
           </Container>

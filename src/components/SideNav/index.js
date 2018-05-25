@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import styled from "styled-components";
 import { colors } from "../../styles/defaults";
-import Paper from "../Paper/Paper";
+import OutsideAlerter from "../OutsideAlerter/OutsideAlerter";
+import { PaperWrapper } from "../Paper/Paper";
 import Icon from "../atoms/Icon/Icon";
 
 const Content = styled.div`
@@ -50,14 +51,17 @@ const Link = styled.a`
   }
 `;
 
-const Nav = styled.nav`
+const Nav = PaperWrapper.withComponent("nav").extend`
   position: fixed;
   z-index: 10;
   width: ${props => `${props.width}px`};
-
+  padding: 0;
   transition-duration: 235ms;
   position: fixed;
-
+  top: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 0;
   ${props => {
     if (props.isOpen) {
       return `transform: translateX(0)`;
@@ -72,9 +76,13 @@ class SideNav extends Component {
     isOpen: false
   };
 
-  togle() {
+  toggle() {
     this.setState({ isOpen: !this.state.isOpen });
   }
+
+  handleClickOutside = () => {
+    this.setState({ isOpen: false });
+  };
 
   render() {
     const {
@@ -89,13 +97,13 @@ class SideNav extends Component {
     } = this.props;
 
     return (
-      <Nav
-        width={width}
-        // use props to control if isOpen is different from undefined
-        isOpen={isOpen !== undefined ? isOpen : this.state.isOpen}
-        className={className}
-      >
-        <Paper padding={"0px"}>
+      <OutsideAlerter handleClickOutsideElement={this.handleClickOutside}>
+        <Nav
+          width={width}
+          // use props to control if isOpen is different from undefined
+          isOpen={isOpen !== undefined ? isOpen : this.state.isOpen}
+          className={className}
+        >
           <Content>
             <Logo src={logoUrl} />
             <List>
@@ -109,8 +117,8 @@ class SideNav extends Component {
               ))}
             </List>
           </Content>
-        </Paper>
-      </Nav>
+        </Nav>
+      </OutsideAlerter>
     );
   }
 }

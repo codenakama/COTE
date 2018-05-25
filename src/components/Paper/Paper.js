@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const PaperWrapper = styled.div`
+export const PaperWrapper = styled.div`
   min-width: 64px;
   min-height: 100px;
   border-radius: 4px;
