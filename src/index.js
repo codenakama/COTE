@@ -34,6 +34,9 @@ export {
   default as HighlightsBarSlider
 } from "./components/HighlightsBarSlider/HighlightsBarSlider";
 
-export {default as Tooltip} from "./components/Tooltip/Tooltip"
+export { default as Tooltip } from "./components/Tooltip/Tooltip";
 export { default as Toast } from "./components/Toast/Toast";
 export { default as SideNav } from "./components/SideNav/";
+export {
+  default as MenuDropdown
+} from "./components/MenuDropdown/MenuDropdown";
