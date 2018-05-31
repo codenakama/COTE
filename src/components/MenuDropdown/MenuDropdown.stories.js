@@ -1,8 +1,17 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import MenuDropdown from './MenuDropdown';
+import { storiesOf } from "@storybook/react";
+import React from "react";
+import styled from "styled-components";
+import { colors } from "../../styles/defaults";
+import MenuDropdown from "./MenuDropdown";
 
-storiesOf('MenuDropdown', module).add('Normal', () => (
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: ${colors.primary};
+`;
+
+storiesOf("MenuDropdown", module).add("Normal", () => (
   <MenuDropdown
     firstName="Jamie"
     lastName="Howard"
@@ -11,7 +20,7 @@ storiesOf('MenuDropdown', module).add('Normal', () => (
   />
 ));
 
-storiesOf('MenuDropdown', module).add('Small', () => (
+storiesOf("MenuDropdown", module).add("Small", () => (
   <MenuDropdown
     firstName="Jamie"
     lastName="Howard"
@@ -19,4 +28,29 @@ storiesOf('MenuDropdown', module).add('Small', () => (
     locatorId="F415T98"
     small="true"
   />
+));
+
+storiesOf("MenuDropdown", module).add("Reversed normal", () => (
+  <Container>
+    <MenuDropdown
+      firstName="Jamie"
+      lastName="Howard"
+      legalName="Potatoe Farm"
+      locatorId="F415T98"
+      reverse
+    />
+  </Container>
+));
+
+storiesOf("MenuDropdown", module).add("Reversed small", () => (
+  <Container>
+    <MenuDropdown
+      firstName="Jamie"
+      lastName="Howard"
+      legalName="Potatoe Farm"
+      locatorId="F415T98"
+      small="true"
+      reverse
+    />
+  </Container>
 ));
