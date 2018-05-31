@@ -71,6 +71,33 @@ const Nav = PaperWrapper.withComponent("nav").extend`
   }};
 `;
 
+const Overlay = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  left: 0;
+  opacity: ${props => (props.isNavOpen ? 1 : 0)};
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: translateZ(0);
+  transition: opacity 0.2s linear;
+  visibility: ${props => (props.isNavOpen ? "visible" : "hidden")};
+  z-index: ${props => (props.isNavOpen ? 9 : 0)};
+`;
+
+const Wrapper = styled.div`
+  position: relative;
+`;
+
+const CloseIcon = styled(Icon)`
+  cursor: pointer;
+  position: absolute;
+  left: ${props => `${props.navWidth + 64}px`};
+  top: -110px;
+  z-index: 10;
+  visibility: ${props => (props.isNavOpen ? "visible" : "hidden")};
+`;
+
 class SideNav extends Component {
   state = {
     isOpen: false
@@ -97,28 +124,36 @@ class SideNav extends Component {
     } = this.props;
 
     return (
-      <OutsideAlerter handleClickOutsideElement={this.handleClickOutside}>
-        <Nav
-          width={width}
-          // use props to control if isOpen is different from undefined
-          isOpen={isOpen !== undefined ? isOpen : this.state.isOpen}
-          className={className}
-        >
-          <Content>
-            <Logo src={logoUrl} />
-            <List>
-              {navItems.map((item, i) => (
-                <ListItem selected={item.isSelected}>
-                  <Link href={item.pathname}>
-                    {item.icon && <Icon name={item.icon} />}
-                    {!iconsOnly && <span>{item.title}</span>}
-                  </Link>
-                </ListItem>
-              ))}
-            </List>
-          </Content>
-        </Nav>
-      </OutsideAlerter>
+      <Wrapper>
+        <CloseIcon
+          name="close"
+          navWidth={width}
+          isNavOpen={this.state.isOpen}
+        />
+        <OutsideAlerter handleClickOutsideElement={this.handleClickOutside}>
+          <Nav
+            width={width}
+            // use props to control if isOpen is different from undefined
+            isOpen={isOpen !== undefined ? isOpen : this.state.isOpen}
+            className={className}
+          >
+            <Content>
+              <Logo src={logoUrl} />
+              <List>
+                {navItems.map((item, i) => (
+                  <ListItem selected={item.isSelected}>
+                    <Link href={item.pathname}>
+                      {item.icon && <Icon name={item.icon} />}
+                      {!iconsOnly && <span>{item.title}</span>}
+                    </Link>
+                  </ListItem>
+                ))}
+              </List>
+            </Content>
+          </Nav>
+        </OutsideAlerter>
+        <Overlay isNavOpen={this.state.isOpen} />
+      </Wrapper>
     );
   }
 }
