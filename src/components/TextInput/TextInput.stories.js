@@ -1,8 +1,7 @@
-import React from "react";
 import { storiesOf } from "@storybook/react";
-import TextInput from "./TextInput";
+import React from "react";
 import createNumberMask from "text-mask-addons/dist/createNumberMask";
-import {Label, Caption} from "../atoms/Typography";
+import TextInput from "./TextInput";
 
 const poundMask = createNumberMask({
   prefix: "£ ",
@@ -82,19 +81,16 @@ storiesOf("Text Input", module)
     <TextInput placeholder="e.g. Text up to 8 characters" full />
   ))
   .add("With Tooltip", () => (
-    <div style={{marginTop: "250px"}}>
-
-
-
+    <div style={{ position: "250px" }}>
       <TextInput
         placeholder="Type something"
         labelText="Hellooooooo"
         full
         tooltip={{
           title: "Why we need to know your Personal Income?",
-          description: "Your Personal Income can help us to blabla information information information information information information information information"
+          description:
+            "Your Personal Income can help us to blabla information information information information information information information information"
         }}
-
       />
     </div>
   ));
