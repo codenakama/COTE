@@ -2,9 +2,8 @@
  * Component that alerts if you click outside of it
  */
 
-import React, { Component } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import React, { Component } from "react";
 
 class OutsideAlerter extends Component {
   constructor(props) {
@@ -40,7 +39,7 @@ class OutsideAlerter extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%" }} ref={this.setWrapperRef}>
+      <div  ref={this.setWrapperRef}>
         {this.props.children}
       </div>
     );

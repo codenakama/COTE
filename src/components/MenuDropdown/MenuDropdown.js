@@ -47,7 +47,7 @@ const BadgeWrapper = styled.div`
 
 const MenuWrapper = styled.div`
   right: ${props => (props.right ? 0 : null)};
-  display: ${props => (props.display ? "block" : "none")};
+  display: ${props => (props.isOpen ? "block" : "none")};
   margin-top: 5px;
   position: absolute;
   background-color: white;
@@ -125,7 +125,7 @@ class MenuDropdown extends Component {
               <ArrowIcon reverse={reverse} name="keyboard_arrow_down" />
             </ArrowWrapper>
           </DropdownButton>
-          <MenuWrapper display={this.state.opened} right={small}>
+          <MenuWrapper isOpen={this.state.opened} right={small}>
             <MenuBox>
               <MenuEntry>
                 <b>
@@ -158,7 +158,7 @@ class MenuDropdown extends Component {
   }
 }
 
-MenuDropdown.PropTypes = {
+MenuDropdown.propTypes = {
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   legalName: PropTypes.string.isRequired,

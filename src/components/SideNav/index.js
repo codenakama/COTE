@@ -141,7 +141,7 @@ class SideNav extends Component {
               <Logo src={logoUrl} />
               <List>
                 {navItems.map((item, i) => (
-                  <ListItem selected={item.isSelected}>
+                  <ListItem key={`snav-${i}`} selected={item.isSelected}>
                     <Link href={item.pathname}>
                       {item.icon && <Icon name={item.icon} />}
                       {!iconsOnly && <span>{item.title}</span>}
