@@ -5,15 +5,13 @@ import { Title } from '../atoms/Typography';
 import { colors as defaultColors } from '../../styles/defaults';
 
 const Wrapper = styled.div`
-  border: ${props =>
-    props.theme
-      ? `1px solid ${props.theme.colorPrimary}`
-      : `1px solid ${defaultColors.primary}`};
   border-radius: 4px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14);
+  background-color: #ffffff;
 `;
 
 const ContentWrapper = styled.div`
-  padding: 24px;
+  padding: 24px 0;
 `;
 
 const TitleWrapper = styled.div`
