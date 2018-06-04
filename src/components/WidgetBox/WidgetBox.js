@@ -10,10 +10,6 @@ const Wrapper = styled.div`
   background-color: #ffffff;
 `;
 
-const ContentWrapper = styled.div`
-  padding: 24px 0;
-`;
-
 const TitleWrapper = styled.div`
   padding: 8px 16px;
   border-bottom: 1px solid #f3f3f3;
@@ -25,7 +21,7 @@ const WidgetBox = ({ children, title, className, id, ...props }) => {
       <TitleWrapper>
         <Title bold>{title}</Title>
       </TitleWrapper>
-      <ContentWrapper>{children}</ContentWrapper>
+      {children}
     </Wrapper>
   );
 };
