@@ -19,7 +19,7 @@ const TitleWrapper = styled.div`
   border-bottom: 1px solid #f3f3f3;
 `;
 
-const ContentBox = ({ children, title, className, id, ...props }) => {
+const WidgetBox = ({ children, title, className, id, ...props }) => {
   return (
     <Wrapper className={className} {...props} id={id}>
       <TitleWrapper>
@@ -30,15 +30,15 @@ const ContentBox = ({ children, title, className, id, ...props }) => {
   );
 };
 
-ContentBox.propTypes = {
+WidgetBox.propTypes = {
   title: PropTypes.string,
   /** What to render inside the content area of the box */
   children: PropTypes.node
 };
 
-ContentBox.defaultProps = {
+WidgetBox.defaultProps = {
   title: 'Title',
   children: 'The content goes here'
 };
 
-export default ContentBox;
+export default WidgetBox;
