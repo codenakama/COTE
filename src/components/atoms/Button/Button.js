@@ -27,7 +27,11 @@ export const StyledButton = styled.button`
   color: ${props => {
     if (props.solid || props.disabled) return "#fff";
 
-    return colors.black;
+    if (props.primary) {
+      return props.theme ? props.theme.colorPrimary : colors.primary;
+    }
+
+    return props.theme ? props.theme.colorBlack : colors.black;
   }};
 
   @media only screen and (min-width: 640px) {
@@ -82,8 +86,20 @@ export const StyledButton = styled.button`
     }};
   }
 
-  border: ${props =>
-    props.solid || props.disabled ? "none" : `1px solid ${colors.black}`};
+  border: ${props => {
+    if (props.solid || props.disabled) {
+      return "none";
+    }
+
+    if (props.primary) {
+      return `1px solid ${
+        props.theme ? props.theme.colorPrimary : colors.primary
+      }`;
+    }
+
+    return `1px solid ${colors.black}`;
+  }};
+
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: inline-block;
   position: relative;
