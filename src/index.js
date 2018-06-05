@@ -31,6 +31,8 @@ export { default as Widget } from './components/Widget/Widget';
 export { default as Navigation } from './components/Navigation/Navigation';
 export { default as ContentBox } from './components/ContentBox/ContentBox';
 export { default as WidgetBox } from './components/WidgetBox/WidgetBox';
+export { default as HighlightStrip } from './components/HighLightStrip/index';
+export { default as UspList } from './components/UspList/index';
 export {
   default as HighlightsBarSlider
 } from './components/HighlightsBarSlider/HighlightsBarSlider';
