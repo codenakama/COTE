@@ -41,3 +41,4 @@ export { default as SideNav } from './components/SideNav/';
 export {
   default as MenuDropdown
 } from './components/MenuDropdown/MenuDropdown';
+export { default as TabsPanel } from './components/TabsPanel/';

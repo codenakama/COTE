@@ -1,36 +1,43 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
-const ListItems = styled.Li`
+const Item = styled.li`
   display: inline-block;
   margin: 0 40px 0 0;
 `;
 
-const LinkItem = styled.a`
-  padding: 20px 40px;
-  display: inline-block;
+const ItemLink = styled.a`
   text-decoration: none;
+  padding-bottom: 10px;
+  color: #a4aab3;
   :hover,
   :active,
   :focus {
+    color: #061f33;
     cursor: pointer;
-    text-decoration: none;
+    border-bottom: 1px solid #27b161;
+    font-weight: bold;
   }
 `;
 
-const BoxVisibility = styled.div`
-  display: ${props => (props.active ? "block" : "none")};
+const ShowContentBox = styled.div`
+  display: block;
+  visibility: "visible";
+  margin-top: 25px;
 `;
 
-class Tabs extends Component {
+const HideContentBox = styled.div`
+  display: none;
+  visibility: "hidden";
+`;
+
+export class Tabs extends Component {
   state = {
     activeIndex: 0
   };
 
-  handleOnClick(key, event) {
-    event.preventDefault();
-
+  handleOnClick(key) {
     this.setState({
       activeIndex: key
     });
@@ -40,17 +47,13 @@ class Tabs extends Component {
     let tab = this.props.children[key];
 
     return (
-      <ListItems
-        key={key}
-        className={this.state.activeIndex == key ? "active" : ""}
-      >
-        <LinkItem href="#" onClick={this.handleOnClick.bind(this, key)}>
+      <Item key={key} className={this.state.activeIndex == key ? "active" : ""}>
+        <ItemLink href="#" onClick={e => this.handleOnClick(key)}>
           {tab.props.title}
-        </LinkItem>
-      </ListItems>
+        </ItemLink>
+      </Item>
     );
   }
-
   render() {
     let index = 0;
     let active = this.state.activeIndex;
@@ -62,8 +65,8 @@ class Tabs extends Component {
     });
 
     return (
-      <div>
-        <ul>
+      <div className={this.props.className}>
+        <ul className="tabs-nav">
           {Object.keys(this.props.children).map(this.renderNavItem.bind(this))}
         </ul>
         <div className="tabs-content">{tabs}</div>
@@ -72,11 +75,20 @@ class Tabs extends Component {
   }
 }
 
-class Tab extends Component {
+export class Tab extends Component {
   render() {
-    return <BoxVisibility>{this.props.children}</BoxVisibility>;
+    const isActive = this.props.active;
+    if (isActive) {
+      return <ShowContentBox>{this.props.children}</ShowContentBox>;
+    } else {
+      return <HideContentBox>{this.props.children}</HideContentBox>;
+    }
   }
 }
+
+Tab.propTypes = {
+  active: PropTypes.bool
+};
 
 Tab.defaultProps = {
   active: false
