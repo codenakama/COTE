@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
-import { hexToRgbA } from "../../../utils";
 import { colors } from "../../styles/defaults";
+import { hexToRgbA } from "../../utils";
 
 const Wrapper = styled.div`
   padding: 16px;
