@@ -1,92 +1,88 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+import { Title } from "../atoms/Typography";
+import { colors } from "../../styles/defaults";
 
-const Item = styled.li`
+const TabWrapper = styled.a`
   display: inline-block;
-  margin: 0 40px 0 0;
+  flex: 1;
 `;
 
-const ItemLink = styled.a`
-  text-decoration: none;
-  padding-bottom: 10px;
-  color: #a4aab3;
-  :hover {
-    color: #061f33;
-    cursor: pointer;
-    border-bottom: 1px solid #27b161;
-    font-weight: bold;
-  }
-  border-bottom: ${props => (props.isActive ? "1px solid  #27b161" : null)};
-  font-weight: ${props => (props.isActive ? "bold" : "normal")};
-  color: ${props => (props.isActive ? "#061f33" : "#a4aab3")};
+const TabTitle = Title.withComponent("a").extend`
+cursor: pointer;
+color: ${props => (props.isActive ? colors.black : colors.darkGrey)};
+
+font-weight: 700;
+padding: 8px;
+display: inline-block;
+margin-bottom: 1rem;
+width: 100%
+text-align: center;
 `;
 
-const TabsContentBox = styled.div`
-  display: ${props => (props.isActive ? "block" : "none")};
-  margin-top: 25px;
+const TabsWrapper = styled.div`
+  display: flex;
+  position: relative;
 `;
 
-export class Tabs extends Component {
+const TabContent = styled.div`
+  padding: 1.5rem;
+`;
+
+const TabMarker = styled.div`
+  height: 2px;
+  width: ${props => props.width}%;
+  position: absolute;
+  z-index: 2;
+  background: ${colors.primary};
+  transition: all 250ms ease;
+  transform: translateX(${props => `${props.position}%`});
+  top: 30px;
+`;
+
+class Tabs extends Component {
   state = {
     activeIndex: 0
   };
 
-  handleOnClick(key) {
-    this.setState({
-      activeIndex: key
-    });
-  }
+  handleTabClicked = index => {
+    this.setState({ activeIndex: index });
+  };
 
-  renderNavItem(key) {
-    let tab = this.props.children[key];
-
-    return (
-      <Item key={key}>
-        <ItemLink
-          isActive={this.state.activeIndex === key}
-          onClick={e => this.handleOnClick(key)}
-        >
-          {tab.props.title}
-        </ItemLink>
-      </Item>
-    );
-  }
   render() {
-    let index = 0;
-    let active = this.state.activeIndex;
-
-    let tabs = React.Children.map(this.props.children, function(child) {
-      return React.cloneElement(child, {
-        active: child.props.active === true ? true : active == index++
-      });
-    });
+    const { children } = this.props;
+    const { activeIndex } = this.state;
 
     return (
-      <div>
-        <ul>
-          {Object.keys(this.props.children).map(this.renderNavItem.bind(this))}
-        </ul>
-        <div>{tabs}</div>
-      </div>
+      <TabsWrapper>
+        {children.map((tab, index) => {
+          return (
+            <Tab
+              onClick={() => this.handleTabClicked(index)}
+              isActive={activeIndex === index}
+              {...tab.props}
+            />
+          );
+        })}
+        <TabMarker width={100 / children.length} position={activeIndex * 100} />
+      </TabsWrapper>
     );
   }
 }
 
-export class Tab extends Component {
-  render() {
-    return (
-      <TabsContentBox isActive={this.props.active}>
-        {this.props.children}
-      </TabsContentBox>
-    );
-  }
-}
+Tabs.propTypes = {};
 
-Tab.propTypes = {
-  active: PropTypes.bool
+export default Tabs;
+
+export const Tab = ({ children, title, isActive, ...props }) => {
+  return (
+    <TabWrapper {...props}>
+      <TabTitle isActive={isActive}>{title}</TabTitle>
+
+      <TabContent>{isActive && children}</TabContent>
+    </TabWrapper>
+  );
 };
 
-Tab.defaultProps = {
-  active: false
-};
+Tab.propTypes = {};
