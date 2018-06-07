@@ -1,33 +1,12 @@
-import React, { Component } from "react";
 import PropTypes from "prop-types";
+import React, { Component } from "react";
 import styled from "styled-components";
-import { Title } from "../atoms/Typography";
 import { colors } from "../../styles/defaults";
-
-const TabWrapper = styled.a`
-  display: inline-block;
-  flex: 1;
-`;
-
-const TabTitle = Title.withComponent("a").extend`
-cursor: pointer;
-color: ${props => (props.isActive ? colors.black : colors.darkGrey)};
-
-font-weight: 700;
-padding: 8px;
-display: inline-block;
-margin-bottom: 1rem;
-width: 100%
-text-align: center;
-`;
+import Tab from "./Tab";
 
 const TabsWrapper = styled.div`
   display: flex;
   position: relative;
-`;
-
-const TabContent = styled.div`
-  padding: 1.5rem;
 `;
 
 const TabMarker = styled.div`
@@ -47,6 +26,7 @@ class Tabs extends Component {
   };
 
   handleTabClicked = index => {
+    this.props.onTabClicked(index);
     this.setState({ activeIndex: index });
   };
 
@@ -55,12 +35,13 @@ class Tabs extends Component {
     const { activeIndex } = this.state;
 
     return (
-      <TabsWrapper>
+      <TabsWrapper {...this.props}>
         {children.map((tab, index) => {
           return (
             <Tab
               onClick={() => this.handleTabClicked(index)}
               isActive={activeIndex === index}
+              contentWidth={children.length * 100}
               {...tab.props}
             />
           );
@@ -71,18 +52,12 @@ class Tabs extends Component {
   }
 }
 
-Tabs.propTypes = {};
-
-export default Tabs;
-
-export const Tab = ({ children, title, isActive, ...props }) => {
-  return (
-    <TabWrapper {...props}>
-      <TabTitle isActive={isActive}>{title}</TabTitle>
-
-      <TabContent>{isActive && children}</TabContent>
-    </TabWrapper>
-  );
+Tabs.propTypes = {
+  onTabClicked: PropTypes.func.isRequired
 };
 
-Tab.propTypes = {};
+Tabs.defaultProps = {
+  onTabClicked: index => alert(index)
+};
+
+export default Tabs;

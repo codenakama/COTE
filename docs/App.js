@@ -1,14 +1,16 @@
-import React from "react";
 import {
   Button,
-  Navigation,
-  initGlobalStyles,
-  Heading2,
-  Title,
   Dropdown,
+  Heading2,
+  Navigation,
   StyledInput,
-  TextInput
+  Tab,
+  Tabs,
+  TextInput,
+  Title,
+  initGlobalStyles
 } from "cote";
+import React from "react";
 
 initGlobalStyles();
 
@@ -35,6 +37,18 @@ const App = () => {
         value={fruit}
       />
       <TextInput onChange={e => (fruit = "banana")} value={() => fruit} />
+
+      <Tabs>
+        <Tab title="Tab One" active="true">
+          <div>Tab One Content</div>
+        </Tab>
+        <Tab title="Tab Two">
+          <div>Tab Two Content</div>
+        </Tab>
+        <Tab title="Tab Three">
+          <div>Tab Two Content</div>
+        </Tab>
+      </Tabs>
     </div>
   );
 };
