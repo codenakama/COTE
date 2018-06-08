@@ -1,15 +1,15 @@
-import PropTypes from "prop-types";
-import React, { Component } from "react";
-import styled from "styled-components";
-import { colors as defaultColors } from "../../styles/defaults";
-import OutsideAlerter from "../OutsideAlerter/OutsideAlerter";
-import Badge from "../atoms/Badge/Badge";
-import Icon from "../atoms/Icon/Icon";
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { colors as defaultColors } from '../../styles/defaults';
+import OutsideAlerter from '../OutsideAlerter/OutsideAlerter';
+import Badge from '../atoms/Badge/Badge';
+import Icon from '../atoms/Icon/Icon';
 
 const ArrowIcon = styled(Icon)`
   z-index: 2;
   color: ${props => {
-    if (props.reverse) return "#fff";
+    if (props.reverse) return '#fff';
     return props.theme ? props.theme.colorPrimary : defaultColors.primary;
   }};
   cursor: pointer;
@@ -47,7 +47,7 @@ const BadgeWrapper = styled.div`
 
 const MenuWrapper = styled.div`
   right: ${props => (props.right ? 0 : null)};
-  display: ${props => (props.isOpen ? "block" : "none")};
+  display: ${props => (props.isOpen ? 'block' : 'none')};
   margin-top: 5px;
   position: absolute;
   background-color: white;
@@ -58,8 +58,13 @@ const MenuWrapper = styled.div`
 `;
 
 const MenuBox = styled.div`
-  padding: 16px 16px ${props => (props.last ? "16px" : "0")} 16px;
+  padding: 16px 16px ${props => (props.last ? '16px' : '0')} 16px;
   display: block;
+  cursor: ${props => (props.hover ? 'pointer' : 'auto')};
+  &:hover {
+    background: ${props => (props.hover ? props.theme.colorPrimary : 'white')};
+    color: ${props => (props.hover ? 'white' : 'inherit')};
+  }
 `;
 
 const MenuEntry = styled.p`
@@ -70,7 +75,7 @@ const MenuEntry = styled.p`
 `;
 
 const Link = styled.a`
-  color: ${props => (props.reverse ? "#fff" : props.theme.colorPrimary)};
+  color: ${props => (props.reverse ? '#fff' : props.theme.colorPrimary)};
 `;
 
 const Separator = styled.hr`
@@ -114,10 +119,10 @@ class MenuDropdown extends Component {
           <DropdownButton onClick={this.handleClick}>
             <BadgeWrapper>
               <Badge
-                content={initial || ""}
+                content={initial || ''}
                 size={badgeSize}
-                background={reverse ? "#fff" : "#27b161"}
-                color={reverse ? "#27b161" : "#fff"}
+                background={reverse ? '#fff' : '#27b161'}
+                color={reverse ? '#27b161' : '#fff'}
               />
             </BadgeWrapper>
             {!small && <FirstName>{firstName}</FirstName>}
@@ -148,7 +153,7 @@ class MenuDropdown extends Component {
               </MenuEntry>
             </MenuBox>
             <Separator />
-            <MenuBox last="true">
+            <MenuBox last="true" hover>
               <MenuEntry onClick={logOutClick}>Log Out</MenuEntry>
             </MenuBox>
           </MenuWrapper>
@@ -169,13 +174,13 @@ MenuDropdown.propTypes = {
 };
 
 MenuDropdown.defaultProps = {
-  detailUrl: "http://google.com",
+  detailUrl: 'http://google.com',
   logOutClick: () => {
-    console.log("Logout!");
+    console.log('Logout!');
   },
   small: false,
-  firstName: "",
-  lastName: ""
+  firstName: '',
+  lastName: ''
 };
 
 export default MenuDropdown;
