@@ -1,10 +1,8 @@
-import { configure, addDecorator } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
-import { withKnobs, text, boolean, number } from "@storybook/addon-knobs/react";
 import { setDefaults, withInfo } from "@storybook/addon-info";
-import globalStyles from "./styles/globalStyles";
-import { ThemeProvider } from "styled-components";
+import { addDecorator, configure } from "@storybook/react";
 import React from "react";
+import { ThemeProvider } from "styled-components";
+import globalStyles from "./styles/globalStyles";
 
 globalStyles();
 
@@ -20,7 +18,8 @@ const theme = {
   colorLightBlack: "rgba(6, 31, 51, 0.7)",
   colorBlack: "rgba(6, 31, 51, 1)",
   colorPrimaryEmphasis: "#148443",
-  colorDanger: "#FF7183"
+  colorDanger: "#FF7183",
+  colorLightGrey: "#f3f3f3"
 };
 
 // addon-info
