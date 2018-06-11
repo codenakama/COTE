@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { colors } from "../../styles/defaults";
 import { Title } from "../atoms/Typography";
 
-const TabWrapper = styled.a`
+const TabWrapper = styled.div`
   display: inline-block;
   flex: 1;
 `;
@@ -21,12 +21,6 @@ width: 100%;
 text-align: center;
 `;
 
-const TabContent = styled.div`
-  width: 100%;
-  position: absolute;
-  left: 0;
-`;
-
 const Tab = ({
   children,
   title,
@@ -38,10 +32,6 @@ const Tab = ({
   return (
     <TabWrapper {...props}>
       <TabTitle isActive={isActive}>{title}</TabTitle>
-
-      <TabContent contentWidth={contentWidth}>
-        {isActive && children}
-      </TabContent>
     </TabWrapper>
   );
 };
