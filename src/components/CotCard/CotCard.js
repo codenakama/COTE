@@ -125,7 +125,7 @@ const CotCard = ({ cardHolderName, id, ...props }) => {
             line-spacing={32}
             fill="#FFF"
           >
-            <tspan x={32} y={164}>
+            <tspan x={32} y={180}>
               {cardHolderName}
             </tspan>
           </text>
