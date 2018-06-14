@@ -8,8 +8,14 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-storiesOf("ToggleButton", module).add("Normal", () => (
-  <Container>
-    <ToggleButton />
-  </Container>
-));
+storiesOf("ToggleButton", module)
+  .add("Normal", () => (
+    <Container>
+      <ToggleButton />
+    </Container>
+  ))
+  .add("Controlled", () => (
+    <Container>
+      <ToggleButton isActive={true} />
+    </Container>
+  ));

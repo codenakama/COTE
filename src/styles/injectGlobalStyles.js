@@ -1,4 +1,4 @@
-import { injectGlobal } from 'styled-components';
+import { injectGlobal } from "styled-components";
 
 export default () => injectGlobal`
 
@@ -24,6 +24,11 @@ time, mark, audio, video, input {
   box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
+
+html{
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
