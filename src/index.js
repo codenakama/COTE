@@ -6,6 +6,7 @@ export {
   Heading2,
   Heading3,
   Label,
+  Small,
   Subtitle,
   Title
 } from "./components/atoms/Typography";
