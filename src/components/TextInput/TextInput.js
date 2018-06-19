@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import MaskedInput from "react-text-mask";
-import { withTooltip } from "react-tippy";
+import { Tooltip } from "react-tippy";
 import "react-tippy/dist/tippy.css";
 import styled from "styled-components";
 import { colors as defaultColors } from "../../styles/defaults";
@@ -74,16 +74,6 @@ const TextInput = ({
   tooltip,
   ...props
 }) => {
-  const IconWithToolTip = withTooltip(TooltipIcon, {
-    arrow: true,
-    inertia: true,
-    tabIndex: 3,
-    theme: "light",
-    html: (
-      <TooltipContent title={tooltip.title} description={tooltip.description} />
-    )
-  });
-
   return (
     <InputWrapper full={full}>
       <div
@@ -96,7 +86,21 @@ const TextInput = ({
         {labelText && (
           <Label required={required} text={labelText} htmlFor={name} />
         )}
-        {tooltip && <IconWithToolTip name="info" />}
+        {tooltip && (
+          <Tooltip
+            arrow
+            inertia
+            theme="light"
+            html={
+              <TooltipContent
+                title={tooltip.title}
+                description={tooltip.description}
+              />
+            }
+          >
+            <TooltipIcon name="info" />
+          </Tooltip>
+        )}
       </div>
       <Input
         className={className}
