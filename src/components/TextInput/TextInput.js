@@ -1,11 +1,13 @@
-import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import React from "react";
 import MaskedInput from "react-text-mask";
-import { Caption, Label } from "../atoms/Typography";
+import { withTooltip } from "react-tippy";
+import "react-tippy/dist/tippy.css";
+import styled from "styled-components";
 import { colors as defaultColors } from "../../styles/defaults";
-import Tooltip from "../Tooltip/Tooltip";
 import Icon from "../atoms/Icon/Icon";
+import { Caption, Label } from "../atoms/Typography";
+import TooltipContent from "../TooltipContent";
 
 export const StyledInput = styled.input`
   &::placeholder {
@@ -53,29 +55,8 @@ const InputWrapper = styled.div`
   width: ${props => (props.full ? "100%" : null)};
 `;
 
-const StyledToolTip = styled(Tooltip)`
-  width: auto;
-  z-index: 999;
-  position: absolute;
-  display: none;
-  right: -14px;
-  bottom: 3em;
-`;
-
-const ToolTipWrapper = styled.a`
-  position: relative;
-  display: inline-block;
-  border: none;
-  background: transparent;
-  z-index: 100;
-  :hover,
-  :active,
-  :focus {
-    cursor: pointer;
-    > ${StyledToolTip} {
-      display: block;
-    }
-  }
+const TooltipIcon = styled(Icon)`
+  cursor: pointer;
 `;
 
 const TextInput = ({
@@ -93,6 +74,16 @@ const TextInput = ({
   tooltip,
   ...props
 }) => {
+  const IconWithToolTip = withTooltip(TooltipIcon, {
+    arrow: true,
+    inertia: true,
+    tabIndex: 3,
+    theme: "light",
+    html: (
+      <TooltipContent title={tooltip.title} description={tooltip.description} />
+    )
+  });
+
   return (
     <InputWrapper full={full}>
       <div
@@ -105,15 +96,7 @@ const TextInput = ({
         {labelText && (
           <Label required={required} text={labelText} htmlFor={name} />
         )}
-        {tooltip && (
-          <ToolTipWrapper tabIndex="0" onClick={e => e.preventDefault()}>
-            <StyledToolTip
-              title={tooltip.title}
-              description={tooltip.description}
-            />
-            <Icon name="info" />
-          </ToolTipWrapper>
-        )}
+        {tooltip && <IconWithToolTip name="info" />}
       </div>
       <Input
         className={className}

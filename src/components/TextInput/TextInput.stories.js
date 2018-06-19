@@ -81,7 +81,7 @@ storiesOf("Text Input", module)
     <TextInput placeholder="e.g. Text up to 8 characters" full />
   ))
   .add("With Tooltip", () => (
-    <div style={{ position: "250px" }}>
+    <div style={{ width: "400px" }}>
       <TextInput
         placeholder="Type something"
         labelText="Hellooooooo"
