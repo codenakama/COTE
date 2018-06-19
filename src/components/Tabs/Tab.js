@@ -16,7 +16,7 @@ color: ${props => (props.isActive ? colors.black : colors.darkGrey)};
 font-weight: 700;
 padding: 8px;
 display: inline-block;
-margin-bottom: 1rem;
+/* margin-bottom: 1rem; */
 width: 100%;
 text-align: center;
 `;

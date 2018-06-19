@@ -1,9 +1,9 @@
 import { storiesOf } from "@storybook/react";
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Caption } from "../atoms/Typography";
 import TextInput from "../TextInput/TextInput";
 import WidgetBox from "../WidgetBox/WidgetBox";
-import { Caption } from "../atoms/Typography";
 import Tab from "./Tab";
 import Tabs from "./Tabs";
 
@@ -39,8 +39,8 @@ class MyComponent extends Component {
     return (
       <WidgetBox>
         <Tabs onTabClicked={this.handleTabClicked}>
-          <Tab title="Tab One" active />
-          <Tabs title="Tab Two" />
+          <Tab title="Redeem cash" active />
+          <Tab title="Redeem balance" />
         </Tabs>
         {this.state.selectedTab === 0 && (
           <TabPanel>
