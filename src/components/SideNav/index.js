@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import styled from "styled-components";
 import { colors } from "../../styles/defaults";
+import Icon from "../atoms/Icon/Icon";
 import OutsideAlerter from "../OutsideAlerter/OutsideAlerter";
 import { PaperWrapper } from "../Paper/Paper";
-import Icon from "../atoms/Icon/Icon";
 
 const Content = styled.div`
   display: flex;
@@ -17,14 +17,13 @@ const List = styled.ul`
   width: 100%;
 `;
 
+const activeClassName = "selected";
+
 const ListItem = styled.li`
   display: flex;
   align-items: center;
-  color: ${props => (props.selected ? colors.primary : colors.darkGrey)};
+  color: ${colors.darkGrey};
   padding: 1rem;
-  background-color: ${props => (props.selected ? colors.lightGrey : null)};
-  border-left: ${props =>
-    props.selected ? `4px solid ${colors.primary}` : null};
 
   a {
     text-decoration: none;
@@ -32,6 +31,12 @@ const ListItem = styled.li`
   }
   i {
     color: inherit;
+  }
+
+  &.${activeClassName} {
+    border-left: ${`4px solid ${colors.primary}`};
+    background-color: ${colors.lightGrey};
+    color: ${colors.primary};
   }
 `;
 
@@ -141,7 +146,10 @@ class SideNav extends Component {
               <Logo src={logoUrl} />
               <List>
                 {navItems.map((item, i) => (
-                  <ListItem key={`snav-${i}`} selected={item.isSelected}>
+                  <ListItem
+                    key={`snav-${i}`}
+                    className={item.isSelected ? activeClassName : null}
+                  >
                     <Link href={item.pathname}>
                       {item.icon && <Icon name={item.icon} />}
                       {!iconsOnly && <span>{item.title}</span>}
