@@ -12,7 +12,7 @@ const TabsWrapper = styled.div`
 const TabMarker = styled.div`
   height: 2px;
   width: ${props => props.width}%;
-  position: absolute;
+  /* position: absolute; */
   z-index: 2;
   background: ${colors.primary};
   transition: all 250ms ease;
@@ -35,19 +35,21 @@ class Tabs extends Component {
     const { activeIndex } = this.state;
 
     return (
-      <TabsWrapper {...this.props}>
-        {children.map((tab, index) => {
-          return (
-            <Tab
-              onClick={() => this.handleTabClicked(index)}
-              isActive={activeIndex === index}
-              contentWidth={children.length * 100}
-              {...tab.props}
-            />
-          );
-        })}
+      <div>
+        <TabsWrapper {...this.props}>
+          {children.map((tab, index) => {
+            return (
+              <Tab
+                onClick={() => this.handleTabClicked(index)}
+                isActive={activeIndex === index}
+                contentWidth={children.length * 100}
+                {...tab.props}
+              />
+            );
+          })}
+        </TabsWrapper>
         <TabMarker width={100 / children.length} position={activeIndex * 100} />
-      </TabsWrapper>
+      </div>
     );
   }
 }
@@ -57,7 +59,8 @@ Tabs.propTypes = {
 };
 
 Tabs.defaultProps = {
-  onTabClicked: index => alert(index)
+  onTabClicked: index => alert(index),
+  children: []
 };
 
 export default Tabs;
