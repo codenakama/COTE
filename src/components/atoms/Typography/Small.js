@@ -1,19 +1,17 @@
 import styled from "styled-components";
-import {
-  colors as defaultColors,
-  fontWeights,
-  colors
-} from "../../../styles/defaults";
+import { colors, fontWeights } from "../../../styles/defaults";
 
-export const Small = styled.span`
+const Small = styled.span`
   display: inline-block;
   font-size: 10px;
-  font-weight: ${fontWeights.light};
+  font-weight: ${fontWeights.normal};
   color: ${props => {
     if (props.reverse) return "#fff";
 
-    if (props.theme) return props.theme.colorBlack;
+    if (props.theme) return props.theme.colorLightBlack;
 
-    return colors.black;
+    return colors.lightBlack;
   }};
 `;
+
+export default Small;
