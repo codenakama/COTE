@@ -17,26 +17,20 @@ const List = styled.ul`
   width: 100%;
 `;
 
-const activeClassName = "selected";
-
 const ListItem = styled.li`
   display: flex;
   align-items: center;
-  color: ${colors.darkGrey};
+  color: ${props => (props.selected ? colors.primary : colors.darkGrey)};
   padding: 1rem;
-
+  background-color: ${props => (props.selected ? colors.lightGrey : null)};
+  border-left: ${props =>
+    props.selected ? `4px solid ${colors.primary}` : null};
   a {
     text-decoration: none;
     color: inherit;
   }
   i {
     color: inherit;
-  }
-
-  &.${activeClassName} {
-    border-left: ${`4px solid ${colors.primary}`};
-    background-color: ${colors.lightGrey};
-    color: ${colors.primary};
   }
 `;
 
@@ -50,7 +44,6 @@ const Link = styled.a`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   > span ~ i {
     padding-right: 1rem;
   }
@@ -71,7 +64,6 @@ const Nav = PaperWrapper.withComponent("nav").extend`
     if (props.isOpen) {
       return `transform: translateX(0)`;
     }
-
     return `transform: translateX(-1000%)`;
   }};
 `;
@@ -146,10 +138,7 @@ class SideNav extends Component {
               <Logo src={logoUrl} />
               <List>
                 {navItems.map((item, i) => (
-                  <ListItem
-                    key={`snav-${i}`}
-                    className={item.isSelected ? activeClassName : null}
-                  >
+                  <ListItem key={`snav-${i}`} selected={item.isSelected}>
                     <Link href={item.pathname}>
                       {item.icon && <Icon name={item.icon} />}
                       {!iconsOnly && <span>{item.title}</span>}
