@@ -43,7 +43,7 @@ export {
 } from "./components/TextInput/TextInput";
 export { default as Toast } from "./components/Toast/Toast";
 export { default as ToggleButton } from "./components/ToggleButton";
-export { default as Tooltip } from "./components/Tooltip/Tooltip";
+export { default as TooltipContent } from "./components/TooltipContent";
 export { default as Uploader } from "./components/Uploader/Uploader";
 export { default as UspList } from "./components/UspList/index";
 export { default as Widget } from "./components/Widget/Widget";
