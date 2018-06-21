@@ -2,13 +2,13 @@ import {
   Button,
   Dropdown,
   Heading2,
+  initGlobalStyles,
   Navigation,
   StyledInput,
   Tab,
   Tabs,
   TextInput,
-  Title,
-  initGlobalStyles
+  Title
 } from "cote";
 import React from "react";
 
@@ -37,6 +37,17 @@ const App = () => {
         value={fruit}
       />
       <TextInput onChange={e => (fruit = "banana")} value={() => fruit} />
+
+      <TextInput
+        placeholder="Type something"
+        labelText="Hellooooooo"
+        full
+        tooltip={{
+          title: "Why we need to know your Personal Income?",
+          description:
+            "Your Personal Income can help us to blabla information information information information information information information information"
+        }}
+      />
 
       <Tabs>
         <Tab title="Tab One" active="true">
