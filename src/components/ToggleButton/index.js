@@ -63,18 +63,14 @@ class ToggleButton extends PureComponent {
   };
 
   render() {
+    const isActive =
+      typeof this.props.isActive !== "undefined"
+        ? this.props.isActive
+        : this.state.isActive;
+
     return (
-      <Wrapper
-        isActive={
-          this.props.isActive ? this.props.isActive : this.state.isActive
-        }
-        onClick={this.handleButtonClicked}
-      >
-        <Circle
-          isActive={
-            this.props.isActive ? this.props.isActive : this.state.isActive
-          }
-        />
+      <Wrapper isActive={isActive} onClick={this.handleButtonClicked}>
+        <Circle isActive={isActive} />
         <HiddenInput type="checkbox" />
       </Wrapper>
     );
@@ -82,7 +78,8 @@ class ToggleButton extends PureComponent {
 }
 
 ToggleButton.propTypes = {
-  onButtonClicked: PropTypes.func
+  onButtonClicked: PropTypes.func,
+  isActive: PropTypes.any
 };
 
 ToggleButton.defaultProps = {
