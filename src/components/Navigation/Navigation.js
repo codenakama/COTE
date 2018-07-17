@@ -17,7 +17,7 @@ const NavButton = StyledLinkButton.extend`
 
 const Logo = styled.img`
   @media screen and (max-width: 640px) {
-    height: ${props => (props.height ? props.height : "100%")};
+    height: 80%;
   }
 `;
 
@@ -40,7 +40,9 @@ const Nav = styled.nav`
     height: 56px;
   }
 `;
-const NavLeft = styled.div``;
+const NavLeft = styled.div`
+  height: 100%;
+`;
 
 const NavRight = styled.div`
   button,
