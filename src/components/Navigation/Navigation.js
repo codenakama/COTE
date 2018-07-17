@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { StyledLinkButton } from '../atoms/Button/Button';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { StyledLinkButton } from "../atoms/Button/Button";
 
 const Wrapper = styled.div`
   background: #fff;
@@ -17,7 +17,7 @@ const NavButton = StyledLinkButton.extend`
 
 const Logo = styled.img`
   @media screen and (max-width: 640px) {
-    width: 140px;
+    height: ${props => (props.height ? props.height : "100%")};
   }
 `;
 
@@ -27,7 +27,7 @@ const Nav = styled.nav`
   align-items: center;
   height: 72px;
   background-color: #fff;
-  max-width: ${props => (props.maxWidth ? props.maxWidth : '928px')};
+  max-width: ${props => (props.maxWidth ? props.maxWidth : "928px")};
   margin: 0 auto;
   @media only screen and (max-width: 960px) {
     margin: 0 40px;
@@ -90,15 +90,15 @@ Navigation.propTypes = {
 };
 
 Navigation.defaultProps = {
-  logo: 'http://via.placeholder.com/222x40',
+  logo: "http://via.placeholder.com/222x40",
   items: [
     {
-      url: 'http://google.com',
-      title: 'Nav item 1'
+      url: "http://google.com",
+      title: "Nav item 1"
     },
     {
-      url: 'http://google.com',
-      title: 'Nav item 2'
+      url: "http://google.com",
+      title: "Nav item 2"
     }
   ]
 };
