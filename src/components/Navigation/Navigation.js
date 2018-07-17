@@ -41,7 +41,9 @@ const Nav = styled.nav`
   }
 `;
 const NavLeft = styled.div`
-  height: 100%;
+  @media screen and (max-width: 640px) {
+    height: 100%;
+  }
 `;
 
 const NavRight = styled.div`
