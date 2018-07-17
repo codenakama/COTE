@@ -16,9 +16,8 @@ const NavButton = StyledLinkButton.extend`
 `;
 
 const Logo = styled.img`
-  @media screen and (max-width: 640px) {
-    height: 80%;
-  }
+  height: ${props => (props.logoHeight ? props.logoHeight : "80%")};
+  max-height: 55px;
 `;
 
 const Nav = styled.nav`
@@ -41,7 +40,9 @@ const Nav = styled.nav`
   }
 `;
 const NavLeft = styled.div`
-  height: 100%;
+  @media screen and (max-width: 640px) {
+    height: 100%;
+  }
 `;
 
 const NavRight = styled.div`
@@ -61,12 +62,12 @@ const Container = styled.div`
   background-color: #fff;
 `;
 
-const Navigation = ({ logo, items, ...props }) => {
+const Navigation = ({ logo, items, logoHeight, maxWidth }) => {
   return (
     <Container>
-      <Nav {...props}>
+      <Nav maxWidth={maxWidth}>
         <NavLeft>
-          <Logo src={logo} alt="logo" />
+          <Logo src={logo} alt="logo" logoHeight={logoHeight} />
         </NavLeft>
         <NavRight>
           {items.map((item, i) => {
