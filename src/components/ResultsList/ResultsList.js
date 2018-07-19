@@ -20,7 +20,8 @@ const Wrapper = styled(Paper)`
 const ResultWrapper = styled.div`
   cursor: pointer;
   &:hover {
-    background-color: rgba(39, 177, 97, 0.6);
+    background-color: ${props =>
+      props.theme ? props.theme.colorPrimary : "rgba(39, 177, 97, 0.6)"};
   }
 `;
 
@@ -34,12 +35,18 @@ const Result = styled.span`
   }
 `;
 
-const ResultsList = ({ results, handleResultSelected, lastItem, ...props }) => {
+const ResultsList = ({
+  results,
+  handleResultSelected,
+  lastItem,
+  theme,
+  ...props
+}) => {
   return (
     <Wrapper {...props}>
       {results.map((result, i) => {
         return (
-          <ResultWrapper key={`r-${i}`}>
+          <ResultWrapper key={`r-${i}`} theme={theme}>
             <Result onClick={() => handleResultSelected(result)}>
               {result.title}
             </Result>
@@ -47,7 +54,7 @@ const ResultsList = ({ results, handleResultSelected, lastItem, ...props }) => {
         );
       })}
       {lastItem && (
-        <ResultWrapper key={`r-${lastItem.value}`}>
+        <ResultWrapper key={`r-${lastItem.value}`} theme={theme}>
           <Result onClick={() => handleResultSelected(lastItem)}>
             {lastItem.title}
           </Result>

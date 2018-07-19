@@ -88,7 +88,16 @@ class Dropdown extends Component {
 
   render() {
     const { isOpen, selectedOption } = this.state;
-    const { options, title, error, full, label, lastOption, id } = this.props;
+    const {
+      options,
+      title,
+      error,
+      full,
+      label,
+      lastOption,
+      id,
+      theme
+    } = this.props;
     return (
       <OutsideAlerter
         handleClickOutsideElement={this.handleClickOutsideDropdown}
@@ -116,6 +125,7 @@ class Dropdown extends Component {
                 handleResultSelected={this.handleOptionChange}
                 results={options}
                 lastItem={lastOption}
+                theme={theme}
               />
               <ArrowIcon name="keyboard_arrow_up" onClick={this.handleClick} />
             </div>
