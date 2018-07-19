@@ -34,34 +34,6 @@ const Wrapper = styled.div`
   padding: 9px 16px;
   cursor: pointer;
 `;
-
-const OptionsWrapper = styled(Paper)`
-  position: absolute;
-  top: 40px;
-  width: 102%;
-  left: -2px;
-  padding: 0;
-  min-height auto;
-  z-index: 10;
-`;
-
-const OptionWrapper = styled.div`
-  cursor: pointer;
-  &:hover {
-    background-color: ${defaultColors.primary};
-  }
-`;
-
-const Option = styled.span`
-  padding: 1em;
-  font-weight: bold;
-  display: inline-block;
-  width: 100%;
-  &:hover {
-    color: #fff;
-  }
-`;
-
 class Dropdown extends Component {
   constructor(props) {
     super(props);
@@ -88,16 +60,7 @@ class Dropdown extends Component {
 
   render() {
     const { isOpen, selectedOption } = this.state;
-    const {
-      options,
-      title,
-      error,
-      full,
-      label,
-      lastOption,
-      id,
-      theme
-    } = this.props;
+    const { options, title, error, full, label, lastOption, id } = this.props;
     return (
       <OutsideAlerter
         handleClickOutsideElement={this.handleClickOutsideDropdown}
@@ -125,7 +88,6 @@ class Dropdown extends Component {
                 handleResultSelected={this.handleOptionChange}
                 results={options}
                 lastItem={lastOption}
-                theme={theme}
               />
               <ArrowIcon name="keyboard_arrow_up" onClick={this.handleClick} />
             </div>

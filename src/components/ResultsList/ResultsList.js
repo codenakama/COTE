@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Paper from "../Paper/Paper";
-import { colors as defaultColors } from "../../styles/defaults";
 
 const Wrapper = styled(Paper)`
   position: absolute;
@@ -35,18 +34,12 @@ const Result = styled.span`
   }
 `;
 
-const ResultsList = ({
-  results,
-  handleResultSelected,
-  lastItem,
-  theme,
-  ...props
-}) => {
+const ResultsList = ({ results, handleResultSelected, lastItem, ...props }) => {
   return (
     <Wrapper {...props}>
       {results.map((result, i) => {
         return (
-          <ResultWrapper key={`r-${i}`} theme={theme}>
+          <ResultWrapper key={`r-${i}`}>
             <Result onClick={() => handleResultSelected(result)}>
               {result.title}
             </Result>
@@ -54,7 +47,7 @@ const ResultsList = ({
         );
       })}
       {lastItem && (
-        <ResultWrapper key={`r-${lastItem.value}`} theme={theme}>
+        <ResultWrapper key={`r-${lastItem.value}`}>
           <Result onClick={() => handleResultSelected(lastItem)}>
             {lastItem.title}
           </Result>
