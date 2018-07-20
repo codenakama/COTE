@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Paper from "../Paper/Paper";
-import { colors as defaultColors } from "../../styles/defaults";
 
 const Wrapper = styled(Paper)`
   position: absolute;
@@ -20,7 +19,8 @@ const Wrapper = styled(Paper)`
 const ResultWrapper = styled.div`
   cursor: pointer;
   &:hover {
-    background-color: rgba(39, 177, 97, 0.6);
+    background-color: ${props =>
+      props.theme ? props.theme.colorPrimary : "rgba(39, 177, 97, 0.6)"};
   }
 `;
 
