@@ -15,11 +15,10 @@ export const StyledButton = styled.button`
   white-space: nowrap;
   background-color: ${props => {
     if (props.disabled) return colors.darkGrey;
-    if (props.danger && props.theme) return props.theme.colorDanger;
 
-    if (props.danger) return colors.danger;
+    if (props.danger && props.solid) return props.theme.colorDanger;
 
-    if (props.theme && props.solid) return props.theme.colorPrimary;
+    if (props.solid && props.primary) return props.theme.colorPrimary;
 
     return "transparent";
   }};
@@ -28,10 +27,14 @@ export const StyledButton = styled.button`
     if (props.solid || props.disabled) return "#fff";
 
     if (props.primary) {
-      return props.theme ? props.theme.colorPrimary : colors.primary;
+      return props.theme.colorPrimary;
     }
 
-    return props.theme ? props.theme.colorBlack : colors.black;
+    if (props.danger) {
+      return props.theme.colorDanger;
+    }
+
+    return props.theme.colorBlack;
   }};
 
   @media only screen and (min-width: 640px) {
@@ -91,13 +94,7 @@ export const StyledButton = styled.button`
       return "none";
     }
 
-    if (props.primary) {
-      return `1px solid ${
-        props.theme ? props.theme.colorPrimary : colors.primary
-      }`;
-    }
-
-    return `1px solid ${colors.black}`;
+    return "1px solid currentColor";
   }};
 
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
