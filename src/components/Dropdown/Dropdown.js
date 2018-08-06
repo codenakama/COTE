@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 
     return `1px solid ${defaultColors.black}`;
   }};
-  border-radius: 4px;
+  border-radius: ${props => (props.corners ? "0" : "4px")}; 
   padding: 9px 16px;
   cursor: pointer;
 `;
@@ -77,8 +77,8 @@ class Dropdown extends Component {
           {selectedOption ? (
             <span>{selectedOption.title}</span>
           ) : (
-            <span>{title}</span>
-          )}
+              <span>{title}</span>
+            )}
           {!isOpen && (
             <ArrowIcon name="keyboard_arrow_down" onClick={this.handleClick} />
           )}
