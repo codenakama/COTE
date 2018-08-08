@@ -22,10 +22,14 @@ const Wrapper = styled.div`
   border: ${props => {
         return `1px solid ${defaultColors.black}`;
     }};
-  border-radius: ${props => (props.corners ? "0" : "4px")}; 
   padding: 9px 16px;
   cursor: pointer;
+  height: ${props => (!props.isOpen ? '48px' : '100%')};
 `;
+
+const TopWrapper = styled.div`
+    border-radius: ${props => (props.corners ? "0" : "4px")}; 
+`
 
 const DetailCardWrapper = styled.div`
     position: absolute;
@@ -71,17 +75,21 @@ class DropdownCard extends Component {
                 full={full}
                 id={id}
                 {...this.props}
+                isOpen={this.state.isOpen}
             >
-                <span>{title}</span>
-                {isOpen ? (
-                    <ArrowIcon name="keyboard_arrow_up" onClick={this.handleClick} />
-                ) : (<ArrowIcon name="keyboard_arrow_down" onClick={this.handleClick} />)}
+                <TopWrapper>
+                    <span>{title}</span>
+                    {isOpen ? (
+                        <ArrowIcon name="keyboard_arrow_up" onClick={this.handleClick} />
+                    ) : (<ArrowIcon name="keyboard_arrow_down" onClick={this.handleClick} />)}
+                </TopWrapper>
                 {isOpen ? (
                     <DetailCardWrapper>
                         <DetailsCard links={links} allDetails={details} />
                     </DetailCardWrapper>
                 ) : null}
             </Wrapper>
+
         )
     }
 }

@@ -5,7 +5,6 @@ import { colors as defaultColors } from '../../styles/defaults';
 
 const Wrapper = styled.div`
   border-radius: 4px;
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14);
   background-color: #ffffff;
 `;
 
