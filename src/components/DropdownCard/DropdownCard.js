@@ -9,7 +9,7 @@ const ArrowIcon = styled(Icon)`
   position: absolute;
   z-index: 1;
   right: 8px;
-  top: 50%;
+  top: 24px;
   transform: translateY(-50%);
   color: ${defaultColors.black};
   cursor: pointer;
@@ -17,29 +17,26 @@ const ArrowIcon = styled(Icon)`
 
 const Wrapper = styled.div`
   position: relative;
-  min-width: 66px;
   width: ${props => (props.full ? "100%" : "232px")};
-  border: ${props => {
-        return `1px solid ${defaultColors.black}`;
-    }};
-  padding: 9px 16px;
   cursor: pointer;
   height: ${props => (!props.isOpen ? '48px' : '100%')};
 `;
 
 const TopWrapper = styled.div`
-    border-radius: ${props => (props.corners ? "0" : "4px")}; 
+    border: ${props => (props.border ? `1px solid ${defaultColors.black}` : '0')};
+    border-bottom: ${props => (props.underline ? `1px solid #eeeeee` : (props.border ? '1px solid ${defaultColors.black}' : '0'))};
+    border-radius: ${props => (props.corners ? "0" : "4px")};
+    padding: 9px 16px; 
+    height: 48px;
 `
 
 const DetailCardWrapper = styled.div`
     position: absolute;
     top: 48px;
     min-height: auto;
-    max-height: 17em;
     width: 100%;
     left: 0;
     padding: 0;
-    z-index: 999;
 `
 
 class DropdownCard extends Component {
@@ -67,7 +64,7 @@ class DropdownCard extends Component {
 
     render() {
         const { isOpen, selectedOption } = this.state;
-        const { title, full, links, details, id } = this.props;
+        const { title, full, links, details, id, corners, border, underline } = this.props;
         return (
             <Wrapper
                 onClick={this.handleClick}
@@ -77,15 +74,15 @@ class DropdownCard extends Component {
                 {...this.props}
                 isOpen={this.state.isOpen}
             >
-                <TopWrapper>
+                <TopWrapper corners={corners} border={border} underline={underline}>
                     <span>{title}</span>
                     {isOpen ? (
-                        <ArrowIcon name="keyboard_arrow_up" onClick={this.handleClick} />
+                        <ArrowIcon name="keyboard_arrow_up" onClick={this.handleClick} isOpen={this.state.isOpen} />
                     ) : (<ArrowIcon name="keyboard_arrow_down" onClick={this.handleClick} />)}
                 </TopWrapper>
                 {isOpen ? (
                     <DetailCardWrapper>
-                        <DetailsCard links={links} allDetails={details} />
+                        <DetailsCard links={links} allDetails={details} underline={underline} />
                     </DetailCardWrapper>
                 ) : null}
             </Wrapper>

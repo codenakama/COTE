@@ -23,16 +23,12 @@ const TopWrapper = styled.div`
   padding: 1em;
   justify-content: space-between;
   text-align: center;
+  border-bottom: 1px solid #eeeeee
 `;
 
 const DetailCardWrapper = styled.div`
-  border-top: 1px solid #eeeeee;
-  height: 326px;
+  height: 350px;;
   overflow: auto;
-
-  & > div:last-child {
-    margin-bottom: 0;
-  }
 `
 
 class CardSlider extends Component {
@@ -57,7 +53,7 @@ class CardSlider extends Component {
                     <AddIcon name="add" onClick={this.handleClick} />
                 </TopWrapper>
                 <DetailCardWrapper>
-                    {details.map((detail) => <DropdownCard title={detail.title} links={detail.links} details={detail.allDetails} />)}
+                    {details.map((detail) => <DropdownCard title={detail.title} links={detail.links} details={detail.allDetails} underline={true} />)}
                 </DetailCardWrapper>
             </Wrapper>
         );

@@ -4,13 +4,9 @@ import styled from 'styled-components';
 import { colors as defaultColors } from '../../styles/defaults';
 
 const Wrapper = styled.div`
-  border-radius: 4px;
-  background-color: #ffffff;
-`;
-
-const TitleWrapper = styled.div`
-  padding: 8px 16px;
-  border-bottom: 1px solid #f3f3f3;
+  border-bottom: ${props => (props.underline ? `1px solid #eeeeee` : '0')};
+  padding: 16px 0px;
+  background-color: ${props => props.bgColor ? props.theme.colorPrimary : '#ffffff'};
 `;
 
 const Box = styled.div`
@@ -30,9 +26,9 @@ const StyledLink = styled.a`
   text-decoration: underline;
 `;
 
-const DetailsCard = ({ children, className, id, links, allDetails, ...props }) => {
+const DetailsCard = ({ links, allDetails, bgColor, underline, ...props }) => {
     return (
-        <Wrapper className={className} {...props} id={id}>
+        <Wrapper bgColor={bgColor} underline={underline}>
             {allDetails.map((field) => {
                 return (
                     <div >

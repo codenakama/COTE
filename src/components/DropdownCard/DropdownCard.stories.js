@@ -25,4 +25,6 @@ const links = [
 ]
 
 storiesOf("DropdownCard", module)
-    .add("Normal", () => <DropdownCard title='Contact 1' links={links} details={allDetails} />);
+    .add("Normal", () => <DropdownCard title='Contact 1' links={links} details={allDetails} border={true} />)
+    .add("without border", () => <DropdownCard title='Contact 1' links={links} details={allDetails} />)
+    .add("with underline", () => <DropdownCard title='Contact 1' links={links} details={allDetails} underline={true} />);
