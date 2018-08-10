@@ -1,6 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import DropdownCard from "./DropdownCard";
+import DetailsCard from "./DetailsCard";
 
 const allDetails = [
     { title: 'title 1', details: 'detail 1' },
@@ -25,6 +26,16 @@ const links = [
 ]
 
 storiesOf("DropdownCard", module)
-    .add("Normal", () => <DropdownCard title='Contact 1' links={links} details={allDetails} border={true} />)
-    .add("without border", () => <DropdownCard title='Contact 1' links={links} details={allDetails} />)
-    .add("with underline", () => <DropdownCard title='Contact 1' links={links} details={allDetails} underline={true} />);
+    .add("Normal", () => (
+        <DropdownCard title='Contact 1' border={true}>
+            <DetailsCard links={links} allDetails={allDetails} />
+        </DropdownCard>))
+    .add("without border", () => (
+        <DropdownCard title='Contact 1' >
+            <DetailsCard links={links} allDetails={allDetails} />
+        </DropdownCard>))
+    .add("with underline", () => (
+        <DropdownCard title='Contact 1' underline={true}>
+            <DetailsCard links={links} allDetails={allDetails} />
+        </DropdownCard>
+    ));

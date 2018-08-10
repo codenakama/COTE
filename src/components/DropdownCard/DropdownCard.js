@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { colors as defaultColors } from "../../styles/defaults";
 import Icon from "../atoms/Icon/Icon";
-import DetailsCard from "../DetailsCard/DetailsCard";
 
 const ArrowIcon = styled(Icon)`
   position: absolute;
@@ -64,7 +63,8 @@ class DropdownCard extends Component {
 
     render() {
         const { isOpen, selectedOption } = this.state;
-        const { title, full, links, details, id, corners, border, underline } = this.props;
+        const { title, full, id, corners, border, underline, children } = this.props;
+
         return (
             <Wrapper
                 onClick={this.handleClick}
@@ -82,7 +82,7 @@ class DropdownCard extends Component {
                 </TopWrapper>
                 {isOpen ? (
                     <DetailCardWrapper>
-                        <DetailsCard links={links} allDetails={details} underline={underline} />
+                        {children}
                     </DetailCardWrapper>
                 ) : null}
             </Wrapper>
@@ -98,8 +98,7 @@ DropdownCard.propTypes = {
     handleValueChange: PropTypes.func,
     /** If true dropdown takes full width of parent */
     full: PropTypes.bool,
-    links: PropTypes.array,
-    details: PropTypes.array,
+    children: PropTypes.node
 };
 
 DropdownCard.defaultProps = {

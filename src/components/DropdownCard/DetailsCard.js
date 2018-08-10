@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { colors as defaultColors } from '../../styles/defaults';
 
 const Wrapper = styled.div`
   border-bottom: ${props => (props.underline ? `1px solid #eeeeee` : '0')};

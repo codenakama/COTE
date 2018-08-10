@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import WidgetBox from './WidgetBox';
-import DetailsCard from '../DetailsCard/DetailsCard';
 
 const allDetails = [
   { title: 'title 1', details: 'detail 1' },
@@ -29,10 +28,5 @@ storiesOf('WidgetBox', module)
   .add('With subitems', () => (
     <WidgetBox title="Custom title">
       <div> This is a test</div>
-    </WidgetBox>
-  ))
-  .add("With DetailsCard", () => (
-    <WidgetBox title="Custom title">
-      <DetailsCard links={links} allDetails={allDetails} />
     </WidgetBox>
   ));

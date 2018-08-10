@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Icon from "../atoms/Icon/Icon";
 import { Title } from '../atoms/Typography';
+import DetailsCard from '../DropdownCard/DetailsCard';
 import DropdownCard from "../DropdownCard/DropdownCard";
 import { colors as defaultColors } from "../../styles/defaults";
+
 
 const Wrapper = styled.div`
   border-radius: 4px;
@@ -45,7 +47,6 @@ class CardSlider extends Component {
 
     render() {
         const { details, title } = this.props;
-        console.log('details', details);
         return (
             <Wrapper>
                 <TopWrapper>
@@ -53,7 +54,11 @@ class CardSlider extends Component {
                     <AddIcon name="add" onClick={this.handleClick} />
                 </TopWrapper>
                 <DetailCardWrapper>
-                    {details.map((detail) => <DropdownCard title={detail.title} links={detail.links} details={detail.allDetails} underline={true} />)}
+                    {details.map((detail) => (
+                        <DropdownCard title={detail.title} underline={true}>
+                            <DetailsCard links={detail.links} allDetails={detail.allDetails} underline={true} />
+                        </DropdownCard>
+                    ))}
                 </DetailCardWrapper>
             </Wrapper>
         );
