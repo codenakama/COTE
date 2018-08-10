@@ -32,4 +32,4 @@ const details = [
 ]
 
 storiesOf("CardSlider", module)
-    .add("Normal", () => <CardSlider title='list of contacts' details={details} />);
+    .add("Normal", () => <CardSlider title='list of contacts' allDetails={details} />);
