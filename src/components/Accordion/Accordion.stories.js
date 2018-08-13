@@ -1,8 +1,8 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import CardSlider from "./CardSlider";
+import Accordion from "./Accordion";
 
-const allDetails = [
+const cardDetails = [
     { title: 'title 1', details: 'detail 1' },
     { title: 'title 2', details: 'detail 2' },
     { title: 'title 3', details: 'detail 3' },
@@ -25,11 +25,11 @@ const links = [
 ]
 
 const details = [
-    { title: 'Name 1', links, allDetails },
-    { title: 'Name 2', links, allDetails },
-    { title: 'Name 3', links, allDetails },
-    { title: 'Name 4', links, allDetails },
+    { title: 'Name 1', links, cardDetails },
+    { title: 'Name 2', links, cardDetails },
+    { title: 'Name 3', links, cardDetails },
+    { title: 'Name 4', links, cardDetails },
 ]
 
-storiesOf("CardSlider", module)
-    .add("Normal", () => <CardSlider title='list of contacts' allDetails={details} />);
+storiesOf("Accordion", module)
+    .add("Normal", () => <Accordion title='list of contacts' details={details} />);

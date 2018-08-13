@@ -33,7 +33,7 @@ const DetailCardWrapper = styled.div`
   overflow: auto;
 `
 
-class CardSlider extends Component {
+class Accordion extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -46,7 +46,7 @@ class CardSlider extends Component {
     }
 
     render() {
-        const { allDetails, title } = this.props;
+        const { details, title } = this.props;
         return (
             <Wrapper>
                 <TopWrapper>
@@ -54,9 +54,9 @@ class CardSlider extends Component {
                     <AddIcon name="add" onClick={this.handleClick} />
                 </TopWrapper>
                 <DetailCardWrapper>
-                    {allDetails.map((detail) => (
+                    {details.map((detail) => (
                         <DropdownCard title={detail.title} underline={true}>
-                            <DetailsCard links={detail.links} allDetails={detail.allDetails} underline={true} />
+                            <DetailsCard links={detail.links} allDetails={detail.cardDetails} underline={true} />
                         </DropdownCard>
                     ))}
                 </DetailCardWrapper>
@@ -66,4 +66,31 @@ class CardSlider extends Component {
 
 }
 
-export default CardSlider;
+Accordion.propTypes = {
+    details: PropTypes.arrayOf(
+        PropTypes.shape({
+          title: PropTypes.string,
+          links: PropTypes.shape({
+              title: PropTypes.string,
+              callback: PropTypes.shape({}),
+          }),
+          cardDetails: PropTypes.shape({
+            title: PropTypes.string,
+            details: PropTypes.string,
+          }),
+        })
+    ),
+    title: PropTypes.string,
+};
+  
+Accordion.defaultProps = {
+    title: "",
+    details: [
+      { title: "", 
+        links:[{title: "", callback: i => console.log(i),}],
+        cardDetails: [{title: "", details:""}] 
+      },
+    ],
+};
+
+export default Accordion;
