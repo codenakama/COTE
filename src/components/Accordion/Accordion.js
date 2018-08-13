@@ -54,9 +54,9 @@ class Accordion extends Component {
                     <AddIcon name="add" onClick={this.handleClick} />
                 </TopWrapper>
                 <DetailCardWrapper>
-                    {details.map((detail) => (
-                        <DropdownCard title={detail.title} underline={true}>
-                            <DetailsCard links={detail.links} allDetails={detail.cardDetails} underline={true} />
+                    {details.map((detail, i) => (
+                        <DropdownCard key={i} title={detail.title} underline={true}>
+                            <DetailsCard links={detail.links} cardDetails={detail.cardDetails} underline={true} />
                         </DropdownCard>
                     ))}
                 </DetailCardWrapper>
@@ -70,14 +70,16 @@ Accordion.propTypes = {
     details: PropTypes.arrayOf(
         PropTypes.shape({
           title: PropTypes.string,
-          links: PropTypes.shape({
+          links: PropTypes.arrayOf(
+              PropTypes.shape({
               title: PropTypes.string,
-              callback: PropTypes.shape({}),
-          }),
-          cardDetails: PropTypes.shape({
-            title: PropTypes.string,
-            details: PropTypes.string,
-          }),
+              callback: PropTypes.func,
+          })),
+          cardDetails: PropTypes.arrayOf(
+              PropTypes.shape({
+              title: PropTypes.string,
+              details: PropTypes.string,
+          })),
         })
     ),
     title: PropTypes.string,
@@ -88,7 +90,7 @@ Accordion.defaultProps = {
     details: [
       { title: "", 
         links:[{title: "", callback: i => console.log(i),}],
-        cardDetails: [{title: "", details:""}] 
+        cardDetails: [{title: "", details:""}],
       },
     ],
 };

@@ -25,27 +25,44 @@ const StyledLink = styled.a`
   text-decoration: underline;
 `;
 
-const DetailsCard = ({ links, allDetails, bgColor, underline, ...props }) => {
+const DetailsCard = ({ links, cardDetails, bgColor, underline, ...props }) => {
     return (
         <Wrapper bgColor={bgColor} underline={underline}>
-            {allDetails.map((field) => {
+            {cardDetails.map((field, i) => {
                 return (
-                    <div >
+                    <div key={i}>
                         <Box>{field.title}</Box>
                         <DetailWrapper>{field.details}</DetailWrapper>
                     </div>
                 )
             })}
             <Box >
-                {links.map((link) => <StyledLink onClick={link.callBack}>{link.title}</StyledLink>)}
+                {links.map((link, i) => <StyledLink key={i} onClick={link.callBack}>{link.title}</StyledLink>)}
             </Box>
         </Wrapper>
     );
 };
 
 DetailsCard.propTypes = {
-    allDetails: PropTypes.array,
-    links: PropTypes.array,
+    links: PropTypes.arrayOf(
+        PropTypes.shape({
+        title: PropTypes.string,
+        callback: PropTypes.func,
+    })),
+    cardDetails: PropTypes.arrayOf(
+        PropTypes.shape({
+        title: PropTypes.string,
+        details: PropTypes.string,
+    })),
+    bgColor: PropTypes.bool,
+    underline: PropTypes.bool,
+};
+
+DetailsCard.defaultProps = {
+    cardDetails: [{title: "", details:""}],
+    links: [{title: "", callback: i => console.log(i),}],
+    bgColor: false,
+    underline: false,
 };
 
 export default DetailsCard;
