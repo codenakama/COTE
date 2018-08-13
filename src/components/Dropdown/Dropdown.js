@@ -77,7 +77,7 @@ class Dropdown extends Component {
           {selectedOption ? (
             <span>{selectedOption.title}</span>
           ) : (
-              <span>{title}</span>
+            <span>{title}</span>
           )}
           {!isOpen && (
             <ArrowIcon name="keyboard_arrow_down" onClick={this.handleClick} />
