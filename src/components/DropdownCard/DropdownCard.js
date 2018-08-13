@@ -16,7 +16,8 @@ const ArrowIcon = styled(Icon)`
 
 const Wrapper = styled.div`
   position: relative;
-  width: ${props => (props.full ? "100%" : "232px")};
+  min-width: 232px
+  width: 100%;
   cursor: pointer;
   height: ${props => (!props.isOpen ? '48px' : '100%')};
 `;
@@ -62,14 +63,13 @@ class DropdownCard extends Component {
     };
 
     render() {
-        const { isOpen, selectedOption } = this.state;
-        const { title, full, id, corners, border, underline, children } = this.props;
+        const { isOpen } = this.state;
+        const { title, id, corners, border, underline, children } = this.props;
 
         return (
             <Wrapper
                 onClick={this.handleClick}
                 corners={true}
-                full={full}
                 id={id}
                 {...this.props}
                 isOpen={this.state.isOpen}
@@ -97,14 +97,12 @@ DropdownCard.propTypes = {
     /** Callback to retrieve value of option selected */
     handleValueChange: PropTypes.func,
     /** If true dropdown takes full width of parent */
-    full: PropTypes.bool,
     children: PropTypes.node
 };
 
 DropdownCard.defaultProps = {
     title: "Contact 1",
     handleValueChange: value => console.log(value),
-    full: true,
 };
 
 export default DropdownCard;
