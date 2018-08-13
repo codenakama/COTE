@@ -46,7 +46,7 @@ class CardSlider extends Component {
     }
 
     render() {
-        const { details, title } = this.props;
+        const { allDetails, title } = this.props;
         return (
             <Wrapper>
                 <TopWrapper>
@@ -54,7 +54,7 @@ class CardSlider extends Component {
                     <AddIcon name="add" onClick={this.handleClick} />
                 </TopWrapper>
                 <DetailCardWrapper>
-                    {details.map((detail) => (
+                    {allDetails.map((detail) => (
                         <DropdownCard title={detail.title} underline={true}>
                             <DetailsCard links={detail.links} allDetails={detail.allDetails} underline={true} />
                         </DropdownCard>
