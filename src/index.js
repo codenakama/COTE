@@ -14,6 +14,7 @@ export { default as ButtonGroup } from "./components/ButtonGroup/ButtonGroup";
 export { default as Checkbox } from "./components/Checkbox/Checkbox";
 export { default as ContentBox } from "./components/ContentBox/ContentBox";
 export { default as CotCard } from "./components/CotCard/CotCard";
+export { default as CardSlider } from "./components/CardSlider/CardSlider";
 export { default as Dropdown } from "./components/Dropdown/Dropdown";
 export {
   default as HighlightsBar
