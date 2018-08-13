@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
-import React, { Component } from "react";
-import styled from "styled-components";
-import { colors } from "../../styles/defaults";
-import Tab from "./Tab";
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { colors } from '../../styles/defaults';
+import Tab from './Tab';
 
 const TabsWrapper = styled.div`
   display: flex;
@@ -42,7 +42,6 @@ class Tabs extends Component {
               <Tab
                 onClick={() => this.handleTabClicked(index)}
                 isActive={activeIndex === index}
-                contentWidth={children.length * 100}
                 {...tab.props}
               />
             );
