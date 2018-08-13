@@ -1,24 +1,29 @@
-import { storiesOf } from "@storybook/react";
-import React, { Component } from "react";
-import styled from "styled-components";
-import SideNav from "./";
+import { storiesOf } from '@storybook/react';
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import SideNav from './';
 
 const Container = styled.div`
   min-height: 400px;
 `;
 
-storiesOf("SideNav", module)
-  .add("Open", () => (
+storiesOf('SideNav', module)
+  .add('Open', () => (
     <Container>
       <SideNav isOpen />
     </Container>
   ))
-  .add("Icons only", () => (
+  .add('Without logo', () => (
+    <Container>
+      <SideNav isOpen />
+    </Container>
+  ))
+  .add('Icons only', () => (
     <Container>
       <SideNav isOpen iconsOnly width={72} />
     </Container>
   ))
-  .add("With menu button", () => {
+  .add('With menu button', () => {
     class PageContainer extends Component {
       handleOpenSideNav = () => {
         this.sideNavRef.toggle();
@@ -40,7 +45,7 @@ storiesOf("SideNav", module)
 
     return <PageContainer />;
   })
-  .add("With content", () => {
+  .add('With content', () => {
     class PageContainer extends Component {
       handleOpenSideNav = () => {
         this.sideNavRef.toggle();
@@ -100,7 +105,7 @@ storiesOf("SideNav", module)
                 mollit.
               </p>
             </div>
-            <div style={{ textAlign: "right" }}>
+            <div style={{ textAlign: 'right' }}>
               <button type="button" onClick={this.handleOpenSideNav}>
                 toggle Menu
               </button>

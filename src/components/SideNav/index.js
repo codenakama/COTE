@@ -1,16 +1,17 @@
-import PropTypes from "prop-types";
-import React, { Component } from "react";
-import styled from "styled-components";
-import { colors } from "../../styles/defaults";
-import Icon from "../atoms/Icon/Icon";
-import OutsideAlerter from "../OutsideAlerter/OutsideAlerter";
-import { PaperWrapper } from "../Paper/Paper";
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { colors } from '../../styles/defaults';
+import Icon from '../atoms/Icon/Icon';
+import OutsideAlerter from '../OutsideAlerter/OutsideAlerter';
+import { PaperWrapper } from '../Paper/Paper';
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 1rem;
 `;
 
 const List = styled.ul`
@@ -36,7 +37,7 @@ const ListItem = styled.li`
 
 const Logo = styled.img`
   width: 64px;
-  margin-top: 1rem;
+
   margin-bottom: 4rem;
 `;
 
@@ -49,7 +50,7 @@ const Link = styled.a`
   }
 `;
 
-const Nav = PaperWrapper.withComponent("nav").extend`
+const Nav = PaperWrapper.withComponent('nav').extend`
   position: fixed;
   z-index: 10;
   width: ${props => `${props.width}px`};
@@ -78,7 +79,7 @@ const Overlay = styled.div`
   top: 0;
   transform: translateZ(0);
   transition: opacity 0.2s linear;
-  visibility: ${props => (props.isNavOpen ? "visible" : "hidden")};
+  visibility: ${props => (props.isNavOpen ? 'visible' : 'hidden')};
   z-index: ${props => (props.isNavOpen ? 9 : 0)};
 `;
 
@@ -92,7 +93,7 @@ const CloseIcon = styled(Icon)`
   left: ${props => `${props.navWidth + 64}px`};
   top: -110px;
   z-index: 10;
-  visibility: ${props => (props.isNavOpen ? "visible" : "hidden")};
+  visibility: ${props => (props.isNavOpen ? 'visible' : 'hidden')};
 `;
 
 class SideNav extends Component {
@@ -135,9 +136,11 @@ class SideNav extends Component {
             className={className}
           >
             <Content>
-              <a href="/">
-                <Logo src={logoUrl} />
-              </a>
+              {logoUrl && (
+                <a href="/">
+                  <Logo src={logoUrl} />
+                </a>
+              )}
               <List>
                 {navItems.map((item, i) => (
                   <ListItem key={`snav-${i}`} selected={item.isSelected}>
@@ -158,7 +161,7 @@ class SideNav extends Component {
 }
 
 SideNav.propTypes = {
-  openingDirection: PropTypes.oneOf(["left-right", "right-left"]),
+  openingDirection: PropTypes.oneOf(['left-right', 'right-left']),
   width: PropTypes.number,
   logoUrl: PropTypes.string,
   navItems: PropTypes.arrayOf(
@@ -173,37 +176,38 @@ SideNav.propTypes = {
 
 SideNav.defaultProps = {
   width: 144,
-  logoUrl: "http://via.placeholder.com/64x64",
+  /** a logo with same size as http://via.placeholder.com/64x64 */
+  logoUrl: '',
   navItems: [
     {
-      title: "Dashboard",
-      pathname: "/dashboard",
+      title: 'Dashboard',
+      pathname: '/dashboard',
       isSelected: true,
-      icon: "home"
+      icon: 'home'
     },
     {
-      title: "Activities",
-      pathname: "/activities",
+      title: 'Activities',
+      pathname: '/activities',
       isSelected: false,
-      icon: "credit_card"
+      icon: 'credit_card'
     },
     {
-      title: "Cards",
-      pathname: "/cards",
+      title: 'Cards',
+      pathname: '/cards',
       isSelected: false,
-      icon: "person"
+      icon: 'person'
     },
     {
-      title: "Payment",
-      pathname: "/payment",
+      title: 'Payment',
+      pathname: '/payment',
       isSelected: false,
-      icon: "phone"
+      icon: 'phone'
     },
     {
-      title: "Premium",
-      pathname: "/premium",
+      title: 'Premium',
+      pathname: '/premium',
       isSelected: false,
-      icon: "money"
+      icon: 'money'
     }
   ],
   iconsOnly: false
