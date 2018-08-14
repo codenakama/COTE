@@ -14,7 +14,6 @@ export { default as ButtonGroup } from "./components/ButtonGroup/ButtonGroup";
 export { default as Checkbox } from "./components/Checkbox/Checkbox";
 export { default as ContentBox } from "./components/ContentBox/ContentBox";
 export { default as CotCard } from "./components/CotCard/CotCard";
-export { default as CardSlider } from "./components/CardSlider/CardSlider";
 export { default as Dropdown } from "./components/Dropdown/Dropdown";
 export {
   default as HighlightsBar
@@ -49,4 +48,5 @@ export { default as Uploader } from "./components/Uploader/Uploader";
 export { default as UspList } from "./components/UspList/index";
 export { default as Widget } from "./components/Widget/Widget";
 export { default as WidgetBox } from "./components/WidgetBox/WidgetBox";
+export { default as Accordion } from "./components/Accordion/Accordion";
 export { default as initGlobalStyles } from "./styles/injectGlobalStyles";
