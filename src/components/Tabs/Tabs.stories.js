@@ -69,4 +69,4 @@ class MyComponent extends Component {
   }
 }
 
-storiesOf('TabsPanel', module).add('Tabs', () => <MyComponent />);
+storiesOf('Tabs', module).add('Tabs', () => <MyComponent />);
