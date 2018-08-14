@@ -38,7 +38,7 @@ const TabsHeaders = styled.div`
 `;
 
 const TabsContainer = styled.div`
-  margin: 1rem;
+  margin: 1.4rem;
   display: flex;
   overflow: hidden;
 `;
