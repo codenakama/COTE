@@ -1,25 +1,25 @@
-import { setDefaults, withInfo } from "@storybook/addon-info";
-import { addDecorator, configure } from "@storybook/react";
-import React from "react";
-import { ThemeProvider } from "styled-components";
-import globalStyles from "./styles/globalStyles";
+import { setDefaults, withInfo } from '@storybook/addon-info';
+import { addDecorator, configure } from '@storybook/react';
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import globalStyles from '../src/styles/injectGlobalStyles';
 
 globalStyles();
 
 const styles = {
-  margin: "100px auto",
-  maxWidth: "1024px"
+  margin: '100px auto',
+  maxWidth: '1024px'
 };
 
 const theme = {
-  colorPrimary: "#27B161",
-  colorDarkGrey: "#A4AAB3",
-  colorShadow: "#000000",
-  colorLightBlack: "rgba(6, 31, 51, 0.7)",
-  colorBlack: "rgba(6, 31, 51, 1)",
-  colorPrimaryEmphasis: "#148443",
-  colorDanger: "#FF7183",
-  colorLightGrey: "#f3f3f3"
+  colorPrimary: '#27B161',
+  colorDarkGrey: '#A4AAB3',
+  colorShadow: '#000000',
+  colorLightBlack: 'rgba(6, 31, 51, 0.7)',
+  colorBlack: 'rgba(6, 31, 51, 1)',
+  colorPrimaryEmphasis: '#148443',
+  colorDanger: '#FF7183',
+  colorLightGrey: '#f3f3f3'
 };
 
 // addon-info
@@ -45,12 +45,12 @@ const LayoutDecorator = storyFn => (
   </ThemeProvider>
 );
 
-addDecorator((story, context) => withInfo("Info")(story)(context));
+addDecorator((story, context) => withInfo('Info')(story)(context));
 addDecorator(LayoutDecorator);
 // addDecorator(action);
 // addDecorator(withKnobs);
 
-const req = require.context("../src/components", true, /\.stories\.js$/);
+const req = require.context('../src/components', true, /\.stories\.js$/);
 
 function loadStories() {
   req.keys().forEach(filename => req(filename));
