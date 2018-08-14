@@ -1,31 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors } from '../../styles/defaults';
-import { Title } from '../atoms/Typography';
 
 const TabWrapper = styled.div`
-  display: inline-block;
-  flex: 1;
-`;
-
-const TabTitle = Title.withComponent('a').extend`
-cursor: pointer;
-color: ${props => (props.isActive ? colors.black : colors.darkGrey)};
-
-font-weight: 700;
-padding: 8px;
-display: inline-block;
-/* margin-bottom: 1rem; */
-width: 100%;
-text-align: center;
+  width: 100%;
+  flex: 0 0 auto;
+  transition: all 250ms ease;
+  transform: translateX(${props => `-${props.position}%`});
 `;
 
 const Tab = ({ children, title, isActive, contentHeight, ...props }) => {
-  return (
-    <TabWrapper {...props}>
-      <TabTitle isActive={isActive}>{title}</TabTitle>
-    </TabWrapper>
-  );
+  return <TabWrapper {...props}>{children}</TabWrapper>;
 };
 
 Tab.propTypes = {};
