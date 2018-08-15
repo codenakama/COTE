@@ -46,12 +46,12 @@ class Accordion extends Component {
     }
 
     render() {
-        const { details, title } = this.props;
+        const { details, title, addIcon } = this.props;
         return (
             <Wrapper>
                 <TopWrapper>
                     <Title bold>{title}</Title>
-                    <AddIcon name="add" onClick={this.handleClick} />
+                    {addIcon? <AddIcon name="add" onClick={this.handleClick} />: null}
                 </TopWrapper>
                 <DetailCardWrapper>
                     {details.map((detail, i) => (
