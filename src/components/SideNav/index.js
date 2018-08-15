@@ -118,7 +118,8 @@ class SideNav extends Component {
       className,
       navItems,
       isOpen,
-      iconsOnly
+      iconsOnly,
+      renderLink
     } = this.props;
 
     return (
@@ -136,18 +137,36 @@ class SideNav extends Component {
             className={className}
           >
             <Content>
-              {logoUrl && (
-                <a href="/">
-                  <Logo src={logoUrl} />
-                </a>
-              )}
+              {logoUrl &&
+                (renderLink ? (
+                  renderLink(
+                    <a>
+                      <Logo src={logoUrl} />
+                    </a>,
+                    '/'
+                  )
+                ) : (
+                  <a href="/">
+                    <Logo src={logoUrl} />
+                  </a>
+                ))}
               <List>
                 {navItems.map((item, i) => (
                   <ListItem key={`snav-${i}`} selected={item.isSelected}>
-                    <Link href={item.pathname}>
-                      {item.icon && <Icon name={item.icon} />}
-                      {!iconsOnly && <span>{item.title}</span>}
-                    </Link>
+                    {renderLink ? (
+                      renderLink(
+                        <Link>
+                          {item.icon && <Icon name={item.icon} />}
+                          {!iconsOnly && <span>{item.title}</span>}
+                        </Link>,
+                        item.pathname
+                      )
+                    ) : (
+                      <Link href={item.pathname}>
+                        {item.icon && <Icon name={item.icon} />}
+                        {!iconsOnly && <span>{item.title}</span>}
+                      </Link>
+                    )}
                   </ListItem>
                 ))}
               </List>
@@ -171,7 +190,13 @@ SideNav.propTypes = {
       isSelected: PropTypes.bool
     })
   ),
-  iconsOnly: PropTypes.bool
+  iconsOnly: PropTypes.bool,
+  /**
+   * if is passed, children and pathname are injected as parameters
+   * allows you to render SideNav links differently, for example using a custom Router
+   * example: <Sidenav renderLink={(children, pathname) => <MyCustomLinkComponent route={pathname}>{children}</MyCustomLinkComponent>}
+   */
+  renderLink: PropTypes.func
 };
 
 SideNav.defaultProps = {
@@ -210,7 +235,9 @@ SideNav.defaultProps = {
       icon: 'money'
     }
   ],
-  iconsOnly: false
+  iconsOnly: false,
+
+  renderLink: undefined
 };
 
 export default SideNav;

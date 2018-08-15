@@ -7,10 +7,24 @@ const Container = styled.div`
   min-height: 400px;
 `;
 
+const MyCustomLink = ({ children, url }) => <b url={url}>{children}</b>;
+
 storiesOf('SideNav', module)
   .add('Open', () => (
     <Container>
-      <SideNav isOpen />
+      <SideNav isOpen logoUrl="http://via.placeholder.com/64x64" />
+    </Container>
+  ))
+  .add('With custom Link', () => (
+    <Container>
+      <SideNav
+        logoUrl="http://via.placeholder.com/64x64"
+        isOpen
+        renderLink={(children, pathname) => (
+          /* anchor tags are be wrrapped with <b> tag */
+          <MyCustomLink url={pathname}>{children}</MyCustomLink>
+        )}
+      />
     </Container>
   ))
   .add('Without logo', () => (
