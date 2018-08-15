@@ -1,11 +1,11 @@
-import { storiesOf } from "@storybook/react";
-import React, { Component } from "react";
-import styled from "styled-components";
-import { Caption } from "../atoms/Typography";
-import TextInput from "../TextInput/TextInput";
-import WidgetBox from "../WidgetBox/WidgetBox";
-import Tab from "./Tab";
-import Tabs from "./Tabs";
+import { storiesOf } from '@storybook/react';
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Caption } from '../atoms/Typography';
+import TextInput from '../TextInput/TextInput';
+import WidgetBox from '../WidgetBox/WidgetBox';
+import Tab from './Tab';
+import Tabs from './Tabs';
 
 const ButtonWrapper = styled.div`
   padding: 1rem;
@@ -20,7 +20,7 @@ const InputWrapper = styled.div`
   margin-bottom: 1rem;
 `;
 
-storiesOf("Tab", module).add("Normal", () => (
+storiesOf('Tab', module).add('Normal', () => (
   <Tab title="Tab One" isActive>
     <div>Tab One Content</div>
   </Tab>
@@ -39,11 +39,7 @@ class MyComponent extends Component {
     return (
       <WidgetBox>
         <Tabs onTabClicked={this.handleTabClicked}>
-          <Tab title="Redeem cash" active />
-          <Tab title="Redeem balance" />
-        </Tabs>
-        {this.state.selectedTab === 0 && (
-          <TabPanel>
+          <Tab title="Redeem cash" active>
             <InputWrapper>
               <TextInput
                 full
@@ -62,16 +58,15 @@ class MyComponent extends Component {
                 full
               />
             </InputWrapper>
-          </TabPanel>
-        )}
-        {this.state.selectedTab === 1 && (
-          <TabPanel>
+          </Tab>
+          <Tab title="Redeem balance">
             <h1>Panel 2 content</h1>
-          </TabPanel>
-        )}
+          </Tab>
+          <Tab title="Third tab">this my third tab</Tab>
+        </Tabs>
       </WidgetBox>
     );
   }
 }
 
-storiesOf("TabsPanel", module).add("Tabs", () => <MyComponent />);
+storiesOf('Tabs', module).add('Tabs', () => <MyComponent />);

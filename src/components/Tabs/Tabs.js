@@ -1,11 +1,11 @@
-import PropTypes from "prop-types";
-import React, { Component } from "react";
-import styled from "styled-components";
-import { colors } from "../../styles/defaults";
-import Tab from "./Tab";
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { colors } from '../../styles/defaults';
+import { Title } from '../atoms/Typography';
 
 const TabsWrapper = styled.div`
-  display: flex;
+  /* display: flex; */
   position: relative;
 `;
 
@@ -18,6 +18,29 @@ const TabMarker = styled.div`
   transition: all 250ms ease;
   transform: translateX(${props => `${props.position}%`});
   top: 30px;
+`;
+
+const TabTitle = Title.withComponent('a').extend`
+  cursor: pointer;
+  color: ${props => (props.isActive ? colors.black : colors.darkGrey)};
+
+  font-weight: 700;
+  padding: 8px;
+  display: inline-block;
+  /* margin-bottom: 1rem; */
+  width: 100%;
+  text-align: center;
+`;
+
+const TabsHeaders = styled.div`
+  display: flex;
+  position: relative;
+`;
+
+const TabsContainer = styled.div`
+  margin: 1.4rem;
+  display: flex;
+  overflow: hidden;
 `;
 
 class Tabs extends Component {
@@ -34,28 +57,39 @@ class Tabs extends Component {
     const { children } = this.props;
     const { activeIndex } = this.state;
 
+    const tabHeaders = React.Children.map(children, (child, index) => {
+      return (
+        <TabTitle
+          isActive={activeIndex === index}
+          onClick={() => this.handleTabClicked(index)}
+        >
+          {child.props.title}
+        </TabTitle>
+      );
+    });
+
+    const childTabs = React.Children.map(children, (child, index) =>
+      React.cloneElement(child, { position: activeIndex * 100 })
+    );
+
     return (
       <div>
         <TabsWrapper {...this.props}>
-          {children.map((tab, index) => {
-            return (
-              <Tab
-                onClick={() => this.handleTabClicked(index)}
-                isActive={activeIndex === index}
-                contentWidth={children.length * 100}
-                {...tab.props}
-              />
-            );
-          })}
+          <TabsHeaders>{tabHeaders}</TabsHeaders>
+          <TabMarker
+            width={100 / children.length}
+            position={activeIndex * 100}
+          />
+          <TabsContainer>{childTabs}</TabsContainer>
         </TabsWrapper>
-        <TabMarker width={100 / children.length} position={activeIndex * 100} />
       </div>
     );
   }
 }
 
 Tabs.propTypes = {
-  onTabClicked: PropTypes.func.isRequired
+  onTabClicked: PropTypes.func.isRequired,
+  children: PropTypes.arrayOf(PropTypes.node)
 };
 
 Tabs.defaultProps = {

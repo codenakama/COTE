@@ -1,4 +1,4 @@
-import { injectGlobal } from "styled-components";
+import { injectGlobal } from 'styled-components';
 
 export default () => injectGlobal`
 
@@ -34,7 +34,8 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 ol, ul {
 	list-style: none;
