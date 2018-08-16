@@ -1,114 +1,160 @@
-import PropTypes from "prop-types";
-import React, { Component } from "react";
-import styled, { keyframes } from "styled-components";
-import { colors } from "../../../styles/defaults";
-import Icon from "../Icon/Icon";
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import styled, { css, keyframes } from 'styled-components';
+import Icon from '../Icon/Icon';
 
 const boxShadow = `box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 transition: all 0.3s cubic-bezier(.25,.8,.25,1);`;
 
-export const StyledButton = styled.button`
-  transition: all 1s ease-in;
-  height: 38px;
-  font-family: inherit;
-  text-decoration: none;
-  white-space: nowrap;
-  background-color: ${props => {
-    if (props.disabled) return colors.darkGrey;
-
-    if (props.danger && props.solid) return props.theme.colorDanger;
-
-    if (props.solid && props.primary) return props.theme.colorPrimary;
-
-    return "transparent";
-  }};
-
-  color: ${props => {
-    if (props.solid || props.disabled) return "#fff";
-
-    if (props.primary) {
-      return props.theme.colorPrimary;
-    }
-
-    if (props.danger) {
-      return props.theme.colorDanger;
-    }
-
-    return props.theme.colorBlack;
-  }};
-
-  @media only screen and (min-width: 640px) {
-    font-size: 14px;
-  }
-  font-size: 12px;
-
-  padding: 9px 16px;
-  width: ${props => {
-    if (props.small) return "16px";
-
-    if (props.large) return "448px";
-    if (props.full) return "100%";
-  }};
-  opacity: ${props => {
-    if (!props.solid) return "0.7";
-  }};
-  border-radius: 4px;
-  cursor: pointer;
-  transition: opacity 0.25s ease-in;
-  font-weight: bold;
-
-  :disabled {
-    cursor: not-allowed;
-  }
-
-  &:hover {
-    background-color: ${props => {
-      if (props.disabled) return colors.darkGrey;
-
-      if (props.danger && props.theme && props.solid)
-        return props.theme.colorDanger;
-
-      if (props.danger && props.solid) return colors.danger;
-
-      if (props.theme && props.solid) return props.theme.colorPrimaryEmphasis;
-
-      if (props.solid) return colors.primaryEmphasis;
-    }};
-
-    opacity: ${props => {
-      if (props.disabled) return;
-      if (!props.solid) return "1";
-    }};
-  }
-
-  @media screen and (max-width: 448px) {
-    width: ${props => {
-      if (props.small) return "16px";
-      if (props.large) return "224px";
-      if (props.full) return "100%";
-    }};
-  }
-
-  border: ${props => {
-    if (props.solid || props.disabled) {
-      return "none";
-    }
-
-    return "1px solid currentColor";
-  }};
-
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  display: inline-block;
-  position: relative;
-  text-align: center;
-  ${props => (props.shadow ? boxShadow : null)};
-
-  i {
-    color: inherit;
-  }
+const primary = css`
+  color: ${props => props.theme.colorPrimary};
 `;
 
-export const StyledLinkButton = StyledButton.withComponent("a");
+const danger = css`
+  color: ${props => props.theme.colorDanger};
+`;
+
+const accent = css`
+  color: ${props => props.theme.colorAccent};
+`;
+
+const outline = css`
+  ${props =>
+    `
+      border: 1px solid ${props.theme.colorBlack};
+  `};
+
+  ${props =>
+    props.disabled &&
+    `
+      border: 1px solid rgba(0, 0, 0, .26);
+  `};
+
+  ${props =>
+    props.primary &&
+    `
+      border: 1px solid ${props.theme.colorPrimary};
+  `};
+
+  ${props =>
+    props.danger &&
+    `
+      border: 1px solid ${props.theme.colorDanger};
+  `};
+`;
+
+const solid = css`
+
+${props =>
+  `
+    color: white;
+    background-color: ${props.theme.colorBlack};
+    &:before {
+      color: black;
+    }
+  `}
+
+
+  ${props =>
+    props.accent &&
+    `
+    color: white;
+    background-color: ${props.theme.colorAccent};
+    &:before {
+      color: black;
+    }
+  `}
+
+  ${props =>
+    props.primary &&
+    `
+    color: white;
+    background-color: ${props.theme.colorPrimary};
+    &:before {
+      color: black;
+    }
+  `}
+
+  ${props =>
+    props.danger &&
+    `
+    color: white !important;
+    background-color: ${props.theme.colorDanger};
+    &:before {
+      color: black;
+    }
+  `}
+
+  ${props =>
+    props.disabled &&
+    `
+    background-color: rgba(0, 0, 0, .12);
+    pointer-events: none;
+  `}
+`;
+
+export const StyledButton = styled.button`
+  color: ${props => props.theme.colorBlack};
+  display: inline-block;
+  position: relative;
+  min-width: 88px;
+  height: 36px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 36px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  vertical-align: middle;
+  user-select: none;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+
+  ${props => props.accent && accent}
+  ${props => props.primary && primary}
+  ${props => props.solid && solid}
+  ${props => props.danger && danger}
+  ${props => props.outline && outline}
+  ${props =>
+    props.small &&
+    `padding: 0px 8px;
+    font-size: 0.8rem;
+    height: 32px; 
+    line-height: 32px;`}
+
+     ${props =>
+       props.large &&
+       `padding: 0px 24px;
+    font-size: 1.2rem;
+    height: 44px; 
+    line-height: 44px;`}
+
+    ${props =>
+      props.disabled &&
+      `
+    color: rgba(0, 0, 0, .26);
+    cursor: default;
+    pointer-events: none;
+  `}
+
+  
+`;
+
+export const StyledLinkButton = StyledButton.withComponent('a');
 
 const rotate360 = keyframes`
   from {
@@ -122,7 +168,7 @@ const rotate360 = keyframes`
 
 const LoadingIcon = styled(Icon)`
   color: inherit;
-  margin-right: ${props => (props.withText ? "8px" : null)};
+  margin-right: ${props => (props.withText ? '8px' : null)};
   animation: ${rotate360} 2s linear infinite;
   /* font-size: inherit; */
 `;
@@ -153,7 +199,7 @@ class Button extends Component {
           href={href}
           id={id}
         >
-          {loading && <LoadingIcon name={"refresh"} />}
+          {loading && <LoadingIcon name={'refresh'} />}
           {children}
           {icon && <Icon className={`fa fa-${icon} ${className}`} />}
         </StyledLinkButton>
@@ -164,7 +210,7 @@ class Button extends Component {
       <StyledButton {...this.props} disabled={disabled || loading} id={id}>
         {loading && (
           <LoadingWrapper>
-            <LoadingIcon name="refresh" withText={!!loadingText} />{" "}
+            <LoadingIcon name="refresh" withText={!!loadingText} />{' '}
             {loadingText}
           </LoadingWrapper>
         )}
@@ -176,20 +222,32 @@ class Button extends Component {
 }
 
 Button.propTypes = {
+  primary: PropTypes.bool,
   href: PropTypes.string,
   onClick: PropTypes.func,
+  /** Name of the icon as per material.io/icons */
   icon: PropTypes.string,
   solid: PropTypes.bool,
   full: PropTypes.bool,
   large: PropTypes.bool,
   small: PropTypes.bool,
   disabled: PropTypes.bool,
-  /** Shows a loding animated icon */
+  /** With border outline */
+  outline: PropTypes.bool,
+  /** Shows a loading animated icon */
   loading: PropTypes.bool,
   /** Text visible when loading animation is set */
   loadingText: PropTypes.string
 };
 
-Button.defaultProps = {};
+Button.defaultProps = {
+  primary: false,
+  solid: false,
+  href: '',
+  type: 'button',
+  disabled: false,
+  icon: '',
+  full: false
+};
 
 export default Button;
