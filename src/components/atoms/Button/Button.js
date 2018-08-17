@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import styled, { css, keyframes } from 'styled-components';
+import withRipple from '../../../hocs/withRipple';
+import rippleMixin from '../../../mixins/ripple';
+import { hexToRgbA } from '../../../utils';
 import Icon from '../Icon/Icon';
 
 const boxShadow = `box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -8,10 +11,16 @@ transition: all 0.3s cubic-bezier(.25,.8,.25,1);`;
 
 const primary = css`
   color: ${props => props.theme.colorPrimary};
+  &:hover {
+    background-color: ${props => hexToRgbA(props.theme.colorPrimary, 0.08)};
+  }
 `;
 
 const danger = css`
   color: ${props => props.theme.colorDanger};
+  &:hover {
+    background-color: ${props => hexToRgbA(props.theme.colorDanger, 0.08)};
+  }
 `;
 
 const accent = css`
@@ -34,23 +43,33 @@ const outline = css`
     props.primary &&
     `
       border: 1px solid ${props.theme.colorPrimary};
+      &:hover{
+        background-color: ${props => hexToRgbA(props.theme.colorPrimary, 0.08)};
+      }
   `};
 
   ${props =>
     props.danger &&
     `
       border: 1px solid ${props.theme.colorDanger};
+      &:hover{
+        background-color: ${props => hexToRgbA(props.theme.colorDanger, 0.08)};
+      }
   `};
 `;
 
 const solid = css`
 
-${props =>
-  `
+  ${props =>
+    `
     color: white;
-    background-color: ${props.theme.colorBlack};
+    background-color: ${hexToRgbA(props.theme.colorBlack, 0.7)};
     &:before {
       color: black;
+    }
+
+    &:hover{
+      background-color: ${props.theme.colorBlack};
     }
   `}
 
@@ -60,8 +79,12 @@ ${props =>
     `
     color: white;
     background-color: ${props.theme.colorAccent};
-    &:before {
+    &&:before {
       color: black;
+    }
+
+    &&:hover{
+      background-color: ${props.theme.colorAccent};
     }
   `}
 
@@ -73,6 +96,10 @@ ${props =>
     &:before {
       color: black;
     }
+
+     &&:hover{
+      background-color: ${props.theme.colorPrimaryDark};
+    }
   `}
 
   ${props =>
@@ -82,6 +109,10 @@ ${props =>
     background-color: ${props.theme.colorDanger};
     &:before {
       color: black;
+    }
+
+     &&:hover{
+      background-color: ${props.theme.colorDangerDark} ;
     }
   `}
 
@@ -103,9 +134,8 @@ export const StyledButton = styled.button`
   border: none;
   border-radius: 2px;
   outline: none;
-  background: transparent;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 36px;
   text-align: center;
   text-decoration: none;
@@ -115,14 +145,18 @@ export const StyledButton = styled.button`
   user-select: none;
   box-sizing: border-box;
   -webkit-appearance: none;
+  transition: all 250ms ease;
 
   &:hover {
     cursor: pointer;
+    background-color: ${props => hexToRgbA(props.theme.colorBlack, 0.08)};
   }
   &::-moz-focus-inner {
     padding: 0;
     border: 0;
   }
+
+  ${rippleMixin()}
 
   ${props => props.accent && accent}
   ${props => props.primary && primary}
@@ -132,17 +166,22 @@ export const StyledButton = styled.button`
   ${props =>
     props.small &&
     `padding: 0px 8px;
+    min-width: 64px;
     font-size: 0.8rem;
     height: 32px; 
-    line-height: 32px;`}
+    line-height: 32px;
+    `}
 
      ${props =>
        props.large &&
        `padding: 0px 24px;
-    font-size: 1.2rem;
-    height: 44px; 
-    line-height: 44px;`}
+        min-width: 112px
+        font-size: 1.2rem;
+        height: 44px; 
+        line-height: 44px;
+        `}
 
+${props => props.full && `width: 100%;`}
     ${props =>
       props.disabled &&
       `
@@ -151,7 +190,7 @@ export const StyledButton = styled.button`
     pointer-events: none;
   `}
 
-  
+  ${rippleMixin()}
 `;
 
 export const StyledLinkButton = StyledButton.withComponent('a');
@@ -178,6 +217,8 @@ const LoadingWrapper = styled.span`
   align-items: center;
   justify-content: center;
 `;
+
+const ButtonWithRipple = withRipple(StyledButton);
 class Button extends Component {
   render() {
     const {
@@ -196,7 +237,7 @@ class Button extends Component {
         <StyledLinkButton
           {...this.props}
           disabled={disabled}
-          href={href}
+          href={href === 3}
           id={id}
         >
           {loading && <LoadingIcon name={'refresh'} />}
@@ -207,7 +248,7 @@ class Button extends Component {
     }
 
     return (
-      <StyledButton {...this.props} disabled={disabled || loading} id={id}>
+      <ButtonWithRipple {...this.props} disabled={disabled || loading} id={id}>
         {loading && (
           <LoadingWrapper>
             <LoadingIcon name="refresh" withText={!!loadingText} />{' '}
@@ -216,7 +257,7 @@ class Button extends Component {
         )}
         {!loading && children}
         {icon && <Icon name={icon} />}
-      </StyledButton>
+      </ButtonWithRipple>
     );
   }
 }

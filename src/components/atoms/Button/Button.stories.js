@@ -7,8 +7,9 @@ storiesOf('Button/Normal', module)
   .add('Normal', () => <Button>Click me</Button>)
   .add('Danger', () => <Button danger>Delete</Button>)
   .add('Primary', () => <Button primary>Delete</Button>)
+  .add('Small', () => <Button small>Click me</Button>)
+  .add('Large', () => <Button large>Click me</Button>)
 
-  .add('Large', () => <Button>Click me</Button>)
   .add('Disabled', () => <Button disabled>Click me</Button>)
   .add('Full width', () => <Button>Click me</Button>)
   .add('Loading', () => (
@@ -51,7 +52,11 @@ storiesOf('Button/Outlined', module)
       Click me
     </Button>
   ))
-  .add('Full width', () => <Button outline>Click me</Button>)
+  .add('Full width', () => (
+    <Button outline full>
+      Click me
+    </Button>
+  ))
   .add('Loading', () => (
     <div>
       <Button loading outline>

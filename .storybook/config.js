@@ -13,12 +13,14 @@ const styles = {
 
 const theme = {
   colorPrimary: '#27B161',
+  colorPrimaryDark: '#148443',
   colorDarkGrey: '#A4AAB3',
   colorShadow: '#000000',
-  colorLightBlack: 'rgba(6, 31, 51, 0.7)',
-  colorBlack: 'rgba(6, 31, 51, 1)',
+  colorLightBlack: '#061F33',
+  colorBlack: '#061f33',
   colorPrimaryEmphasis: '#148443',
   colorDanger: '#FF7183',
+  colorDangerDark: '#ff001f',
   colorLightGrey: '#f3f3f3'
 };
 
