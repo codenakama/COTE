@@ -3,6 +3,7 @@ import { addDecorator, configure } from '@storybook/react';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import globalStyles from '../src/styles/injectGlobalStyles';
+import { hexToRgbA } from '../src/utils';
 
 globalStyles();
 
@@ -21,7 +22,22 @@ const theme = {
   colorPrimaryEmphasis: '#148443',
   colorDanger: '#FF7183',
   colorDangerDark: '#ff001f',
-  colorLightGrey: '#f3f3f3'
+  colorLightGrey: '#f3f3f3',
+  // Elevation theme
+  elevation: {
+    // What property to use to apply depth
+    property: 'box-shadow',
+    // Transition for animating buttons
+    transition: {
+      duration: '280ms',
+      effect: 'cubic-bezier(.4, 0, .2, 1)'
+    },
+    colors: {
+      umbra: hexToRgbA('#000000', 0.2),
+      penumbra: hexToRgbA('#000000', 0.14),
+      ambient: hexToRgbA('#000000', 0.12)
+    }
+  }
 };
 
 // addon-info

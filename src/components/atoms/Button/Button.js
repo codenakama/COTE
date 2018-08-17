@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import withRipple from '../../../hocs/withRipple';
+import elevationMixin from '../../../mixins/elevation';
 import rippleMixin from '../../../mixins/ripple';
 import { hexToRgbA } from '../../../utils';
 import Icon from '../Icon/Icon';
@@ -59,6 +60,11 @@ const outline = css`
 `;
 
 const solid = css`
+  ${elevationMixin(2)}
+
+  &:active{
+    ${elevationMixin(8)}
+  }
 
   ${props =>
     `
