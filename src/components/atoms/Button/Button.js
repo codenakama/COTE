@@ -24,10 +24,6 @@ const danger = css`
   }
 `;
 
-const accent = css`
-  color: ${props => props.theme.colorAccent};
-`;
-
 const outline = css`
   ${props =>
     `
@@ -76,21 +72,6 @@ const solid = css`
 
     &:hover{
       background-color: ${props.theme.colorBlack};
-    }
-  `}
-
-
-  ${props =>
-    props.accent &&
-    `
-    color: white;
-    background-color: ${props.theme.colorAccent};
-    &&:before {
-      color: black;
-    }
-
-    &&:hover{
-      background-color: ${props.theme.colorAccent};
     }
   `}
 
@@ -164,7 +145,6 @@ export const StyledButton = styled.button`
 
   ${rippleMixin()}
 
-  ${props => props.accent && accent}
   ${props => props.primary && primary}
   ${props => props.solid && solid}
   ${props => props.danger && danger}
