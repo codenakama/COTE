@@ -12,6 +12,8 @@ const Wrapper = styled.div`
   border-radius: 4px;
   background-color: #ffffff;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14);
+  height: 350px;
+  overflow:hidden;
 `;
 
 const AddIcon = styled(Icon)`
@@ -29,9 +31,31 @@ const TopWrapper = styled.div`
 `;
 
 const DetailCardWrapper = styled.div`
-  height: 350px;;
-  overflow: auto;
+    height: 302px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+`;
+
+const ScrollBar = styled.div`
+ overflow-y: scroll;
+ height: 300px;
+ &::-webkit-scrollbar-track {
+   -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
+ }
+
+ &::-webkit-scrollbar {
+   width: 8px;
+   background-color: #f5f5f5;
+ }
+
+ &::-webkit-scrollbar-thumb {
+   border-radius: 3.5px;
+   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+   background-color: #a4aab3;
+ }
 `
+
 
 class Accordion extends Component {
     constructor(props) {
@@ -46,20 +70,22 @@ class Accordion extends Component {
     }
 
     render() {
-        const { details, title } = this.props;
+        const { details, title, withIcon } = this.props;
         return (
             <Wrapper>
                 <TopWrapper>
                     <Title bold>{title}</Title>
-                    <AddIcon name="add" onClick={this.handleClick} />
+                    {withIcon ? <AddIcon name="add" onClick={this.handleClick} /> : null}
                 </TopWrapper>
-                <DetailCardWrapper>
-                    {details.map((detail, i) => (
-                        <DropdownCard key={i} title={detail.title} underline={true}>
-                            <DetailsCard links={detail.links} cardDetails={detail.cardDetails} underline={true} />
-                        </DropdownCard>
-                    ))}
-                </DetailCardWrapper>
+                    <DetailCardWrapper>
+                        <ScrollBar>
+                            {details.map((detail, i) => (
+                                    <DropdownCard key={i} title={detail.title} underline={true}>
+                                        <DetailsCard cardDetails={detail.cardDetails} underline={true} />
+                                    </DropdownCard>
+                            ))}
+                        </ScrollBar>
+                    </DetailCardWrapper>
             </Wrapper>
         );
     }

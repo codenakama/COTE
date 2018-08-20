@@ -19,7 +19,12 @@ const Wrapper = styled.div`
   min-width: 232px
   width: 100%;
   cursor: pointer;
-  height: ${props => (!props.isOpen ? '48px' : '100%')};
+  transition: all 350ms ease-in-out;
+
+  ${props => props.isOpen && `
+    max-height: 1000px;  `}
+    
+  ${props => !props.isOpen && `max-height: 48px;`}
 `;
 
 const TopWrapper = styled.div`
@@ -28,15 +33,17 @@ const TopWrapper = styled.div`
     border-radius: ${props => (props.corners ? "0" : "4px")};
     padding: 9px 16px; 
     height: 48px;
+    background: #ffffff;
 `
 
 const DetailCardWrapper = styled.div`
-    position: absolute;
     top: 48px;
-    min-height: auto;
     width: 100%;
     left: 0;
     padding: 0;
+    transition: all 350ms ease-in-out;
+    height: ${props => (!props.isOpen? '0' : 'auto')}
+    overflow: hidden;
 `
 
 class DropdownCard extends Component {
@@ -80,11 +87,11 @@ class DropdownCard extends Component {
                         <ArrowIcon name="keyboard_arrow_up" onClick={this.handleClick} isOpen={this.state.isOpen} />
                     ) : (<ArrowIcon name="keyboard_arrow_down" onClick={this.handleClick} />)}
                 </TopWrapper>
-                {isOpen ? (
-                    <DetailCardWrapper>
-                        {children}
-                    </DetailCardWrapper>
-                ) : null}
+               
+                <DetailCardWrapper isOpen={this.state.isOpen}>
+                    {children}
+                </DetailCardWrapper>
+              
             </Wrapper>
 
         )

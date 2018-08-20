@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   border-bottom: ${props => (props.underline ? `1px solid #eeeeee` : '0')};
-  padding: 16px 0px;
+  padding: 16px 0px 0px;
   background-color: ${props => props.bgColor ? props.theme.colorPrimary : '#ffffff'};
 `;
 
@@ -37,7 +37,7 @@ const DetailsCard = ({ links, cardDetails, bgColor, underline, ...props }) => {
                 )
             })}
             <Box >
-                {links.map((link, i) => <StyledLink key={i} onClick={link.callBack}>{link.title}</StyledLink>)}
+                {links ? links.map((link, i) => <StyledLink key={i} onClick={link.callBack}>{link.title}</StyledLink>): null}
             </Box>
         </Wrapper>
     );
