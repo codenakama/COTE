@@ -112,6 +112,7 @@ const TextInput = ({
         guide={guide}
         full={full ? 1 : 0}
         onChange={onChange}
+        autoComplete="new-password"
       />
 
       {error && <Caption required={required} text={error} />}
