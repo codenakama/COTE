@@ -4,7 +4,76 @@ import TextInput from '../../TextInput/TextInput';
 import Button from './Button';
 
 storiesOf('Button/Normal', module)
-  .add('Normal', () => <Button>Click me</Button>)
+  .add('Normal', () => (
+    <div>
+      <Button
+        id="submit-form"
+        type="submit"
+        form="form1"
+        primary
+        large
+        solid
+        shadow
+      >
+        Continue
+      </Button>
+      <Button
+        id="submit-form"
+        type="submit"
+        form="form1"
+        primary
+        large
+        solid
+        shadow
+      >
+        Continue
+      </Button>
+      <Button
+        id="submit-form"
+        type="submit"
+        form="form1"
+        primary
+        large
+        solid
+        shadow
+      >
+        Continue
+      </Button>
+      <Button
+        id="submit-form"
+        type="submit"
+        form="form1"
+        primary
+        large
+        solid
+        shadow
+      >
+        Continue
+      </Button>
+      <Button
+        id="submit-form"
+        type="submit"
+        form="form1"
+        primary
+        large
+        solid
+        shadow
+      >
+        Continue
+      </Button>
+      <Button
+        id="submit-form"
+        type="submit"
+        form="form1"
+        primary
+        large
+        solid
+        shadow
+      >
+        Continue
+      </Button>
+    </div>
+  ))
   .add('Danger', () => <Button danger>Delete</Button>)
   .add('Primary', () => <Button primary>Delete</Button>)
   .add('Small', () => <Button small>Click me</Button>)

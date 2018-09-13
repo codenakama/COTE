@@ -1,20 +1,21 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import Button from "../atoms/Button/Button";
-import { Label } from "../atoms/Typography";
-
-import { colors as defaultColors } from "../../styles/defaults";
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { colors as defaultColors } from '../../styles/defaults';
+import Button from '../atoms/Button/Button';
+import { Label } from '../atoms/Typography';
 
 const StyledButton = styled(Button)`
+  outline: none;
   width: ${props => `${props.buttonWidth}%`};
+  font-size: 12px;
   background-color: ${props => {
     if (props.solid && props.theme && props.primary)
       return props.theme.colorPrimary;
 
     if (props.solid) return defaultColors.black;
 
-    return "transparent";
+    return 'transparent';
   }};
   &:hover {
     background-color: ${props => {
@@ -23,12 +24,12 @@ const StyledButton = styled(Button)`
 
       if (props.solid) return defaultColors.black;
 
-      return "transparent";
+      return 'transparent';
     }};
   }
 
   @media (max-width: 640px) {
-    width: ${props => (props.wrap ? "50%" : null)};
+    width: ${props => (props.wrap ? '50%' : null)};
   }
 `;
 
@@ -51,7 +52,6 @@ const ButtonGroupWrapper = styled.div`
   }
   button {
     border-radius: 0px;
-    padding: 0.68em 1em;
   }
   & button:last-child {
     border-top-left-radius: 0;
@@ -65,7 +65,7 @@ const ButtonGroupWrapper = styled.div`
       border-top-left-radius: 4px;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
-      border-bottom-left-radius: ${props => (props.wrap ? 0 : "4px")};
+      border-bottom-left-radius: ${props => (props.wrap ? 0 : '4px')};
     }
 
     & button:nth-child(2) {
@@ -77,7 +77,7 @@ const ButtonGroupWrapper = styled.div`
       border-bottom-left-radius: 0;
       border-right: ${
         props.solid || props.disabled
-          ? "none"
+          ? 'none'
           : `1px solid ${defaultColors.black}`
       };`
           : null};
@@ -136,10 +136,12 @@ class ButtonGroup extends Component {
         <ButtonGroupWrapper wrap={wrap}>
           {options.map((option, i) => (
             <StyledButton
+            type="button"
               key={i}
               primary={primary}
               buttonWidth={100 / options.length}
               solid={selectedIndex === i}
+              outline
               onClick={e => {
                 e.preventDefault();
                 this.setState({ selectedIndex: i });
@@ -172,12 +174,12 @@ ButtonGroup.propTypes = {
 };
 
 ButtonGroup.defaultProps = {
-  label: "",
+  label: '',
   options: [
-    { title: "LLP", value: "LLP" },
-    { title: "Limited", value: "Limited" },
-    { title: "Partnership", value: "partnership" },
-    { title: "Sole Trader", value: "Sole Trader" }
+    { title: 'LLP', value: 'LLP' },
+    { title: 'Limited', value: 'Limited' },
+    { title: 'Partnership', value: 'partnership' },
+    { title: 'Sole Trader', value: 'Sole Trader' }
   ],
   handleOptionSelected: i => console.log(i),
   selectedIndex: 0,

@@ -216,7 +216,8 @@ class Button extends Component {
       href,
       loading,
       loadingText,
-      id
+      id,
+      outline
     } = this.props;
     if (href) {
       return (
