@@ -7,7 +7,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'index.js',
-    library: '',
+    library: 'cot-experience',
     libraryTarget: 'umd'
   },
   resolve: {
@@ -19,7 +19,7 @@ module.exports = {
   externals: {
     // react: 'react',
     // 'react-dom': 'react-dom',
-    // 'styled-components': 'styled-components'
+    'styled-components': 'styled-components'
   },
   module: {
     rules: [

@@ -1,11 +1,12 @@
 {
-  presets: ["env", "stage-0", "react"],
-  plugins: [
+  "presets": ["env", "stage-0", "react"],
+  "plugins": [
     [
       "css-modules-transform",
       {
-        extractCss: "./dist/stylesheets/styles.css"
-      }
+        "extractCss": "./dist/stylesheets/styles.css"
+      },
+      "transform-export-extensions"
     ]
   ]
 }
