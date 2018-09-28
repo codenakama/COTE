@@ -2,10 +2,8 @@ import { setDefaults, withInfo } from '@storybook/addon-info';
 import { addDecorator, configure } from '@storybook/react';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import globalStyles from '../src/styles/injectGlobalStyles';
+import { GlobalStyle } from '../src/styles/GlobalStyle';
 import { hexToRgbA } from '../src/utils';
-
-globalStyles();
 
 const styles = {
   margin: '100px auto',
@@ -59,7 +57,10 @@ setDefaults({
 //decorators
 const LayoutDecorator = storyFn => (
   <ThemeProvider theme={theme}>
-    <div style={styles}>{storyFn()}</div>
+    <React.Fragment>
+      <div style={styles}>{storyFn()}</div>
+      <GlobalStyle />
+    </React.Fragment>
   </ThemeProvider>
 );
 

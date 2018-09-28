@@ -49,4 +49,4 @@ export { default as UspList } from "./components/UspList/index";
 export { default as Widget } from "./components/Widget/Widget";
 export { default as WidgetBox } from "./components/WidgetBox/WidgetBox";
 export { default as Accordion } from "./components/Accordion/Accordion";
-export { default as initGlobalStyles } from "./styles/injectGlobalStyles";
+export { default as GlobalStyle } from "./styles/GlobalStyle";

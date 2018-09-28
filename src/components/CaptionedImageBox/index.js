@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Icon from "../atoms/Icon/Icon";
 import { Heading3 } from "../atoms/Typography/Heading";
-import Paper from "../Paper/Paper";
 
 const Wrapper = styled.div`
   border-radius: 4px;
@@ -27,7 +26,7 @@ const CaptionBox = styled.div`
   background-color: ${props => props.backgroundColor};
 `;
 
-const StyledHeading3 = Heading3.extend`
+const StyledHeading3 = styled(Heading3)`
   color: #fff;
   margin-left: 8px;
 `;
