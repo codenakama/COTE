@@ -3,6 +3,7 @@ import { addDecorator, configure } from '@storybook/react';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../src/styles/GlobalStyle';
+import { GlobalStyle as StorybookGlobalStyle } from './styles/GlobalStyle';
 import { hexToRgbA } from '../src/utils';
 
 const styles = {
@@ -60,6 +61,7 @@ const LayoutDecorator = storyFn => (
     <React.Fragment>
       <div style={styles}>{storyFn()}</div>
       <GlobalStyle />
+      <StorybookGlobalStyle />
     </React.Fragment>
   </ThemeProvider>
 );
