@@ -36,11 +36,8 @@ const ButtonGroupWrapper = styled.div`
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  & button:nth-child(2) {
+  & button:not(:first-child):not(:last-child) {
     border-right: none;
-    border-left: none;
-  }
-  & button:nth-child(4) {
     border-left: none;
   }
   & button:first-child {
