@@ -37,7 +37,6 @@ const ButtonGroupWrapper = styled.div`
   width: 100%;
   flex-wrap: wrap;
   & button:not(:first-child):not(:last-child) {
-    border-right: none;
     border-left: none;
   }
   & button:first-child {
@@ -55,6 +54,7 @@ const ButtonGroupWrapper = styled.div`
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 0;
+    border-left:none;
   }
 
   @media (max-width: 640px) {
