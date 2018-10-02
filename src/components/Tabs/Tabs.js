@@ -44,9 +44,13 @@ const TabsContainer = styled.div`
 `;
 
 class Tabs extends Component {
-  state = {
-    activeIndex: 0
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeIndex: props.activeIndex
+    };
+  }
 
   handleTabClicked = index => {
     this.props.onTabClicked(index);

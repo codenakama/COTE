@@ -28,7 +28,7 @@ storiesOf('Tab', module).add('Normal', () => (
 
 class MyComponent extends Component {
   state = {
-    selectedTab: 0
+    selectedTab: 1
   };
 
   handleTabClicked = index => {
@@ -38,8 +38,8 @@ class MyComponent extends Component {
   render() {
     return (
       <WidgetBox>
-        <Tabs onTabClicked={this.handleTabClicked}>
-          <Tab title="Redeem cash" active>
+        <Tabs onTabClicked={this.handleTabClicked} activeIndex={this.state.selectedTab}>
+          <Tab title="Redeem cash">
             <InputWrapper>
               <TextInput
                 full
