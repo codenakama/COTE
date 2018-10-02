@@ -48,7 +48,6 @@ const ButtonGroupWrapper = styled.div`
   button {
     border-radius: 0px;
     padding: 0.68em 1em;
-    border: 1px solid black;
   }
   & button:last-child {
     border-top-left-radius: 0;
