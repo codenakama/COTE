@@ -11,6 +11,7 @@ export {
   Title
 } from "./components/atoms/Typography";
 export { default as ButtonGroup } from "./components/ButtonGroup/ButtonGroup";
+export { default as CaptionedImageBox } from "./components/CaptionedImageBox";
 export { default as Checkbox } from "./components/Checkbox/Checkbox";
 export { default as ContentBox } from "./components/ContentBox/ContentBox";
 export { default as CotCard } from "./components/CotCard/CotCard";
