@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import ScrollableContainer from '../atoms/ScrollBar';
+import ScrollableContainer from '../atoms/ScrollableContainer';
 import ExpansionPanel from './index';
 
 // const ScrollableScontainer = styled.div`
