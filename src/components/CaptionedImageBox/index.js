@@ -1,9 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import Icon from "../atoms/Icon/Icon";
-import { Heading3 } from "../atoms/Typography/Heading";
-import Paper from "../Paper/Paper";
+import PropTypes from 'prop-types';
+import React from 'react';
+import styled from 'styled-components';
+import Icon from '../atoms/Icon/Icon';
+import { Heading3 } from '../atoms/Typography/Heading';
 
 const Wrapper = styled.div`
   border-radius: 4px;
@@ -16,6 +15,8 @@ const Wrapper = styled.div`
 const ImageBox = styled.div`
   img {
     display: block;
+    width: 100%;
+    object-fit: cover;
   }
 `;
 
@@ -60,10 +61,10 @@ CaptionedImageBox.propTypes = {
 };
 
 CaptionedImageBox.defaultProps = {
-  imageSrc: "http://via.placeholder.com/320x176",
-  captionBackgroundColor: "#27b161",
-  icon: "check_circle",
-  caption: "CORRECT"
+  imageSrc: 'http://via.placeholder.com/320x176',
+  captionBackgroundColor: '#27b161',
+  icon: 'check_circle',
+  caption: 'CORRECT'
 };
 
 export default CaptionedImageBox;
