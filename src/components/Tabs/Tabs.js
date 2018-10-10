@@ -38,6 +38,7 @@ const TabsHeaders = styled.div`
 `;
 
 const TabsContainer = styled.div`
+  margin: ${props => props.margin || '1.4rem'}
   display: flex;
   overflow: hidden;
 `;
@@ -86,7 +87,7 @@ class Tabs extends Component {
             width={100 / children.length}
             position={activeIndex * 100}
           />
-          <TabsContainer>{childTabs}</TabsContainer>
+          <TabsContainer margin={this.props.contentMargin}>{childTabs}</TabsContainer>
         </TabsWrapper>
       </div>
     );
@@ -95,7 +96,8 @@ class Tabs extends Component {
 
 Tabs.propTypes = {
   onTabClicked: PropTypes.func,
-  children: PropTypes.arrayOf(PropTypes.node)
+  children: PropTypes.arrayOf(PropTypes.node),
+  contentMargin: PropTypes.string
 };
 
 Tabs.defaultProps = {
