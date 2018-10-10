@@ -38,7 +38,6 @@ const TabsHeaders = styled.div`
 `;
 
 const TabsContainer = styled.div`
-  margin: 1.4rem;
   display: flex;
   overflow: hidden;
 `;
@@ -53,7 +52,10 @@ class Tabs extends Component {
   }
 
   handleTabClicked = index => {
-    this.props.onTabClicked(index);
+    if (this.props.onTabClicked) {
+      this.props.onTabClicked(index);
+    }
+    
     this.setState({ activeIndex: index });
   };
 
@@ -92,12 +94,12 @@ class Tabs extends Component {
 }
 
 Tabs.propTypes = {
-  onTabClicked: PropTypes.func.isRequired,
+  onTabClicked: PropTypes.func,
   children: PropTypes.arrayOf(PropTypes.node)
 };
 
 Tabs.defaultProps = {
-  onTabClicked: index => alert(index),
+  onTabClicked: null,
   children: []
 };
 
