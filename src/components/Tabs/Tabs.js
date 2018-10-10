@@ -36,9 +36,9 @@ const TabsHeaders = styled.div`
   display: flex;
   position: relative;
 `;
-
+ 
 const TabsContainer = styled.div`
-  margin: ${props => props.margin || '1.4rem'}
+  margin: ${props => props.margin || '1.4rem'};
   display: flex;
   overflow: hidden;
 `;
@@ -61,7 +61,7 @@ class Tabs extends Component {
   };
 
   render() {
-    const { children } = this.props;
+    const { children, contentMargin } = this.props;
     const { activeIndex } = this.state;
 
     const tabHeaders = React.Children.map(children, (child, index) => {
@@ -87,7 +87,7 @@ class Tabs extends Component {
             width={100 / children.length}
             position={activeIndex * 100}
           />
-          <TabsContainer margin={this.props.contentMargin}>{childTabs}</TabsContainer>
+          <TabsContainer margin={contentMargin}>{childTabs}</TabsContainer>
         </TabsWrapper>
       </div>
     );
