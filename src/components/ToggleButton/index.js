@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
-import styled from "styled-components";
-import { colors } from "../../styles/defaults";
-import Paper from "../Paper/Paper";
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import styled from 'styled-components';
+import { colors } from '../../styles/defaults';
+import Paper from '../Paper/Paper';
 
 const Wrapper = styled.div`
   border-radius: 50px;
@@ -12,6 +12,10 @@ const Wrapper = styled.div`
   width: 2.4rem;
   position: relative;
   background: ${props => {
+    if (props.disabled) {
+      return props.theme ? props.theme.colorLightGrey : colors.lightGrey;
+    }
+
     if (props.isActive) {
       return props.theme ? props.theme.colorPrimary : colors.primary;
     }
@@ -35,7 +39,7 @@ const Circle = styled(Paper)`
   margin: auto;
   z-index: 2;
 
-  left: ${props => (props.isActive ? "2.4rem" : 0)};
+  left: ${props => (props.isActive ? '2.4rem' : 0)};
   transition: left 250ms ease;
 `;
 
@@ -56,6 +60,10 @@ class ToggleButton extends PureComponent {
   };
 
   handleButtonClicked = () => {
+    const { disabled } = this.props;
+
+    if (disabled) return;
+
     this.setState(
       { isActive: !this.state.isActive },
       this.props.onButtonClicked(!this.state.isActive)
@@ -64,12 +72,18 @@ class ToggleButton extends PureComponent {
 
   render() {
     const isActive =
-      typeof this.props.isActive !== "undefined"
+      typeof this.props.isActive !== 'undefined'
         ? this.props.isActive
         : this.state.isActive;
 
+    const { disabled } = this.props;
+
     return (
-      <Wrapper isActive={isActive} onClick={this.handleButtonClicked}>
+      <Wrapper
+        isActive={isActive}
+        onClick={this.handleButtonClicked}
+        disabled={disabled}
+      >
         <Circle isActive={isActive} />
         <HiddenInput type="checkbox" />
       </Wrapper>
@@ -79,12 +93,14 @@ class ToggleButton extends PureComponent {
 
 ToggleButton.propTypes = {
   onButtonClicked: PropTypes.func,
-  isActive: PropTypes.any
+  isActive: PropTypes.any,
+  isEnabled: PropTypes.bool
 };
 
 ToggleButton.defaultProps = {
   onButtonClicked: isActive => console.log(isActive),
-  isActive: false
+  isActive: false,
+  disabled: false
 };
 
 export default ToggleButton;
