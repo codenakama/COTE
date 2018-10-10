@@ -36,9 +36,9 @@ const TabsHeaders = styled.div`
   display: flex;
   position: relative;
 `;
-
+ 
 const TabsContainer = styled.div`
-  margin: 1.4rem;
+  margin: ${props => props.margin || '1.4rem'};
   display: flex;
   overflow: hidden;
 `;
@@ -53,12 +53,15 @@ class Tabs extends Component {
   }
 
   handleTabClicked = index => {
-    this.props.onTabClicked(index);
+    if (this.props.onTabClicked) {
+      this.props.onTabClicked(index);
+    }
+    
     this.setState({ activeIndex: index });
   };
 
   render() {
-    const { children } = this.props;
+    const { children, contentMargin } = this.props;
     const { activeIndex } = this.state;
 
     const tabHeaders = React.Children.map(children, (child, index) => {
@@ -84,7 +87,7 @@ class Tabs extends Component {
             width={100 / children.length}
             position={activeIndex * 100}
           />
-          <TabsContainer>{childTabs}</TabsContainer>
+          <TabsContainer margin={contentMargin}>{childTabs}</TabsContainer>
         </TabsWrapper>
       </div>
     );
@@ -92,12 +95,13 @@ class Tabs extends Component {
 }
 
 Tabs.propTypes = {
-  onTabClicked: PropTypes.func.isRequired,
-  children: PropTypes.arrayOf(PropTypes.node)
+  onTabClicked: PropTypes.func,
+  children: PropTypes.arrayOf(PropTypes.node),
+  contentMargin: PropTypes.string
 };
 
 Tabs.defaultProps = {
-  onTabClicked: index => alert(index),
+  onTabClicked: null,
   children: []
 };
 
