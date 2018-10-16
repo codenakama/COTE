@@ -15,6 +15,8 @@ const Wrapper = styled.div`
 const ImageBox = styled.div`
   img {
     display: block;
+    width: 100%;
+    object-fit: cover;
   }
 `;
 
@@ -59,10 +61,10 @@ CaptionedImageBox.propTypes = {
 };
 
 CaptionedImageBox.defaultProps = {
-  imageSrc: "http://via.placeholder.com/320x176",
-  captionBackgroundColor: "#27b161",
-  icon: "check_circle",
-  caption: "CORRECT"
+  imageSrc: 'http://via.placeholder.com/320x176',
+  captionBackgroundColor: '#27b161',
+  icon: 'check_circle',
+  caption: 'CORRECT'
 };
 
 export default CaptionedImageBox;

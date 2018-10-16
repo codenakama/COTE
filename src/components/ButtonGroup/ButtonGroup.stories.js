@@ -10,6 +10,14 @@ const options = [
 ];
 
 storiesOf("ButtonGroup", module)
+  .add("With 2 buttons", () => (
+    <ButtonGroup
+      options={[
+        { title: "Option 1", value: 1 },
+        { title: "Option 2", value: 2 }
+      ]}
+    />
+  ))
   .add("With 3 buttons", () => (
     <ButtonGroup
       options={[
