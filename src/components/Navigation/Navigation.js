@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   background: #fff;
 `;
 
-const NavButton = StyledLinkButton.extend`
+const NavButton = styled(StyledLinkButton)`
   @media screen and (max-width: 640px) {
     height: 100%;
     border: none !important;

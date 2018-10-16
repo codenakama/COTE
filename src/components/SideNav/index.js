@@ -50,7 +50,7 @@ const Link = styled.a`
   }
 `;
 
-const Nav = PaperWrapper.withComponent('nav').extend`
+const Nav = styled(PaperWrapper.withComponent('nav'))`
   position: fixed;
   z-index: 10;
   width: ${props => `${props.width}px`};

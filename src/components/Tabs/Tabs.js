@@ -20,7 +20,7 @@ const TabMarker = styled.div`
   top: 30px;
 `;
 
-const TabTitle = Title.withComponent('a').extend`
+const TabTitle = styled(Title.withComponent('a'))`
   cursor: pointer;
   color: ${props => (props.isActive ? colors.black : colors.darkGrey)};
 

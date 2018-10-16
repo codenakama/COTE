@@ -1,6 +1,6 @@
-import { injectGlobal } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-export default () => injectGlobal`
+const GlobalStyle = createGlobalStyle`
 
 /* reset css */
 html, body, div, span, applet, object, iframe,
@@ -72,3 +72,5 @@ h1,h2,h3,h4,h5,h6,p,span{
   }
 }
 `;
+
+export default GlobalStyle;

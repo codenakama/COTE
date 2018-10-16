@@ -18,22 +18,22 @@ const Heading = styled.h1`
 export const Heading1 = Heading;
 Heading1.displayName = "Heading1";
 
-export const Heading2 = Heading.withComponent("h2").extend`
+export const Heading2 = styled(Heading.withComponent("h2"))`
   font-size: 30px;
 `;
 Heading2.displayName = "Heading2";
 
-export const Heading3 = Heading.withComponent("h3").extend`
+export const Heading3 = styled(Heading.withComponent("h3"))`
   font-size: 22px;
 `;
 Heading3.displayName = "Heading3";
 
-export const Subheading = Heading.withComponent("h4").extend`
+export const Subheading = styled(Heading.withComponent("h4"))`
   font-size: 18px;
 `;
 Heading3.displayName = "Subheading";
 
-export const Title = Heading.withComponent("h5").extend`
+export const Title = styled(Heading.withComponent("h5"))`
   font-size: 16px;
   font-weight:${props => {
     if (props.light) return fontWeights.light;
@@ -45,7 +45,7 @@ export const Title = Heading.withComponent("h5").extend`
 `;
 Title.displayName = "Title";
 
-export const Subtitle = Heading.withComponent("h6").extend`
+export const Subtitle = styled(Heading.withComponent("h6"))`
   font-size: 15px;
   font-weight: ${fontWeights.light};
 `;
