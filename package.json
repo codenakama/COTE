@@ -57,8 +57,5 @@
     "react-text-mask": "5.4.1",
     "react-tippy": "^1.2.2",
     "styled-components": "^4.0.0"
-  },
-  "peerDependencies": {
-    "styled-components": ">=4.0.0-beta.9"
   }
 }

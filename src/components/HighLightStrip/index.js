@@ -21,7 +21,7 @@ const HighlightStrip = ({ children, danger, ...props }) => {
 };
 
 HighlightStrip.propTypes = {
-  children: PropTypes.number.isRequired,
+  children: PropTypes.node.isRequired,
   /** Sets color to whatever has been defined as danger/error color in the theme */
   danger: PropTypes.bool
 };
