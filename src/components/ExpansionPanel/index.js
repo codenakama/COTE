@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 import { colors } from '../../styles/defaults';
 import Icon from '../atoms/Icon/Icon';
 import { Title } from '../atoms/Typography';
-import Paper from '../Paper/Paper';
 
 const rotate = css`
   transform: rotate(180deg);
@@ -13,7 +12,7 @@ const closed = css`
   max-height: 0;
 `;
 
-const Wrapper = styled(Paper)`
+const Wrapper = styled.div`
   padding: 0;
 `;
 
